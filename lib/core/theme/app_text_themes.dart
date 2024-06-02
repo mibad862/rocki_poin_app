@@ -8,5 +8,10 @@ class AppTextTheme {
       color: AppColors.white1,
       fontSize: 14.0,
     ),
+    titleSmall: TextStyle(
+      fontFamily: "Lato",
+      color: AppColors.white1,
+      fontSize: 14.0,
+    ),
   );
 }
