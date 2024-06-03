@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:rocki_poin_app/core/constants/app_assets.dart';
 import 'package:rocki_poin_app/core/constants/app_colors.dart';
-import 'package:rocki_poin_app/views/welcome_bonus_screen.dart';
+import 'package:rocki_poin_app/views/welcome_bonus/welcome_bonus_screen.dart';
 import '../core/constants/app_strings.dart';
 
 class SplashScreen extends StatefulWidget {
