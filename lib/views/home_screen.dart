@@ -17,6 +17,7 @@ class HomeScreen extends StatelessWidget {
     return Scaffold(
       body: ListView(
         children: [
+          SizedBox(height: 30.h),
           Stack(
             clipBehavior: Clip.none,
             children: [
@@ -175,7 +176,6 @@ class HomeScreen extends StatelessWidget {
                       width: double.infinity,
                       decoration: const BoxDecoration(
                         // color: Colors.blue,
-                        color: Colors.green,
                         image: DecorationImage(
 
                             image: AssetImage(
@@ -185,110 +185,108 @@ class HomeScreen extends StatelessWidget {
                         ),
                       ),
                     ),
-                    // Image.asset(
-                    //   AppAssets.homImgThree,
-                    //   height: 191.h,
-                    //   width: 390.w,
-                    //   fit: BoxFit.contain,
-                    // ),
                   ],
                 ),
               ),
-            ],
-          ),
-          Container(
-            padding: EdgeInsets.only(bottom: 25.h),
-            alignment: Alignment.bottomCenter,
-            width: 350.w,
-            height: 158.h,
-            decoration: BoxDecoration(
-              color: Colors.red,
-              borderRadius: BorderRadius.circular(18.0),
-              image: DecorationImage(
-                image: AssetImage(AppAssets.homImgFourteen),
-                fit: BoxFit.cover,
-              ),
-            ),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                Row(
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    Image.asset(
-                      AppAssets.homImgFifteen,
-                      height: 30.h,
-                      width: 30.w,
-                      fit: BoxFit.contain,
-                    ),
-                    SizedBox(width: 10.w),
-                    Text(
-                      "25,589 M",
-                      style: Theme.of(context)
-                          .textTheme
-                          .titleSmall!
-                          .copyWith(
-                        fontSize: 28.sp,
-                        fontWeight: FontWeight.w600,
-                        color: AppColors.white1,
-                      ),
-                    ),
-                  ],
-                ),
-                SizedBox(height: 10.h),
-                Container(
-                  padding: EdgeInsets.symmetric(horizontal: 10.w),
-                  height: 40.h,
+              Positioned(
+               left: 20.w,
+                bottom: -110.h,
+                child: Container(
+                  padding: EdgeInsets.only(bottom: 25.h),
+                  alignment: Alignment.bottomCenter,
+                  width: 350.w,
+                  height: 158.h,
                   decoration: BoxDecoration(
-                    color: AppColors.blue1,
-                    borderRadius: BorderRadius.circular(20.0),
+                    borderRadius: BorderRadius.circular(18.0),
+                    image: DecorationImage(
+                      image: AssetImage(AppAssets.homImgFourteen),
+                      fit: BoxFit.cover,
+                    ),
                   ),
-                  child: Row(
+                  child: Column(
                     crossAxisAlignment: CrossAxisAlignment.center,
                     mainAxisSize: MainAxisSize.min,
                     children: [
-                      Text(
-                        "EARNING RATE",
-                        style: Theme.of(context)
-                            .textTheme
-                            .titleSmall!
-                            .copyWith(
-                          fontSize: 15.sp,
-                          fontWeight: FontWeight.w500,
-                          color: AppColors.white1,
-                        ),
+                      Row(
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          Image.asset(
+                            AppAssets.homImgFifteen,
+                            height: 30.h,
+                            width: 30.w,
+                            fit: BoxFit.contain,
+                          ),
+                          SizedBox(width: 10.w),
+                          Text(
+                            "25,589 M",
+                            style: Theme.of(context)
+                                .textTheme
+                                .titleSmall!
+                                .copyWith(
+                              fontSize: 28.sp,
+                              fontWeight: FontWeight.w600,
+                              color: AppColors.white1,
+                            ),
+                          ),
+                        ],
                       ),
-                      SizedBox(width: 8.w),
-                      Text(
-                        "+500/500",
-                        style: Theme.of(context)
-                            .textTheme
-                            .titleSmall!
-                            .copyWith(
-                          fontSize: 23.sp,
-                          fontWeight: FontWeight.w600,
-                          color: AppColors.green1,
+                      SizedBox(height: 10.h),
+                      Container(
+                        padding: EdgeInsets.symmetric(horizontal: 10.w),
+                        height: 40.h,
+                        decoration: BoxDecoration(
+                          color: AppColors.blue1,
+                          borderRadius: BorderRadius.circular(20.0),
                         ),
-                      ),
-                      SizedBox(width: 8.w),
-                      Text(
-                        "rock",
-                        style: Theme.of(context)
-                            .textTheme
-                            .titleSmall!
-                            .copyWith(
-                          fontSize: 15.sp,
-                          fontWeight: FontWeight.w500,
-                          color: AppColors.white1,
+                        child: Row(
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          mainAxisSize: MainAxisSize.min,
+                          children: [
+                            Text(
+                              "EARNING RATE",
+                              style: Theme.of(context)
+                                  .textTheme
+                                  .titleSmall!
+                                  .copyWith(
+                                fontSize: 15.sp,
+                                fontWeight: FontWeight.w500,
+                                color: AppColors.white1,
+                              ),
+                            ),
+                            SizedBox(width: 8.w),
+                            Text(
+                              "+500/500",
+                              style: Theme.of(context)
+                                  .textTheme
+                                  .titleSmall!
+                                  .copyWith(
+                                fontSize: 23.sp,
+                                fontWeight: FontWeight.w600,
+                                color: AppColors.green1,
+                              ),
+                            ),
+                            SizedBox(width: 8.w),
+                            Text(
+                              "rock",
+                              style: Theme.of(context)
+                                  .textTheme
+                                  .titleSmall!
+                                  .copyWith(
+                                fontSize: 15.sp,
+                                fontWeight: FontWeight.w500,
+                                color: AppColors.white1,
+                              ),
+                            ),
+                          ],
                         ),
                       ),
                     ],
                   ),
                 ),
-              ],
-            ),
+              ),
+            ],
           ),
+          SizedBox(height: 150.h),
           Column(
             children: [
               const ListTileWidget(

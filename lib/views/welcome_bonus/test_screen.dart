@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:rocki_poin_app/core/constants/app_assets.dart';
 import 'package:rocki_poin_app/core/constants/app_colors.dart';
+import 'package:rocki_poin_app/views/home_screen_widget.dart';
 
 import 'team_design_widget.dart';
 import 'team_model.dart';
@@ -17,7 +18,7 @@ class TestScreen extends StatelessWidget {
       ),
       body: Container(
         width: double.infinity,
-        margin: EdgeInsets.symmetric(horizontal: 20.w),
+        // margin: EdgeInsets.symmetric(horizontal: 20.w),
         child: Column(
           children: [
             Container(
@@ -126,12 +127,18 @@ class TestScreen extends StatelessWidget {
                       ],
                     ),
                   ),
+                  SizedBox(height: 30.h),
                 ],
               ),
             ),
+            SizedBox(height: 20),
+
+            HomeScreenWidget(widget: Text("dsd")),
           ],
         ),
       ),
     );
   }
 }
+
+
