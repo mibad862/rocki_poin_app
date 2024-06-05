@@ -10,8 +10,7 @@ class AppRoutes {
       SplashScreen.routeName: (context) => const SplashScreen(),
       WelcomeBonusScreen.routeName: (context) => const WelcomeBonusScreen(),
       HomeScreen.routeName: (context) => const HomeScreen(),
-      AchivementScreen.routeName:(context) => const AchivementScreen(),
-
+      AchievementScreen.routeName:(context) => const AchievementScreen(),
     };
   }
 }
