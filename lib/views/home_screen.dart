@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:rocki_poin_app/core/constants/app_assets.dart';
 import 'package:rocki_poin_app/core/constants/app_colors.dart';
 import 'package:rocki_poin_app/core/utils/padding_extensions.dart';
+import 'package:rocki_poin_app/views/achivements_screen/achivements_screen.dart';
 import 'package:rocki_poin_app/views/welcome_bonus/list_tile_widget.dart';
 import 'package:rocki_poin_app/views/welcome_bonus/team_design_widget.dart';
 import 'package:rocki_poin_app/views/welcome_bonus/team_model.dart';
@@ -292,12 +294,14 @@ class HomeScreen extends StatelessWidget {
                 imgPath: AppAssets.homImgFive,
                 titleText: "Connect wallet",
                 subTitleText: "Assign your wallet to your mining app.",
+                navigatorPath: AchievementScreen.routeName,
               ),
               SizedBox(height: 25.h),
               const ListTileWidget(
                 imgPath: AppAssets.homImgSix,
                 titleText: "Invitee Friends",
                 subTitleText: "Earn extra rock by inviting your friends.",
+                navigatorPath: AchievementScreen.routeName,
               ),
             ],
           ).paddingHorizontal(18.w),
@@ -316,13 +320,16 @@ class HomeScreen extends StatelessWidget {
                           color: AppColors.blue2,
                         ),
                   ),
-                  Text(
-                    "view team",
-                    style: Theme.of(context).textTheme.titleSmall!.copyWith(
-                          fontSize: 18.sp,
-                          fontWeight: FontWeight.w500,
-                          color: AppColors.blue2,
-                        ),
+                  GestureDetector(
+                    onTap: () => Navigator.pushNamed(context, AchievementScreen.routeName),
+                    child: Text(
+                      "view team",
+                      style: Theme.of(context).textTheme.titleSmall!.copyWith(
+                            fontSize: 18.sp,
+                            fontWeight: FontWeight.w500,
+                            color: AppColors.blue2,
+                          ),
+                    ),
                   ),
                 ],
               ).paddingHorizontal(18.w),

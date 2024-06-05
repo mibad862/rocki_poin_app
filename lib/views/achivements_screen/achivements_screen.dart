@@ -6,10 +6,10 @@ import 'package:rocki_poin_app/core/constants/app_colors.dart';
 import '../../core/constants/app_assets.dart';
 import '../welcome_bonus/list_tile_widget.dart';
 
-class AchivementScreen extends StatelessWidget {
-  const AchivementScreen({super.key});
+class AchievementScreen extends StatelessWidget {
+  const AchievementScreen({super.key});
 
-  static const routeName = "achivement";
+  static const routeName = "achievement";
 
   @override
   Widget build(BuildContext context) {
@@ -82,6 +82,7 @@ class AchivementScreen extends StatelessWidget {
                           titleText: "Invitee Friends",
                           subTitleText:
                               "Earn extra rock by inviting your friends.",
+                          navigatorPath: "",
                         ),
                         SizedBox(
                           height: 30.h,
