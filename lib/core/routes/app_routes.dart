@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:rocki_poin_app/views/achivements_screen/achivements_screen.dart';
 import 'package:rocki_poin_app/views/home_screen.dart';
 import 'package:rocki_poin_app/views/welcome_bonus/welcome_bonus_screen.dart';
 import '../../../views/splash_screen.dart';
@@ -9,6 +10,8 @@ class AppRoutes {
       SplashScreen.routeName: (context) => const SplashScreen(),
       WelcomeBonusScreen.routeName: (context) => const WelcomeBonusScreen(),
       HomeScreen.routeName: (context) => const HomeScreen(),
+      AchivementScreen.routeName:(context) => const AchivementScreen(),
+
     };
   }
 }
