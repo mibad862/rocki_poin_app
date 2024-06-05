@@ -177,11 +177,10 @@ class HomeScreen extends StatelessWidget {
                       decoration: const BoxDecoration(
                         // color: Colors.blue,
                         image: DecorationImage(
-
-                            image: AssetImage(
-                          AppAssets.homImgThree,
-                        ),
-                        fit: BoxFit.fill,
+                          image: AssetImage(
+                            AppAssets.homImgThree,
+                          ),
+                          fit: BoxFit.fill,
                         ),
                       ),
                     ),
@@ -189,7 +188,7 @@ class HomeScreen extends StatelessWidget {
                 ),
               ),
               Positioned(
-               left: 20.w,
+                left: 20.w,
                 bottom: -110.h,
                 child: Container(
                   padding: EdgeInsets.only(bottom: 25.h),
@@ -223,10 +222,10 @@ class HomeScreen extends StatelessWidget {
                                 .textTheme
                                 .titleSmall!
                                 .copyWith(
-                              fontSize: 28.sp,
-                              fontWeight: FontWeight.w600,
-                              color: AppColors.white1,
-                            ),
+                                  fontSize: 28.sp,
+                                  fontWeight: FontWeight.w600,
+                                  color: AppColors.white1,
+                                ),
                           ),
                         ],
                       ),
@@ -248,10 +247,10 @@ class HomeScreen extends StatelessWidget {
                                   .textTheme
                                   .titleSmall!
                                   .copyWith(
-                                fontSize: 15.sp,
-                                fontWeight: FontWeight.w500,
-                                color: AppColors.white1,
-                              ),
+                                    fontSize: 15.sp,
+                                    fontWeight: FontWeight.w500,
+                                    color: AppColors.white1,
+                                  ),
                             ),
                             SizedBox(width: 8.w),
                             Text(
@@ -260,10 +259,10 @@ class HomeScreen extends StatelessWidget {
                                   .textTheme
                                   .titleSmall!
                                   .copyWith(
-                                fontSize: 23.sp,
-                                fontWeight: FontWeight.w600,
-                                color: AppColors.green1,
-                              ),
+                                    fontSize: 23.sp,
+                                    fontWeight: FontWeight.w600,
+                                    color: AppColors.green1,
+                                  ),
                             ),
                             SizedBox(width: 8.w),
                             Text(
@@ -272,10 +271,10 @@ class HomeScreen extends StatelessWidget {
                                   .textTheme
                                   .titleSmall!
                                   .copyWith(
-                                fontSize: 15.sp,
-                                fontWeight: FontWeight.w500,
-                                color: AppColors.white1,
-                              ),
+                                    fontSize: 15.sp,
+                                    fontWeight: FontWeight.w500,
+                                    color: AppColors.white1,
+                                  ),
                             ),
                           ],
                         ),
@@ -292,15 +291,13 @@ class HomeScreen extends StatelessWidget {
               const ListTileWidget(
                 imgPath: AppAssets.homImgFive,
                 titleText: "Connect wallet",
-                subTitleText:
-                "Assign your wallet to your mining app.",
+                subTitleText: "Assign your wallet to your mining app.",
               ),
               SizedBox(height: 25.h),
               const ListTileWidget(
                 imgPath: AppAssets.homImgSix,
                 titleText: "Invitee Friends",
-                subTitleText:
-                "Earn extra rock by inviting your friends.",
+                subTitleText: "Earn extra rock by inviting your friends.",
               ),
             ],
           ).paddingHorizontal(18.w),
@@ -309,30 +306,23 @@ class HomeScreen extends StatelessWidget {
             children: [
               Row(
                 crossAxisAlignment: CrossAxisAlignment.end,
-                mainAxisAlignment:
-                MainAxisAlignment.spaceBetween,
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Text(
                     "TEAM",
-                    style: Theme.of(context)
-                        .textTheme
-                        .titleSmall!
-                        .copyWith(
-                      fontSize: 22.sp,
-                      fontWeight: FontWeight.w600,
-                      color: AppColors.blue2,
-                    ),
+                    style: Theme.of(context).textTheme.titleSmall!.copyWith(
+                          fontSize: 22.sp,
+                          fontWeight: FontWeight.w600,
+                          color: AppColors.blue2,
+                        ),
                   ),
                   Text(
                     "view team",
-                    style: Theme.of(context)
-                        .textTheme
-                        .titleSmall!
-                        .copyWith(
-                      fontSize: 18.sp,
-                      fontWeight: FontWeight.w500,
-                      color: AppColors.blue2,
-                    ),
+                    style: Theme.of(context).textTheme.titleSmall!.copyWith(
+                          fontSize: 18.sp,
+                          fontWeight: FontWeight.w500,
+                          color: AppColors.blue2,
+                        ),
                   ),
                 ],
               ).paddingHorizontal(18.w),
@@ -341,8 +331,7 @@ class HomeScreen extends StatelessWidget {
                 padding: EdgeInsets.only(left: 18.w),
                 height: 100.h,
                 child: ListView.separated(
-                  separatorBuilder: (context, index) =>
-                      SizedBox(width: 15.w),
+                  separatorBuilder: (context, index) => SizedBox(width: 15.w),
                   scrollDirection: Axis.horizontal,
                   itemCount: TeamModel.teamList.length,
                   itemBuilder: (context, index) {
