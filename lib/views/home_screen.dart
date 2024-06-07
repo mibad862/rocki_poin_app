@@ -24,7 +24,7 @@ class HomeScreen extends StatelessWidget {
             clipBehavior: Clip.none,
             children: [
               Container(
-                padding: EdgeInsets.only(left: 15.w, right: 18.w, top: 5.h),
+                padding: EdgeInsets.only(left: 15.w, right: 18.w, top: 15.h),
                 width: double.infinity,
                 height: 300.h,
                 decoration: const BoxDecoration(
@@ -49,17 +49,20 @@ class HomeScreen extends StatelessWidget {
                                   .textTheme
                                   .titleSmall!
                                   .copyWith(
-                                      fontSize: 15.sp,
-                                      fontWeight: FontWeight.w300),
+                                    fontSize: 16.sp,
+                                    fontWeight: FontWeight.w300,
+                                  ),
                             ),
                             Text(
-                              "elementalmaster",
+                              "@elementalmaster",
                               style: Theme.of(context)
                                   .textTheme
                                   .titleSmall!
                                   .copyWith(
-                                      fontSize: 15.sp,
-                                      fontWeight: FontWeight.w300),
+                                    fontSize: 16.sp,
+                                    fontWeight: FontWeight.w500,
+                                    color: AppColors.white1
+                                  ),
                             ),
                           ],
                         ),
@@ -161,20 +164,20 @@ class HomeScreen extends StatelessWidget {
                   ],
                 ),
               ),
-              Positioned(
-                  bottom: 80.h,
-                  right: 0,
-                  left: 0,
-                  child: SvgPicture.asset(
-                    AppAssets.homImgSixteen,
-                    // color: Colors.white,
-                    height: 10.h,
-                    fit: BoxFit.contain,
-                  )),
+              // Positioned(
+              //     bottom: 60.h,
+              //     right: 0,
+              //     left: 0,
+              //     child: SvgPicture.asset(
+              //       AppAssets.homImgSixteen,
+              //       // color: Colors.white,
+              //       height: 10.h,
+              //       fit: BoxFit.contain,
+              //     )),
               Positioned(
                 right: 0,
                 left: 0,
-                top: 220.h,
+                top: 195.h,
                 child: Stack(
                   clipBehavior: Clip.none,
                   children: [
@@ -196,7 +199,7 @@ class HomeScreen extends StatelessWidget {
               ),
               Positioned(
                 left: 10.w,
-                bottom: -110.h,
+                bottom: -90.h,
                 child: Container(
                   padding: EdgeInsets.only(bottom: 25.h),
                   alignment: Alignment.bottomCenter,
@@ -206,7 +209,7 @@ class HomeScreen extends StatelessWidget {
                     // borderRadius: BorderRadius.circular(18.0),
                     image: DecorationImage(
                       image:
-                          AssetImage('assets/images/home_screen_img_cover.png'),
+                          AssetImage(AppAssets.homImgFourteen),
                       fit: BoxFit.cover,
                     ),
                   ),
