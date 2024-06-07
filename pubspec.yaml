@@ -39,6 +39,7 @@ dependencies:
   flutter_svg:
   percent_indicator:
   device_preview:
+  easy_stepper:
 
 dev_dependencies:
   flutter_test:
