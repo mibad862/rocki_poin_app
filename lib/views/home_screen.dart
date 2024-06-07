@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:rocki_poin_app/core/constants/app_assets.dart';
 import 'package:rocki_poin_app/core/constants/app_colors.dart';
 import 'package:rocki_poin_app/core/utils/padding_extensions.dart';
@@ -19,7 +20,6 @@ class HomeScreen extends StatelessWidget {
     return Scaffold(
       body: ListView(
         children: [
-          SizedBox(height: 30.h),
           Stack(
             clipBehavior: Clip.none,
             children: [
@@ -28,10 +28,8 @@ class HomeScreen extends StatelessWidget {
                 width: double.infinity,
                 height: 300.h,
                 decoration: const BoxDecoration(
-                    color: AppColors.blue1,
-                    borderRadius: BorderRadius.only(
-                        topLeft: Radius.circular(30.0),
-                        topRight: Radius.circular(30.0))),
+                  color: AppColors.blue1,
+                ),
                 child: Column(
                   children: [
                     Row(
@@ -41,7 +39,7 @@ class HomeScreen extends StatelessWidget {
                           backgroundImage: NetworkImage(
                               'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQRyEK7weZZ3GssIBAJAmaruh1MS-FYpXbj4w&s'),
                         ),
-                        SizedBox(width: 12.w),
+                        SizedBox(width: 8.w),
                         Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
@@ -51,23 +49,24 @@ class HomeScreen extends StatelessWidget {
                                   .textTheme
                                   .titleSmall!
                                   .copyWith(
-                                      fontSize: 22.sp,
+                                      fontSize: 15.sp,
                                       fontWeight: FontWeight.w300),
                             ),
                             Text(
-                              "@elementalmaster",
+                              "elementalmaster",
                               style: Theme.of(context)
                                   .textTheme
                                   .titleSmall!
                                   .copyWith(
-                                      fontSize: 22.sp,
-                                      fontWeight: FontWeight.w600),
+                                      fontSize: 15.sp,
+                                      fontWeight: FontWeight.w300),
                             ),
                           ],
                         ),
                         const Spacer(),
                         SvgPicture.asset(
                           'assets/images/homImgTwo.svg',
+                          height: 40.h,
                           fit: BoxFit.cover,
                         ),
                       ],
@@ -77,7 +76,7 @@ class HomeScreen extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
+                          crossAxisAlignment: CrossAxisAlignment.center,
                           children: [
                             Text(
                               "REFERRALS",
@@ -85,7 +84,7 @@ class HomeScreen extends StatelessWidget {
                                   .textTheme
                                   .titleSmall!
                                   .copyWith(
-                                    fontSize: 15.sp,
+                                    fontSize: 13.sp,
                                     fontWeight: FontWeight.w200,
                                     color: AppColors.white2,
                                   ),
@@ -96,7 +95,7 @@ class HomeScreen extends StatelessWidget {
                                   .textTheme
                                   .titleSmall!
                                   .copyWith(
-                                    fontSize: 32.sp,
+                                    fontSize: 25.sp,
                                     fontWeight: FontWeight.w600,
                                     color: AppColors.white1,
                                   ),
@@ -104,7 +103,7 @@ class HomeScreen extends StatelessWidget {
                           ],
                         ),
                         Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
+                          crossAxisAlignment: CrossAxisAlignment.center,
                           children: [
                             Text(
                               "TOTAL MINIERS",
@@ -112,7 +111,7 @@ class HomeScreen extends StatelessWidget {
                                   .textTheme
                                   .titleSmall!
                                   .copyWith(
-                                    fontSize: 15.sp,
+                                    fontSize: 13.sp,
                                     fontWeight: FontWeight.w200,
                                     color: AppColors.white2,
                                   ),
@@ -123,7 +122,7 @@ class HomeScreen extends StatelessWidget {
                                   .textTheme
                                   .titleSmall!
                                   .copyWith(
-                                    fontSize: 32.sp,
+                                    fontSize: 25.sp,
                                     fontWeight: FontWeight.w600,
                                     color: AppColors.white1,
                                   ),
@@ -131,7 +130,7 @@ class HomeScreen extends StatelessWidget {
                           ],
                         ),
                         Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
+                          crossAxisAlignment: CrossAxisAlignment.center,
                           children: [
                             Text(
                               "PLAYERS",
@@ -139,7 +138,7 @@ class HomeScreen extends StatelessWidget {
                                   .textTheme
                                   .titleSmall!
                                   .copyWith(
-                                    fontSize: 15.sp,
+                                    fontSize: 13.sp,
                                     fontWeight: FontWeight.w200,
                                     color: AppColors.white2,
                                   ),
@@ -150,7 +149,7 @@ class HomeScreen extends StatelessWidget {
                                   .textTheme
                                   .titleSmall!
                                   .copyWith(
-                                    fontSize: 32.sp,
+                                    fontSize: 25.sp,
                                     fontWeight: FontWeight.w600,
                                     color: AppColors.white1,
                                   ),
@@ -162,6 +161,16 @@ class HomeScreen extends StatelessWidget {
                   ],
                 ),
               ),
+              Positioned(
+                  bottom: 80.h,
+                  right: 0,
+                  left: 0,
+                  child: SvgPicture.asset(
+                    AppAssets.homImgSixteen,
+                    // color: Colors.white,
+                    height: 10.h,
+                    fit: BoxFit.contain,
+                  )),
               Positioned(
                 right: 0,
                 left: 0,
@@ -186,17 +195,18 @@ class HomeScreen extends StatelessWidget {
                 ),
               ),
               Positioned(
-                left: 20.w,
+                left: 10.w,
                 bottom: -110.h,
                 child: Container(
                   padding: EdgeInsets.only(bottom: 25.h),
                   alignment: Alignment.bottomCenter,
-                  width: 350.w,
+                  width: 370.w,
                   height: 158.h,
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(18.0),
-                    image: const DecorationImage(
-                      image: AssetImage(AppAssets.homImgFourteen),
+                  decoration: const BoxDecoration(
+                    // borderRadius: BorderRadius.circular(18.0),
+                    image: DecorationImage(
+                      image:
+                          AssetImage('assets/images/home_screen_img_cover.png'),
                       fit: BoxFit.cover,
                     ),
                   ),
@@ -204,6 +214,55 @@ class HomeScreen extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.center,
                     mainAxisSize: MainAxisSize.min,
                     children: [
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Row(
+                            children: [
+                              SizedBox(
+                                width: 5.w,
+                              ),
+                              SvgPicture.asset(
+                                'assets/images/homImgTwo.svg',
+                                height: 20.h,
+                                fit: BoxFit.cover,
+                              ),
+                              SizedBox(
+                                width: 5.w,
+                              ),
+                              Text(
+                                "CURRENT BALANCE",
+                                style: Theme.of(context)
+                                    .textTheme
+                                    .titleSmall!
+                                    .copyWith(
+                                      fontSize: 14.sp,
+                                      fontWeight: FontWeight.w600,
+                                      color: AppColors.white1,
+                                    ),
+                              )
+                            ],
+                          ),
+                          Row(
+                            children: [
+                              Text(
+                                "LEVEL 1",
+                                style: Theme.of(context)
+                                    .textTheme
+                                    .titleSmall!
+                                    .copyWith(
+                                      fontSize: 14.sp,
+                                      fontWeight: FontWeight.w600,
+                                      color: AppColors.white1,
+                                    ),
+                              ),
+                              SizedBox(
+                                width: 10.w,
+                              ),
+                            ],
+                          ),
+                        ],
+                      ),
                       Row(
                         mainAxisSize: MainAxisSize.min,
                         children: [
@@ -240,7 +299,7 @@ class HomeScreen extends StatelessWidget {
                           mainAxisSize: MainAxisSize.min,
                           children: [
                             Text(
-                              "EARNING RATE",
+                              "Earning Rate",
                               style: Theme.of(context)
                                   .textTheme
                                   .titleSmall!
@@ -252,19 +311,19 @@ class HomeScreen extends StatelessWidget {
                             ),
                             SizedBox(width: 8.w),
                             Text(
-                              "+500/500",
+                              "300 8hrs",
                               style: Theme.of(context)
                                   .textTheme
                                   .titleSmall!
                                   .copyWith(
-                                    fontSize: 23.sp,
+                                    fontSize: 15.sp,
                                     fontWeight: FontWeight.w600,
                                     color: AppColors.green1,
                                   ),
                             ),
                             SizedBox(width: 8.w),
                             Text(
-                              "rock",
+                              "Rock",
                               style: Theme.of(context)
                                   .textTheme
                                   .titleSmall!

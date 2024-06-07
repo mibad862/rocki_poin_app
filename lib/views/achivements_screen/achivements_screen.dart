@@ -27,29 +27,29 @@ class AchievementScreen extends StatelessWidget {
                   height: 40.h,
                 ),
                 SvgPicture.asset(AppAssets.achiImgOne),
-                SizedBox(
-                  height: 10.h,
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceAround,
-                  crossAxisAlignment: CrossAxisAlignment.end,
-                  children: [
-                    const _pointsWidget(
-                      imagaPath: AppAssets.achivementImgTwo,
-                      title: "Referrals",
-                      value: '139,205',
-                    ),
-                    SvgPicture.asset(
-                      AppAssets.achivementImgFour,
-                      fit: BoxFit.contain,
-                    ),
-                    const _pointsWidget(
-                      imagaPath: AppAssets.achivementImgThree,
-                      title: "Earnings",
-                      value: '121,985. rock',
-                    )
-                  ],
-                )
+                // SizedBox(
+                //   height: 10.h,
+                // ),
+                // Row(
+                //   mainAxisAlignment: MainAxisAlignment.spaceAround,
+                //   crossAxisAlignment: CrossAxisAlignment.end,
+                //   children: [
+                //     const _pointsWidget(
+                //       imagaPath: AppAssets.achivementImgTwo,
+                //       title: "Referrals",
+                //       value: '139,205',
+                //     ),
+                //     SvgPicture.asset(
+                //       AppAssets.achivementImgFour,
+                //       fit: BoxFit.contain,
+                //     ),
+                //     const _pointsWidget(
+                //       imagaPath: AppAssets.achivementImgThree,
+                //       title: "Earnings",
+                //       value: '121,985. rock',
+                //     )
+                //   ],
+                // )
               ],
             ),
           ),
@@ -72,44 +72,46 @@ class AchievementScreen extends StatelessWidget {
                         topRight: Radius.circular(20),
                       ),
                     ),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        SizedBox(
-                          height: 10.h,
-                        ),
-                        const ListTileWidget(
-                          imgPath: AppAssets.homImgSix,
-                          titleText: "Invitee Friends",
-                          subTitleText:
-                              "Earn extra rock by inviting your friends.",
-                          navigatorPath: TeamScreen.routeName,
-                        ),
-                        SizedBox(
-                          height: 30.h,
-                        ),
-                        Text(
-                          "ACHIEVEMENTS",
-                          style: Theme.of(context)
-                              .textTheme
-                              .titleSmall!
-                              .copyWith(
-                                  color: Colors.black,
-                                  fontWeight: FontWeight.bold),
-                        ),
-                        SizedBox(
-                          height: 20.h,
-                        ),
-                        SvgPicture.asset(AppAssets.achivementImgFive),
-                        SizedBox(
-                          height: 20.h,
-                        ),
-                        SvgPicture.asset(
-                          AppAssets.achivementImgSix,
-                          fit: BoxFit.cover,
-                          width: 470.w,
-                        ),
-                      ],
+                    child: SingleChildScrollView(
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          SizedBox(
+                            height: 10.h,
+                          ),
+                          const ListTileWidget(
+                            imgPath: AppAssets.homImgSix,
+                            titleText: "Invitee Friends",
+                            subTitleText:
+                                "Earn extra rock by inviting your friends.",
+                            navigatorPath: TeamScreen.routeName,
+                          ),
+                          SizedBox(
+                            height: 30.h,
+                          ),
+                          Text(
+                            "ACHIEVEMENTS",
+                            style: Theme.of(context)
+                                .textTheme
+                                .titleSmall!
+                                .copyWith(
+                                    color: Colors.black,
+                                    fontWeight: FontWeight.bold),
+                          ),
+                          SizedBox(
+                            height: 20.h,
+                          ),
+                          SvgPicture.asset(AppAssets.achivementImgFive),
+                          SizedBox(
+                            height: 20.h,
+                          ),
+                          SvgPicture.asset(
+                            AppAssets.achivementImgSix,
+                            fit: BoxFit.cover,
+                            width: 470.w,
+                          ),
+                        ],
+                      ),
                     ),
                   ),
                 ),
@@ -118,7 +120,6 @@ class AchievementScreen extends StatelessWidget {
           ),
         ],
       ),
-   
     );
   }
 }
