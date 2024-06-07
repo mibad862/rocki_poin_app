@@ -26,7 +26,7 @@ class AchievementScreen extends StatelessWidget {
                 SizedBox(
                   height: 40.h,
                 ),
-                SvgPicture.asset(AppAssets.achivementImgOne),
+                SvgPicture.asset(AppAssets.achiImgOne),
                 SizedBox(
                   height: 10.h,
                 ),
@@ -108,7 +108,7 @@ class AchievementScreen extends StatelessWidget {
                           AppAssets.achivementImgSix,
                           fit: BoxFit.cover,
                           width: 470.w,
-                        )
+                        ),
                       ],
                     ),
                   ),
