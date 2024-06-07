@@ -26,9 +26,6 @@ class AchievementScreen extends StatelessWidget {
               children: [
                 SizedBox(height: 60.h),
                 SvgPicture.asset(AppAssets.achiImgOne),
-                SizedBox(
-                  height: 10.h,
-                ),
                 // Row(
                 //   mainAxisAlignment: MainAxisAlignment.spaceAround,
                 //   crossAxisAlignment: CrossAxisAlignment.end,
@@ -71,6 +68,7 @@ class AchievementScreen extends StatelessWidget {
                         topRight: Radius.circular(20),
                       ),
                     ),
+
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
@@ -223,6 +221,47 @@ class AchievementScreen extends StatelessWidget {
                         //   width: 470.w,
                         // ),
                       ],
+                    child: SingleChildScrollView(
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          SizedBox(
+                            height: 10.h,
+                          ),
+                          const ListTileWidget(
+                            imgPath: AppAssets.homImgSix,
+                            titleText: "Invitee Friends",
+                            subTitleText:
+                                "Earn extra rock by inviting your friends.",
+                            navigatorPath: TeamScreen.routeName,
+                          ),
+                          SizedBox(
+                            height: 30.h,
+                          ),
+                          Text(
+                            "ACHIEVEMENTS",
+                            style: Theme.of(context)
+                                .textTheme
+                                .titleSmall!
+                                .copyWith(
+                                    color: Colors.black,
+                                    fontWeight: FontWeight.bold),
+                          ),
+                          SizedBox(
+                            height: 20.h,
+                          ),
+                          SvgPicture.asset(AppAssets.achivementImgFive),
+                          SizedBox(
+                            height: 20.h,
+                          ),
+                          SvgPicture.asset(
+                            AppAssets.achivementImgSix,
+                            fit: BoxFit.cover,
+                            width: 470.w,
+                          ),
+                        ],
+                      ),
+
                     ),
                   ),
                 ),

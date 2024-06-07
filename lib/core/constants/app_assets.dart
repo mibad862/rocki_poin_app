@@ -23,8 +23,8 @@ class AppAssets {
   static const String homImgThirteen = "assets/images/home_screen_img13.png";
   static const String homImgFourteen = "assets/images/home_screen_img14.png";
   static const String homImgFifteen = "assets/images/home_screen_img15.png";
+  static const String homImgSixteen = "assets/images/home_screen_img16.svg";
 
-  //Achievement Screen
   static const String achiImgOne = "assets/images/achivement_screen_img1.svg";
   static const String achivementImgTwo =
       "assets/images/achivement_screen_img2.svg";
