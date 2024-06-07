@@ -107,7 +107,7 @@ class HomeScreen extends StatelessWidget {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Text(
-                              "GLOBAL RANK",
+                              "TOTAL MINIERS",
                               style: Theme.of(context)
                                   .textTheme
                                   .titleSmall!
@@ -134,7 +134,7 @@ class HomeScreen extends StatelessWidget {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Text(
-                              "MINTED COINS",
+                              "PLAYERS",
                               style: Theme.of(context)
                                   .textTheme
                                   .titleSmall!
