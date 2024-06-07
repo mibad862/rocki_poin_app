@@ -2,9 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:rocki_poin_app/core/constants/app_colors.dart';
+import 'package:rocki_poin_app/views/team_screen/team_screen.dart';
+import 'package:rocki_poin_app/views/welcome_bonus/list_tile_widget.dart';
 
 import '../../core/constants/app_assets.dart';
-import '../welcome_bonus/list_tile_widget.dart';
 
 class AchievementScreen extends StatelessWidget {
   const AchievementScreen({super.key});
@@ -82,7 +83,7 @@ class AchievementScreen extends StatelessWidget {
                           titleText: "Invitee Friends",
                           subTitleText:
                               "Earn extra rock by inviting your friends.",
-                          navigatorPath: "",
+                          navigatorPath: TeamScreen.routeName,
                         ),
                         SizedBox(
                           height: 30.h,
@@ -117,6 +118,7 @@ class AchievementScreen extends StatelessWidget {
           ),
         ],
       ),
+   
     );
   }
 }
