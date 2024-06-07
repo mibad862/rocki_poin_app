@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:rocki_poin_app/core/constants/app_assets.dart';
 import 'package:rocki_poin_app/core/constants/app_colors.dart';
 import 'package:rocki_poin_app/core/utils/padding_extensions.dart';
@@ -163,6 +164,16 @@ class HomeScreen extends StatelessWidget {
                 ),
               ),
               Positioned(
+                  bottom: 80.h,
+                  right: 0,
+                  left: 0,
+                  child: SvgPicture.asset(
+                    AppAssets.homImgSixteen,
+                    // color: Colors.white,
+                    height: 10.h,
+                    fit: BoxFit.contain,
+                  )),
+              Positioned(
                 right: 0,
                 left: 0,
                 top: 220.h,
@@ -252,7 +263,7 @@ class HomeScreen extends StatelessWidget {
                             ),
                             SizedBox(width: 8.w),
                             Text(
-                              "+500/500",
+                              "300 8hrs",
                               style: Theme.of(context)
                                   .textTheme
                                   .titleSmall!
