@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:rocki_poin_app/views/profile_screen/profile_screen.dart';
 import 'package:rocki_poin_app/views/welcome_bonus/list_tile_widget.dart';
 
 import '../../core/constants/app_assets.dart';
@@ -80,10 +81,9 @@ class TeamScreen extends StatelessWidget {
                         ),
                         const ListTileWidget(
                           imgPath: AppAssets.homImgSix,
-                          titleText: "Invitee Friends",
-                          subTitleText:
-                              "Earn extra rock by inviting your friends.",
-                          navigatorPath: TeamScreen.routeName,
+                          titleText: "Invite Friends",
+                          subTitleText: "Earn extra rock from friends.",
+                          navigatorPath: ProfileScreen.routeName,
                         ),
                         SizedBox(
                           height: 30.h,

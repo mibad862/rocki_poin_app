@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:rocki_poin_app/core/constants/app_colors.dart';
+
 import '../core/constants/app_assets.dart';
 
 class CommonBottomNavBar extends StatelessWidget {
@@ -18,7 +19,7 @@ class CommonBottomNavBar extends StatelessWidget {
   Widget build(BuildContext context) {
     return BottomAppBar(
       height: 90.h,
-      padding: EdgeInsets.zero,
+      padding: EdgeInsets.only(bottom: 15.h),
       elevation: 0,
       color: Colors.transparent,
       child: Padding(
@@ -120,11 +121,11 @@ class IconBottomBar extends StatelessWidget {
             Text(
               text,
               style: Theme.of(context).textTheme.labelMedium!.copyWith(
-                fontSize: 14.sp,
-                fontFamily: "Poppins",
-                height: 1.2,
-                color: selected ? AppColors.blue1 : AppColors.grey2,
-              ),
+                    fontSize: 14.sp,
+                    fontFamily: "Poppins",
+                    height: 1.2,
+                    color: selected ? AppColors.blue1 : AppColors.grey2,
+                  ),
               textAlign: TextAlign.center,
             ),
           ],
