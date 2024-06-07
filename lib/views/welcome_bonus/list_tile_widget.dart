@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import '../../core/constants/app_colors.dart';
 
 class ListTileWidget extends StatelessWidget {
@@ -29,7 +30,7 @@ class ListTileWidget extends StatelessWidget {
         onTap: () {
           Navigator.pushNamed(context, navigatorPath);
         },
-        leading: Image.asset(
+        leading: SvgPicture.asset(
           imgPath,
           height: 48.h,
           width: 48.w,

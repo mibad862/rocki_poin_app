@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:rocki_poin_app/core/constants/app_assets.dart';
 import 'package:rocki_poin_app/core/constants/app_colors.dart';
 import 'package:rocki_poin_app/core/utils/padding_extensions.dart';
@@ -37,11 +37,9 @@ class HomeScreen extends StatelessWidget {
                     Row(
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
-                        Image.asset(
-                          AppAssets.homImgOne,
-                          height: 50.h,
-                          width: 50.w,
-                          fit: BoxFit.contain,
+                        const CircleAvatar(
+                          backgroundImage: NetworkImage(
+                              'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQRyEK7weZZ3GssIBAJAmaruh1MS-FYpXbj4w&s'),
                         ),
                         SizedBox(width: 12.w),
                         Column(
@@ -67,12 +65,10 @@ class HomeScreen extends StatelessWidget {
                             ),
                           ],
                         ),
-                        Spacer(),
-                        Image.asset(
-                          AppAssets.homImgTwo,
-                          height: 85.h,
-                          width: 85.w,
-                          fit: BoxFit.contain,
+                        const Spacer(),
+                        SvgPicture.asset(
+                          'assets/images/homImgTwo.svg',
+                          fit: BoxFit.cover,
                         ),
                       ],
                     ),
@@ -199,7 +195,7 @@ class HomeScreen extends StatelessWidget {
                   height: 158.h,
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(18.0),
-                    image: DecorationImage(
+                    image: const DecorationImage(
                       image: AssetImage(AppAssets.homImgFourteen),
                       fit: BoxFit.cover,
                     ),
@@ -321,7 +317,8 @@ class HomeScreen extends StatelessWidget {
                         ),
                   ),
                   GestureDetector(
-                    onTap: () => Navigator.pushNamed(context, AchievementScreen.routeName),
+                    onTap: () => Navigator.pushNamed(
+                        context, AchievementScreen.routeName),
                     child: Text(
                       "view team",
                       style: Theme.of(context).textTheme.titleSmall!.copyWith(
