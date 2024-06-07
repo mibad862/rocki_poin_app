@@ -81,11 +81,14 @@ flutter:
     - family: "Inter"
       fonts:
         - asset: assets/fonts/Inter-Regular.ttf
-  #       - asset: fonts/Schyler-Italic.ttf
-  #         style: italic
+
     - family: "Lato"
       fonts:
         - asset: assets/fonts/Lato-Regular.ttf
+
+    - family: "Poppins"
+      fonts:
+        - asset: assets/fonts/Poppins-Regular.ttf
   #       - asset: fonts/TrajanPro_Bold.ttf
   #         weight: 700
   #

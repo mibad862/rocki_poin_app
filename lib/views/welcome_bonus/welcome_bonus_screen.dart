@@ -3,6 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:rocki_poin_app/core/constants/app_colors.dart';
 import 'package:rocki_poin_app/core/utils/padding_extensions.dart';
 import 'package:rocki_poin_app/views/home_screen.dart';
+import 'package:rocki_poin_app/views/main_screen.dart';
 import 'package:rocki_poin_app/widgets/common_elevated_button.dart';
 
 import '../../core/constants/app_assets.dart';
@@ -25,8 +26,8 @@ class WelcomeBonusScreen extends StatelessWidget {
             fontSize: 18.sp,
             width: 310.w,
             height: 60.h,
-            onPressed: () =>
-                Navigator.pushReplacementNamed(context, HomeScreen.routeName),
+            onPressed: () => Navigator.pushReplacement(
+                context, MaterialPageRoute(builder: (context) => MainScreen())),
             text: "OK",
           ),
         ],

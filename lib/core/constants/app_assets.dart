@@ -23,8 +23,7 @@ class AppAssets {
   static const String homImgThirteen = "assets/images/home_screen_img13.png";
   static const String homImgFourteen = "assets/images/home_screen_img14.png";
   static const String homImgFifteen = "assets/images/home_screen_img15.png";
-  static const String achivementImgOne =
-      "assets/images/achivement_screen_img1.svg";
+  static const String achiImgOne = "assets/images/achivement_screen_img1.svg";
   static const String achivementImgTwo =
       "assets/images/achivement_screen_img2.svg";
   static const String achivementImgThree =
@@ -40,4 +39,11 @@ class AppAssets {
   static const String teamscreenImgThree = "assets/images/team_screen_img3.png";
   static const String teamscreenImgFour = "assets/images/team_screen_img4.svg";
   static const String teamscreenImgFive = "assets/images/team_screen_img5.svg";
+
+  //Bottom Navigation Bar
+  static const String bottomNavBarImg1 = "assets/images/bot_nav_bar_img1.svg";
+  static const String bottomNavBarImg2 = "assets/images/bot_nav_bar_img2.svg";
+  static const String bottomNavBarImg3 = "assets/images/bot_nav_bar_img3.svg";
+  static const String bottomNavBarImg4 = "assets/images/bot_nav_bar_img4.svg";
+  static const String bottomNavBarImg5 = "assets/images/bot_nav_bar_img5.svg";
 }
