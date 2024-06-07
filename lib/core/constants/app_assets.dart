@@ -8,12 +8,12 @@ class AppAssets {
   static const String welImgThree = "assets/images/welcome_screen_img3.png";
 
   //Home Screen
-  static const String homImgOne = "assets/images/home_screen_img1.png";
+  static const String homImgOne = "assets/images/home_screen_img1.svg";
   static const String homImgTwo = "assets/images/home_screen_img2.png";
   static const String homImgThree = "assets/images/home_screen_img3.png";
   static const String homImgFour = "assets/images/home_screen_img4.png";
-  static const String homImgFive = "assets/images/home_screen_img5.png";
-  static const String homImgSix = "assets/images/home_screen_img6.png";
+  static const String homImgFive = "assets/images/home_screen_img5.svg";
+  static const String homImgSix = "assets/images/home_screen_img6.svg";
   static const String homImgSeven = "assets/images/home_screen_img7.png";
   static const String homImgEight = "assets/images/home_screen_img8.png";
   static const String homImgNine = "assets/images/home_screen_img9.png";

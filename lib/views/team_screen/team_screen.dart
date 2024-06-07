@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:rocki_poin_app/views/welcome_bonus/list_tile_widget.dart';
 
 import '../../core/constants/app_assets.dart';
@@ -144,7 +145,24 @@ class TeamWidget extends StatelessWidget {
         ),
         child: Row(
           children: [
-            Image.asset(AppAssets.teamscreenImgThree),
+            Container(
+                child: ClipRRect(
+                    borderRadius: BorderRadius.circular(10),
+                    child: Stack(
+                      clipBehavior: Clip.none,
+                      children: [
+                        Image.asset(
+                          'assets/images/team_screen_avatar.png',
+                          height: 60.h,
+                          fit: BoxFit.contain,
+                        ),
+                        Positioned(
+                            right: 0,
+                            bottom: 1.h,
+                            child: SvgPicture.asset(
+                                'assets/images/team_screen_online.svg'))
+                      ],
+                    ))),
             SizedBox(
               width: 10.w,
             ),
