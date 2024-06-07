@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:rocki_poin_app/core/constants/app_colors.dart';
 import 'package:rocki_poin_app/core/utils/padding_extensions.dart';
-import 'package:rocki_poin_app/views/home_screen.dart';
 import 'package:rocki_poin_app/views/main_screen.dart';
 import 'package:rocki_poin_app/widgets/common_elevated_button.dart';
 
@@ -58,21 +57,11 @@ class WelcomeBonusScreen extends StatelessWidget {
             text: TextSpan(
               children: [
                 TextSpan(
-                  text: "500. ",
+                  text: "500 ",
                   style: Theme.of(context)
                       .textTheme
                       .titleSmall!
                       .copyWith(fontSize: 30.sp, fontWeight: FontWeight.w600),
-                ),
-                WidgetSpan(
-                  alignment: PlaceholderAlignment.bottom,
-                  child: Text(
-                    "00",
-                    style: Theme.of(context)
-                        .textTheme
-                        .titleSmall!
-                        .copyWith(fontSize: 17.sp, fontWeight: FontWeight.w500),
-                  ),
                 ),
                 TextSpan(
                   text: " Rock",
@@ -95,7 +84,7 @@ class WelcomeBonusScreen extends StatelessWidget {
         Image.asset(
           AppAssets.welImgOne,
           height: 483.h,
-          width: 483.w,
+          width: double.infinity,
           fit: BoxFit.contain,
         ),
         Positioned(
@@ -116,12 +105,12 @@ class WelcomeBonusScreen extends StatelessWidget {
                         .copyWith(fontSize: 32.sp, fontWeight: FontWeight.w900),
                   ),
                   SizedBox(width: 45.w),
-                  Image.asset(
-                    AppAssets.welImgTwo,
-                    height: 75.h,
-                    width: 75.w,
-                    fit: BoxFit.contain,
-                  ),
+                  // Image.asset(
+                  //   AppAssets.welImgTwo,
+                  //   height: 75.h,
+                  //   width: 75.w,
+                  //   fit: BoxFit.contain,
+                  // ),
                 ],
               ),
               SizedBox(height: 5.h),

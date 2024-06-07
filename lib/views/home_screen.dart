@@ -7,8 +7,6 @@ import 'package:rocki_poin_app/core/constants/app_colors.dart';
 import 'package:rocki_poin_app/core/utils/padding_extensions.dart';
 import 'package:rocki_poin_app/views/achivements_screen/achivements_screen.dart';
 import 'package:rocki_poin_app/views/welcome_bonus/list_tile_widget.dart';
-import 'package:rocki_poin_app/views/welcome_bonus/team_design_widget.dart';
-import 'package:rocki_poin_app/views/welcome_bonus/team_model.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -32,6 +30,9 @@ class HomeScreen extends StatelessWidget {
                 ),
                 child: Column(
                   children: [
+                    SizedBox(
+                      height: 10.h,
+                    ),
                     Row(
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
@@ -348,65 +349,65 @@ class HomeScreen extends StatelessWidget {
               const ListTileWidget(
                 imgPath: AppAssets.homImgFive,
                 titleText: "Connect wallet",
-                subTitleText: "Assign your wallet to your mining app.",
+                subTitleText: "Assign your wallet to app.",
                 navigatorPath: AchievementScreen.routeName,
               ),
               SizedBox(height: 25.h),
               const ListTileWidget(
                 imgPath: AppAssets.homImgSix,
-                titleText: "Invitee Friends",
-                subTitleText: "Earn extra rock by inviting your friends.",
+                titleText: "Invite Friends",
+                subTitleText: "Earn extra rock from friends.",
                 navigatorPath: AchievementScreen.routeName,
               ),
             ],
           ).paddingHorizontal(18.w),
-          SizedBox(height: 20.h),
-          Column(
-            children: [
-              Row(
-                crossAxisAlignment: CrossAxisAlignment.end,
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Text(
-                    "TEAM",
-                    style: Theme.of(context).textTheme.titleSmall!.copyWith(
-                          fontSize: 22.sp,
-                          fontWeight: FontWeight.w600,
-                          color: AppColors.blue2,
-                        ),
-                  ),
-                  GestureDetector(
-                    onTap: () => Navigator.pushNamed(
-                        context, AchievementScreen.routeName),
-                    child: Text(
-                      "view team",
-                      style: Theme.of(context).textTheme.titleSmall!.copyWith(
-                            fontSize: 18.sp,
-                            fontWeight: FontWeight.w500,
-                            color: AppColors.blue2,
-                          ),
-                    ),
-                  ),
-                ],
-              ).paddingHorizontal(18.w),
-              SizedBox(height: 15.h),
-              Container(
-                padding: EdgeInsets.only(left: 18.w),
-                height: 100.h,
-                child: ListView.separated(
-                  separatorBuilder: (context, index) => SizedBox(width: 15.w),
-                  scrollDirection: Axis.horizontal,
-                  itemCount: TeamModel.teamList.length,
-                  itemBuilder: (context, index) {
-                    final item = TeamModel.teamList[index];
-                    return TeamDesignWidget(
-                      item: item,
-                    );
-                  },
-                ),
-              ),
-            ],
-          ),
+          // SizedBox(height: 20.h),
+          // Column(
+          //   children: [
+          //     Row(
+          //       crossAxisAlignment: CrossAxisAlignment.end,
+          //       mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          //       children: [
+          //         Text(
+          //           "TEAM",
+          //           style: Theme.of(context).textTheme.titleSmall!.copyWith(
+          //                 fontSize: 22.sp,
+          //                 fontWeight: FontWeight.w600,
+          //                 color: AppColors.blue2,
+          //               ),
+          //         ),
+          //         GestureDetector(
+          //           onTap: () => Navigator.pushNamed(
+          //               context, AchievementScreen.routeName),
+          //           child: Text(
+          //             "view team",
+          //             style: Theme.of(context).textTheme.titleSmall!.copyWith(
+          //                   fontSize: 18.sp,
+          //                   fontWeight: FontWeight.w500,
+          //                   color: AppColors.blue2,
+          //                 ),
+          //           ),
+          //         ),
+          //       ],
+          //     ).paddingHorizontal(18.w),
+          //     SizedBox(height: 15.h),
+          //     Container(
+          //       padding: EdgeInsets.only(left: 18.w),
+          //       height: 100.h,
+          //       child: ListView.separated(
+          //         separatorBuilder: (context, index) => SizedBox(width: 15.w),
+          //         scrollDirection: Axis.horizontal,
+          //         itemCount: TeamModel.teamList.length,
+          //         itemBuilder: (context, index) {
+          //           final item = TeamModel.teamList[index];
+          //           return TeamDesignWidget(
+          //             item: item,
+          //           );
+          //         },
+          //       ),
+          //     ),
+          //   ],
+          // ),
         ],
       ),
     );

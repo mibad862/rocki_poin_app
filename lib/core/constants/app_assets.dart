@@ -1,6 +1,6 @@
 class AppAssets {
   //Splash Screen
-  static const String splImgOne = "assets/images/splash_screen_img1.png";
+  static const String splImgOne = "assets/images/splash_screen_img1.jpg";
 
   //Welcome Screen
   static const String welImgOne = "assets/images/welcome_screen_img1.png";
@@ -23,7 +23,7 @@ class AppAssets {
   static const String homImgThirteen = "assets/images/home_screen_img13.png";
   static const String homImgFourteen = "assets/images/home_screen_img14.png";
   static const String homImgFifteen = "assets/images/home_screen_img15.png";
-    static const String homImgSixteen = "assets/images/home_screen_img16.svg";
+  static const String homImgSixteen = "assets/images/home_screen_img16.svg";
 
   static const String achiImgOne = "assets/images/achivement_screen_img1.svg";
   static const String achivementImgTwo =
@@ -48,4 +48,14 @@ class AppAssets {
   static const String bottomNavBarImg3 = "assets/images/bot_nav_bar_img3.svg";
   static const String bottomNavBarImg4 = "assets/images/bot_nav_bar_img4.svg";
   static const String bottomNavBarImg5 = "assets/images/bot_nav_bar_img5.svg";
+
+  //Profile screen
+
+  static const String profileCoverImg = "assets/images/profile_img1_cover.png";
+  static const String profileImg2 = "assets/images/profile_img2.jpg";
+  static const String profileImg3 = "assets/images/profile_img3.svg";
+  static const String profileImg4 = "assets/images/profile_img4.svg";
+  static const String profileImg5 = "assets/images/profile_img5.svg";
+  static const String profileImg6 = "assets/images/profile_img6.svg";
+  static const String profileImg7 = "assets/images/profile_img7.svg";
 }

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:rocki_poin_app/views/achivements_screen/achivements_screen.dart';
 import 'package:rocki_poin_app/views/home_screen.dart';
+import 'package:rocki_poin_app/views/profile_screen/profile_screen.dart';
 import 'package:rocki_poin_app/views/team_screen/team_screen.dart';
 import 'package:rocki_poin_app/views/welcome_bonus/welcome_bonus_screen.dart';
 
@@ -14,6 +15,7 @@ class AppRoutes {
       HomeScreen.routeName: (context) => const HomeScreen(),
       AchievementScreen.routeName: (context) => const AchievementScreen(),
       TeamScreen.routeName: (context) => const TeamScreen(),
+      ProfileScreen.routeName: (context) => const ProfileScreen(),
     };
   }
 }

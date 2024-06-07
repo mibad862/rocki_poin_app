@@ -82,8 +82,7 @@ class AchievementScreen extends StatelessWidget {
                           const ListTileWidget(
                             imgPath: AppAssets.homImgSix,
                             titleText: "Invitee Friends",
-                            subTitleText:
-                                "Earn extra rock by inviting your friends.",
+                            subTitleText: "Earn extra rock from friends.",
                             navigatorPath: TeamScreen.routeName,
                           ),
                           SizedBox(
