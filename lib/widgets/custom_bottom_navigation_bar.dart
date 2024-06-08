@@ -18,58 +18,56 @@ class CommonBottomNavBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BottomAppBar(
+      clipBehavior: Clip.none,
       height: 90.h,
-      padding: EdgeInsets.only(bottom: 15.h),
+      padding: EdgeInsets.only(bottom: 5.h, top: 5.h, right: 20.w, left: 20.w),
       elevation: 0,
-      color: Colors.transparent,
-      child: Padding(
-        padding: EdgeInsets.symmetric(horizontal: 20.w),
-        child: Row(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            IconBottomBar(
-              text: "Home",
-              imgPath: AppAssets.bottomNavBarImg1,
-              selected: selectedIndex == 0,
-              onPressed: () {
-                onItemTapped(0);
-              },
-            ),
-            IconBottomBar(
-              text: "Ref",
-              imgPath: AppAssets.bottomNavBarImg2,
-              selected: selectedIndex == 1,
-              onPressed: () {
-                onItemTapped(1);
-              },
-            ),
-            IconBottomBar(
-              text: "Mine",
-              imgPath: AppAssets.bottomNavBarImg3,
-              selected: selectedIndex == 2,
-              onPressed: () {
-                onItemTapped(2);
-              },
-            ),
-            IconBottomBar(
-              text: "Levels",
-              imgPath: AppAssets.bottomNavBarImg4,
-              selected: selectedIndex == 3,
-              onPressed: () {
-                onItemTapped(3);
-              },
-            ),
-            IconBottomBar(
-              text: "Profile",
-              imgPath: AppAssets.bottomNavBarImg5,
-              selected: selectedIndex == 4,
-              onPressed: () {
-                onItemTapped(4);
-              },
-            ),
-          ],
-        ),
+      color: AppColors.white1,
+      child: Row(
+        crossAxisAlignment: CrossAxisAlignment.center,
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          IconBottomBar(
+            text: "Home",
+            imgPath: AppAssets.bottomNavBarImg1,
+            selected: selectedIndex == 0,
+            onPressed: () {
+              onItemTapped(0);
+            },
+          ),
+          IconBottomBar(
+            text: "Ref",
+            imgPath: AppAssets.bottomNavBarImg2,
+            selected: selectedIndex == 1,
+            onPressed: () {
+              onItemTapped(1);
+            },
+          ),
+          IconBottomBar(
+            text: "Mine",
+            imgPath: AppAssets.bottomNavBarImg3,
+            selected: selectedIndex == 2,
+            onPressed: () {
+              onItemTapped(2);
+            },
+          ),
+          IconBottomBar(
+            text: "Tasks",
+            imgPath: AppAssets.bottomNavBarImg4,
+            selected: selectedIndex == 3,
+            onPressed: () {
+              onItemTapped(3);
+            },
+          ),
+          IconBottomBar(
+            text: "Profile",
+            imgPath: AppAssets.bottomNavBarImg5,
+            selected: selectedIndex == 4,
+            onPressed: () {
+              onItemTapped(4);
+            },
+          ),
+        ],
       ),
     );
   }
