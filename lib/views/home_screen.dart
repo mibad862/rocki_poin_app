@@ -68,7 +68,7 @@ class HomeScreen extends StatelessWidget {
                         ),
                         const Spacer(),
                         SvgPicture.asset(
-                          'assets/images/homImgTwo.svg',
+                          'assets/images/homImgnewTwo.svg',
                           height: 40.h,
                           fit: BoxFit.cover,
                         ),
@@ -205,9 +205,9 @@ class HomeScreen extends StatelessWidget {
                   alignment: Alignment.bottomCenter,
                   width: 370.w,
                   height: 158.h,
-                  decoration: const BoxDecoration(
-                    // borderRadius: BorderRadius.circular(18.0),
-                    image: DecorationImage(
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(20.0),
+                    image: const DecorationImage(
                       image:
                           AssetImage('assets/images/home_screen_img_cover.png'),
                       fit: BoxFit.cover,
@@ -260,7 +260,7 @@ class HomeScreen extends StatelessWidget {
                                     ),
                               ),
                               SizedBox(
-                                width: 10.w,
+                                width: 15.w,
                               ),
                             ],
                           ),
@@ -314,7 +314,7 @@ class HomeScreen extends StatelessWidget {
                             ),
                             SizedBox(width: 8.w),
                             Text(
-                              "300 8hrs",
+                              "1,000 8hrs",
                               style: Theme.of(context)
                                   .textTheme
                                   .titleSmall!

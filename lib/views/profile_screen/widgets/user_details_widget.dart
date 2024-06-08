@@ -20,8 +20,7 @@ class UserDetailsWidget extends StatelessWidget {
           height: 200.h,
           decoration: const BoxDecoration(
             borderRadius: BorderRadius.only(
-                topLeft: Radius.circular(15),
-                topRight: Radius.circular(15)),
+                topLeft: Radius.circular(15), topRight: Radius.circular(15)),
             image: DecorationImage(
               image: AssetImage(AppAssets.profileCoverImg),
               fit: BoxFit.cover,
@@ -46,11 +45,8 @@ class UserDetailsWidget extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
                       Text(
-                        "GLOBAL RANK",
-                        style: Theme.of(context)
-                            .textTheme
-                            .titleSmall!
-                            .copyWith(
+                        "GLOBAL FARMERS",
+                        style: Theme.of(context).textTheme.titleSmall!.copyWith(
                               fontSize: 13.sp,
                               fontWeight: FontWeight.w200,
                               color: AppColors.white2,
@@ -58,10 +54,7 @@ class UserDetailsWidget extends StatelessWidget {
                       ),
                       Text(
                         "99,999,999",
-                        style: Theme.of(context)
-                            .textTheme
-                            .titleSmall!
-                            .copyWith(
+                        style: Theme.of(context).textTheme.titleSmall!.copyWith(
                               fontSize: 25.sp,
                               fontWeight: FontWeight.w600,
                               color: AppColors.white1,
@@ -74,10 +67,7 @@ class UserDetailsWidget extends StatelessWidget {
                     children: [
                       Text(
                         "REFERRALS",
-                        style: Theme.of(context)
-                            .textTheme
-                            .titleSmall!
-                            .copyWith(
+                        style: Theme.of(context).textTheme.titleSmall!.copyWith(
                               fontSize: 13.sp,
                               fontWeight: FontWeight.w200,
                               color: AppColors.white2,
@@ -85,10 +75,7 @@ class UserDetailsWidget extends StatelessWidget {
                       ),
                       Text(
                         "34",
-                        style: Theme.of(context)
-                            .textTheme
-                            .titleSmall!
-                            .copyWith(
+                        style: Theme.of(context).textTheme.titleSmall!.copyWith(
                               fontSize: 25.sp,
                               fontWeight: FontWeight.w600,
                               color: AppColors.white1,
@@ -101,10 +88,7 @@ class UserDetailsWidget extends StatelessWidget {
                     children: [
                       Text(
                         "LEVEL",
-                        style: Theme.of(context)
-                            .textTheme
-                            .titleSmall!
-                            .copyWith(
+                        style: Theme.of(context).textTheme.titleSmall!.copyWith(
                               fontSize: 13.sp,
                               fontWeight: FontWeight.w200,
                               color: AppColors.white2,
@@ -112,10 +96,7 @@ class UserDetailsWidget extends StatelessWidget {
                       ),
                       Text(
                         "2",
-                        style: Theme.of(context)
-                            .textTheme
-                            .titleSmall!
-                            .copyWith(
+                        style: Theme.of(context).textTheme.titleSmall!.copyWith(
                               fontSize: 25.sp,
                               fontWeight: FontWeight.w600,
                               color: AppColors.white1,
