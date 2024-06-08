@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
-
+import 'package:rocki_poin_app/views/achivements_screen/achivements_screen.dart';
+import 'package:rocki_poin_app/views/team_screen/team_screen.dart';
 import '../widgets/custom_bottom_navigation_bar.dart';
-import 'home_screen.dart';
+import 'home/home_screen.dart';
 
 class MainScreen extends StatefulWidget {
   const MainScreen({super.key});
@@ -15,15 +16,11 @@ class _MainScreenState extends State<MainScreen> {
 
   List<Widget> screens = [
     const HomeScreen(),
-    Container(
-      color: Colors.red,
-    ),
+    const TeamScreen(),
     Container(
       color: Colors.green,
     ),
-    Container(
-      color: Colors.blue,
-    ),
+    const AchievementScreen(),
     Container(
       color: Colors.yellow,
     ),

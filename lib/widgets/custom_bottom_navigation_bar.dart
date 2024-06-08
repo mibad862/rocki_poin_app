@@ -18,6 +18,7 @@ class CommonBottomNavBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BottomAppBar(
+      clipBehavior: Clip.none,
       height: 90.h,
       padding: EdgeInsets.only(bottom: 15.h),
       elevation: 0,
@@ -53,7 +54,7 @@ class CommonBottomNavBar extends StatelessWidget {
               },
             ),
             IconBottomBar(
-              text: "Levels",
+              text: "Tasks",
               imgPath: AppAssets.bottomNavBarImg4,
               selected: selectedIndex == 3,
               onPressed: () {
