@@ -66,4 +66,7 @@ class AppAssets {
   static const String profileImg5 = "assets/images/profile_img5.svg";
   static const String profileImg6 = "assets/images/profile_img6.svg";
   static const String profileImg7 = "assets/images/profile_img7.svg";
+  static const String profileImg8 = "assets/images/gold_diamond.png";
+  static const String profileImg9 = "assets/images/silver_diamond.png";
+  static const String profileImg10 = "assets/images/profile_img10.svg";
 }
