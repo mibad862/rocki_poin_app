@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:rocki_poin_app/core/constants/app_assets.dart';
+import 'package:rocki_poin_app/views/mining_dashboard/mining_dashboard.dart';
 import 'package:rocki_poin_app/views/profile_screen/widgets/my_level_widget.dart';
 import 'package:rocki_poin_app/views/profile_screen/widgets/rank_details_widget.dart';
 import 'package:rocki_poin_app/views/profile_screen/widgets/user_details_widget.dart';
@@ -45,7 +46,11 @@ class ProfileScreen extends StatelessWidget {
                   SizedBox(
                     height: 20.h,
                   ),
-                  const MyLevelWidget(),
+                  InkWell(
+                      onTap: () {
+                        Navigator.pushNamed(context, MiningDashboard.routName);
+                      },
+                      child: const MyLevelWidget()),
                   SizedBox(
                     height: 30.h,
                   ),
