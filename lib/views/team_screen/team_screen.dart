@@ -11,7 +11,7 @@ import '../../core/constants/app_colors.dart';
 class TeamScreen extends StatelessWidget {
   const TeamScreen({super.key});
 
-  static const routeName = "team-screen";
+  static const routeName = '/team';
 
   @override
   Widget build(BuildContext context) {

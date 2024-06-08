@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -47,7 +46,8 @@ class _AchievementScreenState extends State<AchievementScreen> {
                 bottom: -775.h,
                 child: Container(
                   height: 800.h,
-                  padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 20.h),
+                  padding:
+                      EdgeInsets.symmetric(horizontal: 20.w, vertical: 20.h),
                   width: double.infinity,
                   decoration: const BoxDecoration(
                     color: Colors.white,
@@ -56,142 +56,152 @@ class _AchievementScreenState extends State<AchievementScreen> {
                       topRight: Radius.circular(25),
                     ),
                   ),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      const ListTileWidget(
-                        imgPath: AppAssets.homImgSix,
-                        titleText: "Invite Friends",
-                        subTitleText: "Earn extra rock by inviting your friends.",
-                        navigatorPath: TeamScreen.routeName,
-                      ),
-                      SizedBox(height: 30.h),
-                      Text(
-                        "ACHIEVEMENTS",
-                        style: Theme.of(context).textTheme.titleSmall!.copyWith(
-                            color: Colors.black,
-                            fontWeight: FontWeight.bold,
-                            fontSize: 18.sp),
-                      ),
-                      SizedBox(height: 20.h),
-                      Row(
-                        mainAxisSize: MainAxisSize.min,
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        children: [
-                          CircularStepProgressIndicator(
-                            totalSteps: 6,
-                            currentStep: 1,
-                            stepSize: 4.sp,
-                            selectedColor: AppColors.green1,
-                            unselectedColor: Colors.grey[200],
-                            padding: 0,
-                            width: 85.w,
-                            height: 85.h,
-                            selectedStepSize: 10.sp,
-                            roundedCap: (_, __) => true,
-                            unselectedStepSize: 8.sp,
-                            child: Center(
-                              child: RichText(
-                                text: TextSpan(
-                                  children: [
-                                    TextSpan(
-                                      text: "1 ",
-                                      style: Theme.of(context)
-                                          .textTheme
-                                          .labelSmall!
-                                          .copyWith(
-                                        fontFamily: "Lato",
-                                        fontSize: 17.sp,
-                                        color: AppColors.blue2,
-                                        fontWeight: FontWeight.w600,
+                  child: GestureDetector(
+                    onDoubleTap: () {
+                      print("onDoubleTap");
+                    },
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        const SizedBox(
+                          child: ListTileWidget(
+                            imgPath: AppAssets.homImgSix,
+                            titleText: "Invite Friends",
+                            subTitleText: "Earn extra rock from friends.",
+                            navigatorPath: TeamScreen.routeName,
+                          ),
+                        ),
+                        SizedBox(height: 30.h),
+                        Text(
+                          "ACHIEVEMENTS",
+                          style: Theme.of(context)
+                              .textTheme
+                              .titleSmall!
+                              .copyWith(
+                                  color: Colors.black,
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 18.sp),
+                        ),
+                        SizedBox(height: 20.h),
+                        Row(
+                          mainAxisSize: MainAxisSize.min,
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          children: [
+                            CircularStepProgressIndicator(
+                              totalSteps: 6,
+                              currentStep: 1,
+                              stepSize: 4.sp,
+                              selectedColor: AppColors.green1,
+                              unselectedColor: Colors.grey[200],
+                              padding: 0,
+                              width: 85.w,
+                              height: 85.h,
+                              selectedStepSize: 10.sp,
+                              roundedCap: (_, __) => true,
+                              unselectedStepSize: 8.sp,
+                              child: Center(
+                                child: RichText(
+                                  text: TextSpan(
+                                    children: [
+                                      TextSpan(
+                                        text: "1 ",
+                                        style: Theme.of(context)
+                                            .textTheme
+                                            .labelSmall!
+                                            .copyWith(
+                                              fontFamily: "Lato",
+                                              fontSize: 17.sp,
+                                              color: AppColors.blue2,
+                                              fontWeight: FontWeight.w600,
+                                            ),
                                       ),
-                                    ),
-                                    TextSpan(
-                                      text: "of ",
-                                      style: Theme.of(context)
-                                          .textTheme
-                                          .labelSmall!
-                                          .copyWith(
-                                        fontFamily: "Lato",
-                                        fontSize: 17.sp,
-                                        color: AppColors.blue2,
+                                      TextSpan(
+                                        text: "of ",
+                                        style: Theme.of(context)
+                                            .textTheme
+                                            .labelSmall!
+                                            .copyWith(
+                                              fontFamily: "Lato",
+                                              fontSize: 17.sp,
+                                              color: AppColors.blue2,
+                                            ),
                                       ),
-                                    ),
-                                    TextSpan(
-                                      text: "6",
-                                      style: Theme.of(context)
-                                          .textTheme
-                                          .labelSmall!
-                                          .copyWith(
-                                        fontFamily: "Lato",
-                                        fontSize: 17.sp,
-                                        color: AppColors.blue2,
-                                        fontWeight: FontWeight.w600,
+                                      TextSpan(
+                                        text: "6",
+                                        style: Theme.of(context)
+                                            .textTheme
+                                            .labelSmall!
+                                            .copyWith(
+                                              fontFamily: "Lato",
+                                              fontSize: 17.sp,
+                                              color: AppColors.blue2,
+                                              fontWeight: FontWeight.w600,
+                                            ),
                                       ),
-                                    ),
-                                  ],
+                                    ],
+                                  ),
                                 ),
                               ),
                             ),
-                          ),
-                          SizedBox(width: 8.w),
-                          Column(
-                            mainAxisSize: MainAxisSize.min,
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Text(
-                                "Your progress",
-                                style: Theme.of(context)
-                                    .textTheme
-                                    .titleSmall!
-                                    .copyWith(
-                                  color: AppColors.blue2,
-                                  fontWeight: FontWeight.w800,
-                                  fontSize: 16.sp,
+                            SizedBox(width: 8.w),
+                            Column(
+                              mainAxisSize: MainAxisSize.min,
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(
+                                  "Your progress",
+                                  style: Theme.of(context)
+                                      .textTheme
+                                      .titleSmall!
+                                      .copyWith(
+                                        color: AppColors.blue2,
+                                        fontWeight: FontWeight.w800,
+                                        fontSize: 16.sp,
+                                      ),
                                 ),
-                              ),
-                              SizedBox(height: 1.h),
-                              Text(
-                                "Complete the tasks below and level up!",
-                                style: Theme.of(context)
-                                    .textTheme
-                                    .titleSmall!
-                                    .copyWith(
-                                  color: AppColors.blue4,
-                                  fontWeight: FontWeight.w500,
-                                  fontSize: 13.sp,
+                                SizedBox(height: 1.h),
+                                Text(
+                                  "Complete the tasks below and level up!",
+                                  style: Theme.of(context)
+                                      .textTheme
+                                      .titleSmall!
+                                      .copyWith(
+                                        color: AppColors.blue4,
+                                        fontWeight: FontWeight.w500,
+                                        fontSize: 13.sp,
+                                      ),
                                 ),
-                              ),
-                              SizedBox(height: 2.h),
-                              Row(
-                                mainAxisSize: MainAxisSize.min,
-                                children: [
-                                  SvgPicture.asset(
-                                    height: 18.h,
-                                    width: 18.w,
-                                    AppAssets.achiImg7,
-                                    fit: BoxFit.contain,
-                                  ),
-                                  SizedBox(width: 3.w),
-                                  Text(
-                                    "1000 Rocks for each task",
-                                    style: Theme.of(context)
-                                        .textTheme
-                                        .labelSmall!
-                                        .copyWith(
-                                      color: AppColors.blue1,
-                                      fontWeight: FontWeight.w500,
-                                      fontSize: 16.sp,
-                                      fontFamily: "Poppins",
+                                SizedBox(height: 2.h),
+                                Row(
+                                  mainAxisSize: MainAxisSize.min,
+                                  children: [
+                                    SvgPicture.asset(
+                                      height: 18.h,
+                                      width: 18.w,
+                                      AppAssets.achiImg7,
+                                      fit: BoxFit.contain,
                                     ),
-                                  ),
-                                ],
-                              ),
-                            ],
-                          ),
-                        ],
-                      ),
-                    ],
+                                    SizedBox(width: 3.w),
+                                    Text(
+                                      "1000 Rocks for each task",
+                                      style: Theme.of(context)
+                                          .textTheme
+                                          .labelSmall!
+                                          .copyWith(
+                                            color: AppColors.blue1,
+                                            fontWeight: FontWeight.w500,
+                                            fontSize: 16.sp,
+                                            fontFamily: "Poppins",
+                                          ),
+                                    ),
+                                  ],
+                                ),
+                              ],
+                            ),
+                          ],
+                        ),
+                      ],
+                    ),
                   ),
                 ),
               ),
@@ -202,9 +212,8 @@ class _AchievementScreenState extends State<AchievementScreen> {
             steps: [
               Step(
                 isActive: _currentStep >= 0,
-                state: _currentStep > 0
-                    ? StepState.complete
-                    : StepState.indexed,
+                state:
+                    _currentStep > 0 ? StepState.complete : StepState.indexed,
                 title: ListTile(
                   contentPadding: EdgeInsets.zero,
                   leading: SvgPicture.asset(
@@ -215,36 +224,29 @@ class _AchievementScreenState extends State<AchievementScreen> {
                   ),
                   title: Text(
                     "Claim your boneus",
-                    style: Theme.of(context)
-                        .textTheme
-                        .labelSmall!
-                        .copyWith(
-                      color: AppColors.blue2,
-                      fontWeight: FontWeight.w600,
-                      fontSize: 16.sp,
-                      fontFamily: "Lato",
-                    ),
+                    style: Theme.of(context).textTheme.labelSmall!.copyWith(
+                          color: AppColors.blue2,
+                          fontWeight: FontWeight.w600,
+                          fontSize: 16.sp,
+                          fontFamily: "Lato",
+                        ),
                   ),
                   subtitle: Text(
                     "Successfully registered.",
-                    style: Theme.of(context)
-                        .textTheme
-                        .labelSmall!
-                        .copyWith(
-                      color: AppColors.blue4,
-                      fontWeight: FontWeight.w500,
-                      fontSize: 16.sp,
-                      fontFamily: "Lato",
-                    ),
+                    style: Theme.of(context).textTheme.labelSmall!.copyWith(
+                          color: AppColors.blue4,
+                          fontWeight: FontWeight.w500,
+                          fontSize: 16.sp,
+                          fontFamily: "Lato",
+                        ),
                   ),
                 ),
-                content: Text(""),
+                content: const Text(""),
               ),
               Step(
                 isActive: _currentStep >= 1,
-                state: _currentStep > 1
-                    ? StepState.complete
-                    : StepState.indexed,
+                state:
+                    _currentStep > 1 ? StepState.complete : StepState.indexed,
                 title: ListTile(
                   contentPadding: EdgeInsets.zero,
                   leading: SvgPicture.asset(
@@ -255,36 +257,29 @@ class _AchievementScreenState extends State<AchievementScreen> {
                   ),
                   title: Text(
                     "Rock Apps",
-                    style: Theme.of(context)
-                        .textTheme
-                        .labelSmall!
-                        .copyWith(
-                      color: AppColors.grey3,
-                      fontWeight: FontWeight.w600,
-                      fontSize: 16.sp,
-                      fontFamily: "Lato",
-                    ),
+                    style: Theme.of(context).textTheme.labelSmall!.copyWith(
+                          color: AppColors.grey3,
+                          fontWeight: FontWeight.w600,
+                          fontSize: 16.sp,
+                          fontFamily: "Lato",
+                        ),
                   ),
                   subtitle: Text(
                     "Available on all devices.",
-                    style: Theme.of(context)
-                        .textTheme
-                        .labelSmall!
-                        .copyWith(
-                      color: AppColors.lightBlue1,
-                      fontWeight: FontWeight.w500,
-                      fontSize: 16.sp,
-                      fontFamily: "Lato",
-                    ),
+                    style: Theme.of(context).textTheme.labelSmall!.copyWith(
+                          color: AppColors.lightBlue1,
+                          fontWeight: FontWeight.w500,
+                          fontSize: 16.sp,
+                          fontFamily: "Lato",
+                        ),
                   ),
                 ),
-                content: Text(""),
+                content: const Text(""),
               ),
               Step(
                 isActive: _currentStep >= 2,
-                state: _currentStep > 2
-                    ? StepState.complete
-                    : StepState.indexed,
+                state:
+                    _currentStep > 2 ? StepState.complete : StepState.indexed,
                 title: ListTile(
                   contentPadding: EdgeInsets.zero,
                   leading: SvgPicture.asset(
@@ -295,36 +290,29 @@ class _AchievementScreenState extends State<AchievementScreen> {
                   ),
                   title: Text(
                     "Profile picture",
-                    style: Theme.of(context)
-                        .textTheme
-                        .labelSmall!
-                        .copyWith(
-                      color: AppColors.grey3,
-                      fontWeight: FontWeight.w600,
-                      fontSize: 16.sp,
-                      fontFamily: "Lato",
-                    ),
+                    style: Theme.of(context).textTheme.labelSmall!.copyWith(
+                          color: AppColors.grey3,
+                          fontWeight: FontWeight.w600,
+                          fontSize: 16.sp,
+                          fontFamily: "Lato",
+                        ),
                   ),
                   subtitle: Text(
                     "Upload your profile image.",
-                    style: Theme.of(context)
-                        .textTheme
-                        .labelSmall!
-                        .copyWith(
-                      color: AppColors.lightBlue1,
-                      fontWeight: FontWeight.w500,
-                      fontSize: 16.sp,
-                      fontFamily: "Lato",
-                    ),
+                    style: Theme.of(context).textTheme.labelSmall!.copyWith(
+                          color: AppColors.lightBlue1,
+                          fontWeight: FontWeight.w500,
+                          fontSize: 16.sp,
+                          fontFamily: "Lato",
+                        ),
                   ),
                 ),
-                content: Text(""),
+                content: const Text(""),
               ),
               Step(
                 isActive: _currentStep >= 3,
-                state: _currentStep > 3
-                    ? StepState.complete
-                    : StepState.indexed,
+                state:
+                    _currentStep > 3 ? StepState.complete : StepState.indexed,
                 title: ListTile(
                   contentPadding: EdgeInsets.zero,
                   leading: SvgPicture.asset(
@@ -335,36 +323,29 @@ class _AchievementScreenState extends State<AchievementScreen> {
                   ),
                   title: Text(
                     "Follow us on Twitter",
-                    style: Theme.of(context)
-                        .textTheme
-                        .labelSmall!
-                        .copyWith(
-                      color: AppColors.grey3,
-                      fontWeight: FontWeight.w600,
-                      fontSize: 16.sp,
-                      fontFamily: "Lato",
-                    ),
+                    style: Theme.of(context).textTheme.labelSmall!.copyWith(
+                          color: AppColors.grey3,
+                          fontWeight: FontWeight.w600,
+                          fontSize: 16.sp,
+                          fontFamily: "Lato",
+                        ),
                   ),
                   subtitle: Text(
                     "Let’s keep in touch, follow us on twitter.",
-                    style: Theme.of(context)
-                        .textTheme
-                        .labelSmall!
-                        .copyWith(
-                      color: AppColors.lightBlue1,
-                      fontWeight: FontWeight.w500,
-                      fontSize: 16.sp,
-                      fontFamily: "Lato",
-                    ),
+                    style: Theme.of(context).textTheme.labelSmall!.copyWith(
+                          color: AppColors.lightBlue1,
+                          fontWeight: FontWeight.w500,
+                          fontSize: 16.sp,
+                          fontFamily: "Lato",
+                        ),
                   ),
                 ),
-                content: Text(""),
+                content: const Text(""),
               ),
               Step(
                 isActive: _currentStep >= 4,
-                state: _currentStep > 4
-                    ? StepState.complete
-                    : StepState.indexed,
+                state:
+                    _currentStep > 4 ? StepState.complete : StepState.indexed,
                 title: ListTile(
                   contentPadding: EdgeInsets.zero,
                   leading: SvgPicture.asset(
@@ -375,30 +356,24 @@ class _AchievementScreenState extends State<AchievementScreen> {
                   ),
                   title: Text(
                     "Join Telegram",
-                    style: Theme.of(context)
-                        .textTheme
-                        .labelSmall!
-                        .copyWith(
-                      color: AppColors.grey3,
-                      fontWeight: FontWeight.w600,
-                      fontSize: 16.sp,
-                      fontFamily: "Lato",
-                    ),
+                    style: Theme.of(context).textTheme.labelSmall!.copyWith(
+                          color: AppColors.grey3,
+                          fontWeight: FontWeight.w600,
+                          fontSize: 16.sp,
+                          fontFamily: "Lato",
+                        ),
                   ),
                   subtitle: Text(
                     "Be part of our community and join now.",
-                    style: Theme.of(context)
-                        .textTheme
-                        .labelSmall!
-                        .copyWith(
-                      color: AppColors.lightBlue1,
-                      fontWeight: FontWeight.w500,
-                      fontSize: 16.sp,
-                      fontFamily: "Lato",
-                    ),
+                    style: Theme.of(context).textTheme.labelSmall!.copyWith(
+                          color: AppColors.lightBlue1,
+                          fontWeight: FontWeight.w500,
+                          fontSize: 16.sp,
+                          fontFamily: "Lato",
+                        ),
                   ),
                 ),
-                content: Text(""),
+                content: const Text(""),
               ),
             ],
             onStepTapped: (int newIndex) {
@@ -421,8 +396,7 @@ class _AchievementScreenState extends State<AchievementScreen> {
                 });
               }
             },
-            controlsBuilder:
-                (BuildContext context, ControlsDetails details) {
+            controlsBuilder: (BuildContext context, ControlsDetails details) {
               return Row(
                 children: <Widget>[
                   ElevatedButton(

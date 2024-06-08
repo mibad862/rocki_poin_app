@@ -60,10 +60,9 @@ class HomeScreen extends StatelessWidget {
                                   .textTheme
                                   .titleSmall!
                                   .copyWith(
-                                    fontSize: 16.sp,
-                                    fontWeight: FontWeight.w500,
-                                    color: AppColors.white1
-                                  ),
+                                      fontSize: 16.sp,
+                                      fontWeight: FontWeight.w500,
+                                      color: AppColors.white1),
                             ),
                           ],
                         ),
@@ -210,7 +209,7 @@ class HomeScreen extends StatelessWidget {
                     // borderRadius: BorderRadius.circular(18.0),
                     image: DecorationImage(
                       image:
-                          AssetImage(AppAssets.homImgFourteen),
+                          AssetImage('assets/images/home_screen_img_cover.png'),
                       fit: BoxFit.cover,
                     ),
                   ),
