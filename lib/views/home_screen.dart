@@ -5,7 +5,7 @@ import 'package:flutter_svg/svg.dart';
 import 'package:rocki_poin_app/core/constants/app_assets.dart';
 import 'package:rocki_poin_app/core/constants/app_colors.dart';
 import 'package:rocki_poin_app/core/utils/padding_extensions.dart';
-import 'package:rocki_poin_app/views/achivements_screen/achivements_screen.dart';
+import 'package:rocki_poin_app/views/team_screen/team_screen.dart';
 import 'package:rocki_poin_app/views/welcome_bonus/list_tile_widget.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -50,17 +50,17 @@ class HomeScreen extends StatelessWidget {
                                   .textTheme
                                   .titleSmall!
                                   .copyWith(
-                                    fontSize: 16.sp,
+                                    fontSize: 15.sp,
                                     fontWeight: FontWeight.w300,
                                   ),
                             ),
                             Text(
-                              "@elementalmaster",
+                              "elementalmaster",
                               style: Theme.of(context)
                                   .textTheme
                                   .titleSmall!
                                   .copyWith(
-                                      fontSize: 16.sp,
+                                      fontSize: 15.sp,
                                       fontWeight: FontWeight.w500,
                                       color: AppColors.white1),
                             ),
@@ -164,16 +164,16 @@ class HomeScreen extends StatelessWidget {
                   ],
                 ),
               ),
-              // Positioned(
-              //     bottom: 60.h,
-              //     right: 0,
-              //     left: 0,
-              //     child: SvgPicture.asset(
-              //       AppAssets.homImgSixteen,
-              //       // color: Colors.white,
-              //       height: 10.h,
-              //       fit: BoxFit.contain,
-              //     )),
+              Positioned(
+                  bottom: 103.h,
+                  right: 0,
+                  left: 0,
+                  child: SvgPicture.asset(
+                    AppAssets.homImgSixteen,
+                    color: Colors.white,
+                    height: 10.h,
+                    fit: BoxFit.contain,
+                  )),
               Positioned(
                 right: 0,
                 left: 0,
@@ -352,14 +352,14 @@ class HomeScreen extends StatelessWidget {
                 imgPath: AppAssets.homImgFive,
                 titleText: "Connect wallet",
                 subTitleText: "Assign your wallet to app.",
-                navigatorPath: AchievementScreen.routeName,
+                navigatorPath: TeamScreen.routeName,
               ),
               SizedBox(height: 25.h),
               const ListTileWidget(
                 imgPath: AppAssets.homImgSix,
                 titleText: "Invite Friends",
                 subTitleText: "Earn extra rock from friends.",
-                navigatorPath: AchievementScreen.routeName,
+                navigatorPath: TeamScreen.routeName,
               ),
             ],
           ).paddingHorizontal(18.w),
