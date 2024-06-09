@@ -12,18 +12,18 @@ class MiningDashboard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Column(
-        children: [
-          Container(
+        body: Column(
+      children: [
+        Container(
             color: AppColors.blue1,
             height: 800.h,
             child: Column(
               children: [
                 SizedBox(
-                  height: 140.h,
+                  height: 100.h,
                 ),
                 Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 24.h),
+                  padding: EdgeInsets.symmetric(horizontal: 20.w),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
@@ -49,7 +49,7 @@ class MiningDashboard extends StatelessWidget {
                       ),
                       Stack(
                         children: [
-                          Container(
+                          SizedBox(
                             width: double.infinity,
                             child: Image.asset(
                               'assets/images/dashboard_cover.png',
@@ -113,40 +113,88 @@ class MiningDashboard extends StatelessWidget {
                           ),
                         ],
                       ),
-                      Stack(
-                        clipBehavior: Clip.none,
-                        children: [
-                          Container(
-                            width: double.infinity,
-                            child: Image.asset(
-                              'assets/images/pngfind 1_prev_ui.png',
-                              fit: BoxFit.cover,
-                              color: AppColors.white1.withOpacity(0.6),
-                            ),
-                          ),
-                          Positioned(
-                            left: 0,
-                            right: 0,
-                            top: 150.h,
-                            child: SvgPicture.asset(
-                                height: 280.h, AppAssets.dashboardImgFive),
-                          ),
-                          SizedBox(
-                            width: 800,
-                            child: Image.asset(
-                              AppAssets.dashboardImgSix,
-                            ),
-                          ),
-                        ],
-                      )
                     ],
                   ),
+                ),
+                Stack(
+                  clipBehavior: Clip.none,
+                  children: [
+                    SizedBox(
+                      width: double.infinity,
+                      child: Image.asset(
+                        'assets/images/pngfind 1_prev_ui.png',
+                        fit: BoxFit.cover,
+                        color: AppColors.white1.withOpacity(0.6),
+                      ),
+                    ),
+                    Positioned(
+                      left: 40.w,
+                      right: 0,
+                      top: 120.h,
+                      child: SvgPicture.asset(
+                          height: 280.h, AppAssets.dashboardImgFive),
+                    ),
+                    Positioned(
+                      top: 260.h,
+                      child: SizedBox(
+                        width: 414.w,
+                        child: SvgPicture.asset(
+                          fit: BoxFit.cover,
+                          AppAssets.dashboardImgSix,
+                        ),
+                      ),
+                    ),
+                    Positioned(
+                      top: 400.h,
+                      left: 60.w,
+                      child: SizedBox(
+                          child: Column(
+                        children: [
+                          Text(
+                            '8h :00.00',
+                            style: Theme.of(context)
+                                .textTheme
+                                .titleSmall!
+                                .copyWith(
+                                    fontSize: 21.sp,
+                                    fontWeight: FontWeight.w600,
+                                    color: Colors.black),
+                          ),
+                          SizedBox(
+                            height: 30.h,
+                          ),
+                          SizedBox(
+                            width: 300.w,
+                            height: 59.h,
+                            child: ElevatedButton(
+                                style: ButtonStyle(
+                                    shape: MaterialStatePropertyAll(
+                                        RoundedRectangleBorder(
+                                            borderRadius:
+                                                BorderRadius.circular(10))),
+                                    backgroundColor:
+                                        const MaterialStatePropertyAll(
+                                            AppColors.grey4)),
+                                onPressed: () {},
+                                child: Text(
+                                  "Claim",
+                                  style: Theme.of(context)
+                                      .textTheme
+                                      .titleSmall!
+                                      .copyWith(
+                                          fontSize: 20.sp,
+                                          fontWeight: FontWeight.w100,
+                                          color: Colors.white),
+                                )),
+                          )
+                        ],
+                      )),
+                    ),
+                  ],
                 )
               ],
-            ),
-          ),
-        ],
-      ),
-    );
+            ))
+      ],
+    ));
   }
 }
