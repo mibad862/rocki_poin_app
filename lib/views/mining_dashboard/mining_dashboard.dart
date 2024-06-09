@@ -175,7 +175,9 @@ class MiningDashboard extends StatelessWidget {
                                     backgroundColor:
                                         const MaterialStatePropertyAll(
                                             AppColors.grey4)),
-                                onPressed: () {},
+                                onPressed: () {
+                                  print("HELLO");
+                                },
                                 child: Text(
                                   "Claim",
                                   style: Theme.of(context)
@@ -196,5 +198,88 @@ class MiningDashboard extends StatelessWidget {
             ))
       ],
     ));
+  }
+
+  void showBonusDialog(BuildContext context) {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return Dialog(
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(20.0),
+          ),
+          child: Container(
+            padding: const EdgeInsets.all(20.0),
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                // Bonus header with icon
+                const Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Icon(
+                      Icons.star,
+                      color: Colors.orange,
+                      size: 50,
+                    ),
+                    SizedBox(width: 10),
+                    Text(
+                      'BONUS',
+                      style: TextStyle(
+                        fontSize: 24,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.orange,
+                      ),
+                    ),
+                  ],
+                ),
+                const SizedBox(height: 20),
+                // 500 Coins text
+                const Text(
+                  '500 Coins',
+                  style: TextStyle(
+                    fontSize: 32,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.blue,
+                  ),
+                ),
+                const SizedBox(height: 10),
+                // Congratulations text
+                const Text(
+                  'Congratulations',
+                  style: TextStyle(
+                    fontSize: 24,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+                const SizedBox(height: 10),
+                // Description text
+                const Text(
+                  'You have received your daily extra bonus.',
+                  textAlign: TextAlign.center,
+                  style: TextStyle(
+                    fontSize: 16,
+                  ),
+                ),
+                const SizedBox(height: 20),
+                // Find out more button
+                TextButton(
+                  onPressed: () {
+                    // Handle find out more action
+                  },
+                  child: const Text(
+                    'Find out more',
+                    style: TextStyle(
+                      fontSize: 16,
+                      color: Colors.blue,
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          ),
+        );
+      },
+    );
   }
 }
