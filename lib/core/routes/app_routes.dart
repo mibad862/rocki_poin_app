@@ -6,6 +6,7 @@ import 'package:rocki_poin_app/views/team_screen/team_screen.dart';
 import 'package:rocki_poin_app/views/welcome_bonus/welcome_bonus_screen.dart';
 
 import '../../../views/splash_screen.dart';
+import '../../views/mining_dashboard/mining_dashboard.dart';
 
 class AppRoutes {
   static Map<String, WidgetBuilder> getRoutes() {

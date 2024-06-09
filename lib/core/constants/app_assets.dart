@@ -77,5 +77,5 @@ class AppAssets {
   static const String dashboardImgThree = "assets/images/dashboard_img3.svg";
   static const String dashboardImgFour = "assets/images/dashboard_img4.svg";
   static const String dashboardImgFive = "assets/images/dashboard_img5.svg";
-  static const String dashboardImgSix = "assets/images/dashboard_img7.png";
+  static const String dashboardImgSix = "assets/images/dashboard_img7.svg";
 }

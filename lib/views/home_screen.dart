@@ -5,7 +5,7 @@ import 'package:flutter_svg/svg.dart';
 import 'package:rocki_poin_app/core/constants/app_assets.dart';
 import 'package:rocki_poin_app/core/constants/app_colors.dart';
 import 'package:rocki_poin_app/core/utils/padding_extensions.dart';
-import 'package:rocki_poin_app/views/team_screen/team_screen.dart';
+import 'package:rocki_poin_app/views/achivements_screen/achivements_screen.dart';
 import 'package:rocki_poin_app/views/welcome_bonus/list_tile_widget.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -352,14 +352,14 @@ class HomeScreen extends StatelessWidget {
                 imgPath: AppAssets.homImgFive,
                 titleText: "Connect wallet",
                 subTitleText: "Assign your wallet to app.",
-                navigatorPath: TeamScreen.routeName,
+                navigatorPath: AchievementScreen.routeName,
               ),
               SizedBox(height: 25.h),
               const ListTileWidget(
                 imgPath: AppAssets.homImgSix,
                 titleText: "Invite Friends",
                 subTitleText: "Earn extra rock from friends.",
-                navigatorPath: TeamScreen.routeName,
+                navigatorPath: AchievementScreen.routeName,
               ),
             ],
           ).paddingHorizontal(18.w),
