@@ -40,7 +40,7 @@ dependencies:
   percent_indicator:
   device_preview:
   step_progress_indicator: ^1.0.2
-  easy_stepper:
+  provider:
 
 
 dev_dependencies:

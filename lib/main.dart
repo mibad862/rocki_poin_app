@@ -1,13 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:provider/provider.dart';
 import 'package:rocki_poin_app/core/routes/app_routes.dart';
 
 import 'core/theme/app_text_themes.dart';
+import 'views/mining_dashboard/provider/tap_counter.dart';
 import 'views/splash_screen.dart';
 
 void main() {
   runApp(
-    MyApp(),
+    MultiProvider(
+      providers: [
+        ChangeNotifierProvider(create: (_) => TapCounter()),
+      ],
+      child: MyApp(),
+    ),
   );
 }
 

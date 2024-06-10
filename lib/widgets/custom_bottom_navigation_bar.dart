@@ -89,44 +89,44 @@ class IconBottomBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Material(
-      borderRadius: BorderRadius.circular(14.0),
-      elevation: 3.0,
-      child: Container(
-        padding: EdgeInsets.only(bottom: 4.h),
-        height: 85.h,
-        width: 64.w,
-        alignment: Alignment.center,
-        decoration: BoxDecoration(
-          color: AppColors.white1,
-          borderRadius: BorderRadius.circular(14.0),
-        ),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            GestureDetector(
-              onTap: onPressed,
-              child: SvgPicture.asset(
+    return GestureDetector(
+      onTap: onPressed,
+      child: Material(
+        borderRadius: BorderRadius.circular(14.0),
+        elevation: 3.0,
+        child: Container(
+          padding: EdgeInsets.only(bottom: 4.h),
+          height: 85.h,
+          width: 64.w,
+          alignment: Alignment.center,
+          decoration: BoxDecoration(
+            color: AppColors.white1,
+            borderRadius: BorderRadius.circular(14.0),
+          ),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              SvgPicture.asset(
                 imgPath,
                 fit: BoxFit.cover,
                 width: 45.w,
                 height: 45.h,
               ),
-            ),
-            SizedBox(height: 5.h),
-            Text(
-              text,
-              style: Theme.of(context).textTheme.labelMedium!.copyWith(
-                    fontSize: 14.sp,
-                    fontFamily: "Poppins",
-                    height: 1.2,
-                    color: selected ? AppColors.blue1 : AppColors.grey2,
-                  ),
-              textAlign: TextAlign.center,
-            ),
-          ],
+              SizedBox(height: 5.h),
+              Text(
+                text,
+                style: Theme.of(context).textTheme.labelMedium!.copyWith(
+                      fontSize: 14.sp,
+                      fontFamily: "Poppins",
+                      height: 1.2,
+                      color: selected ? AppColors.blue1 : AppColors.grey2,
+                    ),
+                textAlign: TextAlign.center,
+              ),
+            ],
+          ),
         ),
       ),
     );
