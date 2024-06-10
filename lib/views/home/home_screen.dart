@@ -82,54 +82,54 @@ class HomeScreen extends StatelessWidget {
             ],
           ).paddingHorizontal(18.w),
           SizedBox(height: 20.h),
-          Column(
-            children: [
-              Row(
-                crossAxisAlignment: CrossAxisAlignment.end,
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Text(
-                    "TEAM",
-                    style: Theme.of(context).textTheme.titleSmall!.copyWith(
-                          fontSize: 22.sp,
-                          fontWeight: FontWeight.w600,
-                          color: AppColors.blue2,
-                        ),
-                  ),
-                  GestureDetector(
-                    onTap: () => Navigator.pushNamed(
-                      context,
-                      AchievementScreen.routeName,
-                    ),
-                    child: Text(
-                      "view team",
-                      style: Theme.of(context).textTheme.titleSmall!.copyWith(
-                            fontSize: 18.sp,
-                            fontWeight: FontWeight.w500,
-                            color: AppColors.blue2,
-                          ),
-                    ),
-                  ),
-                ],
-              ).paddingHorizontal(18.w),
-              SizedBox(height: 15.h),
-              Container(
-                padding: EdgeInsets.only(left: 18.w),
-                height: 100.h,
-                child: ListView.separated(
-                  separatorBuilder: (context, index) => SizedBox(width: 15.w),
-                  scrollDirection: Axis.horizontal,
-                  itemCount: TeamModel.teamList.length,
-                  itemBuilder: (context, index) {
-                    final item = TeamModel.teamList[index];
-                    return TeamDesignWidget(
-                      item: item,
-                    );
-                  },
-                ),
-              ),
-            ],
-          ),
+          // Column(
+          //   children: [
+          //     Row(
+          //       crossAxisAlignment: CrossAxisAlignment.end,
+          //       mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          //       children: [
+          //         Text(
+          //           "TEAM",
+          //           style: Theme.of(context).textTheme.titleSmall!.copyWith(
+          //                 fontSize: 22.sp,
+          //                 fontWeight: FontWeight.w600,
+          //                 color: AppColors.blue2,
+          //               ),
+          //         ),
+          //         GestureDetector(
+          //           onTap: () => Navigator.pushNamed(
+          //             context,
+          //             AchievementScreen.routeName,
+          //           ),
+          //           child: Text(
+          //             "view team",
+          //             style: Theme.of(context).textTheme.titleSmall!.copyWith(
+          //                   fontSize: 18.sp,
+          //                   fontWeight: FontWeight.w500,
+          //                   color: AppColors.blue2,
+          //                 ),
+          //           ),
+          //         ),
+          //       ],
+          //     ).paddingHorizontal(18.w),
+          //     SizedBox(height: 15.h),
+          //     Container(
+          //       padding: EdgeInsets.only(left: 18.w),
+          //       height: 100.h,
+          //       child: ListView.separated(
+          //         separatorBuilder: (context, index) => SizedBox(width: 15.w),
+          //         scrollDirection: Axis.horizontal,
+          //         itemCount: TeamModel.teamList.length,
+          //         itemBuilder: (context, index) {
+          //           final item = TeamModel.teamList[index];
+          //           return TeamDesignWidget(
+          //             item: item,
+          //           );
+          //         },
+          //       ),
+          //     ),
+          //   ],
+          // ),
         ],
       ),
     );
