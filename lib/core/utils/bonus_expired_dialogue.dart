@@ -67,7 +67,7 @@ void showExpireBonusDialog(BuildContext context) {
                 ),
                 SizedBox(height: 20.h),
 
-                CommonElevatedButton(
+                CustomButton(
                     height: 50.h,
                     width: 300.w,
                     onPressed: () {

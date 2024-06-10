@@ -69,6 +69,7 @@ class AppAssets {
   static const String profileImg8 = "assets/images/gold_diamond.png";
   static const String profileImg9 = "assets/images/silver_diamond.png";
   static const String profileImg10 = "assets/images/profile_img10.svg";
+  static const String profileImg11 = "assets/images/profile_img11.svg";
 
   //mining dashboard
 
