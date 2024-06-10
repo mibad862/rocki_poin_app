@@ -67,7 +67,7 @@ void showTodaysBonusDialog(BuildContext context) {
                 ),
                 SizedBox(height: 20.h),
 
-                CommonElevatedButton(
+                CustomButton(
                     svgAsset: AppAssets.dialogueImgOne,
                     height: 50.h,
                     width: 300.w,

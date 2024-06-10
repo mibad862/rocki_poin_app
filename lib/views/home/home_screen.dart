@@ -368,7 +368,7 @@ class HomeScreen extends StatelessWidget {
               ),
             ],
           ).paddingHorizontal(18.w),
-          // SizedBox(height: 20.h),
+          SizedBox(height: 20.h),
           // Column(
           //   children: [
           //     Row(

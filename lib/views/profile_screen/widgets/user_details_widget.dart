@@ -17,10 +17,12 @@ class UserDetailsWidget extends StatelessWidget {
       children: [
         Container(
           alignment: Alignment.bottomCenter,
-          height: 200.h,
+          height: 180.h,
           decoration: const BoxDecoration(
             borderRadius: BorderRadius.only(
-                topLeft: Radius.circular(15), topRight: Radius.circular(15)),
+              topLeft: Radius.circular(25),
+              topRight: Radius.circular(25),
+            ),
             image: DecorationImage(
               image: AssetImage(AppAssets.profileCoverImg),
               fit: BoxFit.cover,
@@ -30,9 +32,9 @@ class UserDetailsWidget extends StatelessWidget {
             children: [
               SizedBox(height: 50.h),
               Text(
-                "johnnyknox07",
+                "@johnnyknox07",
                 style: Theme.of(context).textTheme.titleSmall!.copyWith(
-                      fontSize: 16.sp,
+                      fontSize: 18.sp,
                       fontWeight: FontWeight.w600,
                       color: AppColors.white1,
                     ),
@@ -41,69 +43,9 @@ class UserDetailsWidget extends StatelessWidget {
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      Text(
-                        "GLOBAL FARMERS",
-                        style: Theme.of(context).textTheme.titleSmall!.copyWith(
-                              fontSize: 13.sp,
-                              fontWeight: FontWeight.w200,
-                              color: AppColors.white2,
-                            ),
-                      ),
-                      Text(
-                        "99,999,999",
-                        style: Theme.of(context).textTheme.titleSmall!.copyWith(
-                              fontSize: 25.sp,
-                              fontWeight: FontWeight.w600,
-                              color: AppColors.white1,
-                            ),
-                      ),
-                    ],
-                  ),
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      Text(
-                        "REFERRALS",
-                        style: Theme.of(context).textTheme.titleSmall!.copyWith(
-                              fontSize: 13.sp,
-                              fontWeight: FontWeight.w200,
-                              color: AppColors.white2,
-                            ),
-                      ),
-                      Text(
-                        "34",
-                        style: Theme.of(context).textTheme.titleSmall!.copyWith(
-                              fontSize: 25.sp,
-                              fontWeight: FontWeight.w600,
-                              color: AppColors.white1,
-                            ),
-                      ),
-                    ],
-                  ),
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      Text(
-                        "LEVEL",
-                        style: Theme.of(context).textTheme.titleSmall!.copyWith(
-                              fontSize: 13.sp,
-                              fontWeight: FontWeight.w200,
-                              color: AppColors.white2,
-                            ),
-                      ),
-                      Text(
-                        "2",
-                        style: Theme.of(context).textTheme.titleSmall!.copyWith(
-                              fontSize: 25.sp,
-                              fontWeight: FontWeight.w600,
-                              color: AppColors.white1,
-                            ),
-                      ),
-                    ],
-                  ),
+                  _buildColumn(context, "GLOBAL FARMERS", "99,999,999"),
+                  _buildColumn(context, "REFERRALS", "34"),
+                  _buildColumn(context, "LEVEL", "2"),
                 ],
               ),
             ],
@@ -113,7 +55,7 @@ class UserDetailsWidget extends StatelessWidget {
           top: -60.h,
           child: Container(
             height: 100.h,
-            width: 90.w,
+            width: 100.w,
             decoration: BoxDecoration(
               border: Border.all(color: AppColors.white1, width: 4.w),
               borderRadius: const BorderRadius.all(Radius.circular(30)),
@@ -126,5 +68,32 @@ class UserDetailsWidget extends StatelessWidget {
         )
       ],
     );
+  }
+
+  Widget _buildColumn(BuildContext context, String text1, String text2) {
+    return Column(
+                  mainAxisSize: MainAxisSize.min,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    Text(
+                      text1,
+                      style: Theme.of(context).textTheme.titleSmall!.copyWith(
+                            fontSize: 13.sp,
+                            fontWeight: FontWeight.w200,
+                            color: AppColors.white2,
+                            fontFamily: "Lato",
+                          ),
+                    ),
+                    Text(
+                      text2,
+                      style: Theme.of(context).textTheme.titleSmall!.copyWith(
+                            fontSize: 25.sp,
+                            fontWeight: FontWeight.w600,
+                            color: AppColors.white1,
+                            fontFamily: "Lato",
+                          ),
+                    ),
+                  ],
+                );
   }
 }

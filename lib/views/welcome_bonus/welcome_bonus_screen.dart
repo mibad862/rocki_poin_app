@@ -21,7 +21,7 @@ class WelcomeBonusScreen extends StatelessWidget {
           SizedBox(height: 40.h),
           _buildContainer(context),
           SizedBox(height: 100.h),
-          CommonElevatedButton(
+          CustomButton(
             fontSize: 18.sp,
             width: 310.w,
             height: 60.h,

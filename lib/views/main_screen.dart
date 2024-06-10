@@ -22,6 +22,7 @@ class _MainScreenState extends State<MainScreen> {
     const TeamScreen(),
     const MiningDashboard(),
     const AchievementScreen(),
+
     const ProfileScreen()
   ];
 
