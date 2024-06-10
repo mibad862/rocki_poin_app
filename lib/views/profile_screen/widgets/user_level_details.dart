@@ -5,16 +5,16 @@ import 'package:rocki_poin_app/core/constants/app_colors.dart';
 
 import '../../../core/constants/app_assets.dart';
 
-class userLevelDetailWidget extends StatelessWidget {
-  const userLevelDetailWidget(
+class UserLevelDetailWidget extends StatelessWidget {
+  const UserLevelDetailWidget(
       {super.key,
-      required this.titleone,
-      required this.titletwo,
+      required this.titleOne,
+      required this.titleTwo,
       required this.level,
       required this.isLocked});
 
-  final String titleone;
-  final String titletwo, level;
+  final String titleOne;
+  final String titleTwo, level;
   final bool isLocked;
 
   @override
@@ -24,7 +24,7 @@ class userLevelDetailWidget extends StatelessWidget {
         Column(
           children: [
             Text(
-              titleone,
+              titleOne,
               style: Theme.of(context).textTheme.titleSmall!.copyWith(
                     fontSize: 13.sp,
                     fontWeight: FontWeight.w600,
@@ -52,6 +52,7 @@ class userLevelDetailWidget extends StatelessWidget {
                 borderRadius: BorderRadius.circular(10),
               ),
               child: Column(
+                mainAxisSize: MainAxisSize.min,
                 children: [
                   Text(
                     level,
@@ -96,7 +97,7 @@ class userLevelDetailWidget extends StatelessWidget {
         Column(
           children: [
             Text(
-              titletwo,
+              titleTwo,
               style: Theme.of(context).textTheme.titleSmall!.copyWith(
                     fontSize: 13.sp,
                     fontWeight: FontWeight.w600,

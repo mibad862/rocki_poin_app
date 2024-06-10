@@ -83,7 +83,7 @@ class TeamScreen extends StatelessWidget {
                           imgPath: AppAssets.homImgSix,
                           titleText: "Invite Friends",
                           subTitleText: "Earn extra rock from friends.",
-                          navigatorPath: ProfileScreen.routeName,
+                          navigatorPath: "",
                         ),
                         SizedBox(
                           height: 30.h,

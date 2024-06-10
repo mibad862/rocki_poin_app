@@ -3,8 +3,8 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:rocki_poin_app/core/constants/app_colors.dart';
 
-class CommonElevatedButton extends StatelessWidget {
-  const CommonElevatedButton({
+class CustomButton extends StatelessWidget {
+  const CustomButton({
     super.key, // Corrected key definition
     required this.onPressed,
     this.height,
@@ -17,6 +17,7 @@ class CommonElevatedButton extends StatelessWidget {
     this.buttonElevation,
     this.borderColor,
     this.svgAsset,
+    this.fontFamily,
   }); // Corrected super constructor call
 
   final VoidCallback onPressed;
@@ -30,6 +31,7 @@ class CommonElevatedButton extends StatelessWidget {
   final double? buttonElevation;
   final Color? borderColor;
   final String? svgAsset;
+  final String? fontFamily;
 
   @override
   Widget build(BuildContext context) {
@@ -59,8 +61,9 @@ class CommonElevatedButton extends StatelessWidget {
                   width: 24, // Set the width of the SVG image
                 ),
               ],
-              const SizedBox(
-                  width: 10), // Add some spacing between the SVG and the text
+              if (svgAsset != null && svgAsset!.isNotEmpty)
+                SizedBox(width: 10.w),
+              // Add some spacing between the SVG and the text
 
               Text(
                 text,
@@ -68,6 +71,7 @@ class CommonElevatedButton extends StatelessWidget {
                       fontSize: fontSize ?? 15.sp,
                       color: textColor ?? AppColors.white1,
                       fontWeight: FontWeight.w500,
+                      fontFamily: fontFamily,
                     ),
               ),
             ],
