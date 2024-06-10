@@ -3,6 +3,7 @@ import 'package:rocki_poin_app/views/achivements_screen/achivements_screen.dart'
 import 'package:rocki_poin_app/views/mining_dashboard/mining_dashboard.dart';
 import 'package:rocki_poin_app/views/profile_screen/profile_screen.dart';
 import 'package:rocki_poin_app/views/team_screen/team_screen.dart';
+
 import '../widgets/custom_bottom_navigation_bar.dart';
 import 'home/home_screen.dart';
 
@@ -21,7 +22,8 @@ class _MainScreenState extends State<MainScreen> {
     const TeamScreen(),
     const MiningDashboard(),
     const AchievementScreen(),
-    const ProfileScreen(),
+
+    const ProfileScreen()
   ];
 
   void onItemTapped(int index) {
