@@ -163,7 +163,7 @@ class MiningDashboardState extends State<MiningDashboard>
                                         .textTheme
                                         .titleSmall!
                                         .copyWith(
-                                            fontSize: 18.sp,
+                                            fontSize: 15.sp,
                                             fontWeight: FontWeight.w600,
                                             color: Colors.white),
                                   ),
@@ -194,7 +194,8 @@ class MiningDashboardState extends State<MiningDashboard>
                               context: context,
                               builder: (context) {
                                 return Container(
-                                  padding: EdgeInsets.only(bottom: 10.h, top: 10.h, right: 10.w, left: 10.w),
+                                  height: 800.h,
+                                  padding: EdgeInsets.only(bottom: 20.h, top: 10.h, right: 10.w, left: 10.w),
                                   width: double.infinity,
                                   child: Column(
                                     mainAxisSize: MainAxisSize.min,
@@ -214,12 +215,12 @@ class MiningDashboardState extends State<MiningDashboard>
                                         decoration: BoxDecoration(
                                           color: Colors.grey.shade300,
                                           borderRadius: BorderRadius.circular(15.0),
-                                          image: DecorationImage(
+                                          image: const DecorationImage(
                                             image: AssetImage(AppAssets.botImg3),
                                           ),
                                         ),
                                       ),
-                                      SizedBox(height: 19.h),
+                                      SizedBox(height: 15.h),
                                       Text("Earning Rate",
                                           style: Theme.of(context)
                                               .textTheme
@@ -243,7 +244,7 @@ class MiningDashboardState extends State<MiningDashboard>
                                             fontFamily: "Lato",
                                             fontWeight: FontWeight.w400,
                                           )),
-                                      SizedBox(height: 40.h),
+                                      SizedBox(height: 38.h),
                                       Row(
                                         crossAxisAlignment: CrossAxisAlignment.center,
                                         mainAxisSize: MainAxisSize.min,
@@ -319,7 +320,7 @@ class MiningDashboardState extends State<MiningDashboard>
                                               )),
                                         ],
                                       ),
-                                      SizedBox(height: 40.h),
+                                      SizedBox(height: 35.h),
                                       CustomButton(
                                         fontWeight: FontWeight.w600,
                                         borderColor: AppColors.blue1,
