@@ -163,7 +163,7 @@ class MiningDashboardState extends State<MiningDashboard>
                                         .textTheme
                                         .titleSmall!
                                         .copyWith(
-                                            fontSize: 22.sp,
+                                            fontSize: 18.sp,
                                             fontWeight: FontWeight.w600,
                                             color: Colors.white),
                                   ),
