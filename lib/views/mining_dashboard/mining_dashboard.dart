@@ -163,11 +163,11 @@ class MiningDashboardState extends State<MiningDashboard>
                                         .textTheme
                                         .titleSmall!
                                         .copyWith(
-                                            fontSize: 25.sp,
+                                            fontSize: 22.sp,
                                             fontWeight: FontWeight.w600,
                                             color: Colors.white),
                                   ),
-                                  TextSpan(text: " "),
+                                  const TextSpan(text: " "),
                                   TextSpan(
                                     text: 'rocks',
                                     style: Theme.of(context)
@@ -183,12 +183,166 @@ class MiningDashboardState extends State<MiningDashboard>
                             )
                           ],
                         ),
-                        Spacer(),
-                        SvgPicture.asset(
-                          AppAssets.dashboardImgFour,
-                          width: 65.w,
-                          height: 65.h,
-                          fit: BoxFit.contain,
+                        const Spacer(),
+                        GestureDetector(
+                          onTap: (){
+                            showModalBottomSheet(
+                              shape: RoundedRectangleBorder(
+                                borderRadius:
+                                BorderRadius.vertical(top: Radius.circular(0)),
+                              ),
+                              context: context,
+                              builder: (context) {
+                                return Container(
+                                  padding: EdgeInsets.only(bottom: 10.h, top: 10.h, right: 10.w, left: 10.w),
+                                  width: double.infinity,
+                                  child: Column(
+                                    mainAxisSize: MainAxisSize.min,
+                                    crossAxisAlignment: CrossAxisAlignment.center,
+                                    children: [
+                                      Align(
+                                        alignment: Alignment.topRight,
+                                        child: GestureDetector(
+                                          onTap: () => Navigator.pop(context),
+                                          child: Icon(Icons.close),
+                                        ),
+                                      ),
+                                      Container(
+                                        alignment: Alignment.center,
+                                        width: 100.w,
+                                        height: 100.h,
+                                        decoration: BoxDecoration(
+                                          color: Colors.grey,
+                                          borderRadius: BorderRadius.circular(15.0),
+                                          image: DecorationImage(
+                                            image: AssetImage(AppAssets.botImg1),
+                                          ),
+                                        ),
+                                      ),
+                                      SizedBox(height: 20.h),
+                                      Text("Earning Rate",
+                                          style: Theme.of(context)
+                                              .textTheme
+                                              .labelMedium!
+                                              .copyWith(
+                                            fontSize: 25.sp,
+                                            color: AppColors.blue2,
+                                            fontFamily: "Poppins",
+                                            fontWeight: FontWeight.w700,
+                                          )),
+                                      SizedBox(height: 15.h),
+                                      Text(
+                                          "Increase the earning rate.\n+500 coins for each level.",
+                                          textAlign: TextAlign.center,
+                                          style: Theme.of(context)
+                                              .textTheme
+                                              .labelMedium!
+                                              .copyWith(
+                                            fontSize: 15.sp,
+                                            color: AppColors.blue2,
+                                            fontFamily: "Lato",
+                                            fontWeight: FontWeight.w400,
+                                          )),
+                                      SizedBox(height: 40.h),
+                                      Row(
+                                        crossAxisAlignment: CrossAxisAlignment.center,
+                                        mainAxisSize: MainAxisSize.min,
+                                        children: [
+                                          SvgPicture.asset(
+                                            AppAssets.botImg2,
+                                            width: 25.w,
+                                            height: 25.h,
+                                            fit: BoxFit.contain,
+                                          ),
+                                          SizedBox(width: 5.w),
+                                          Text.rich(
+                                            TextSpan(
+                                              children: [
+                                                TextSpan(
+                                                  text: "2,000",
+                                                  style: Theme.of(context)
+                                                      .textTheme
+                                                      .titleSmall!
+                                                      .copyWith(
+                                                      fontSize: 25.sp,
+                                                      fontWeight: FontWeight.w600,
+                                                      color: AppColors.blue1,
+                                                      fontFamily: "Poppins"),
+                                                ),
+                                                TextSpan(
+                                                  text: " / ",
+                                                  style: Theme.of(context)
+                                                      .textTheme
+                                                      .titleSmall!
+                                                      .copyWith(
+                                                    fontSize: 22.sp,
+                                                    fontWeight: FontWeight.w600,
+                                                    color: AppColors.grey5,
+                                                  ),
+                                                ),
+                                                TextSpan(
+                                                  text: 'level 1',
+                                                  style: Theme.of(context)
+                                                      .textTheme
+                                                      .titleSmall!
+                                                      .copyWith(
+                                                      fontSize: 17.sp,
+                                                      fontWeight: FontWeight.w600,
+                                                      color: AppColors.grey5,
+                                                      fontFamily: "Poppins"),
+                                                )
+                                              ],
+                                            ),
+                                          )
+                                        ],
+                                      ),
+                                      SizedBox(height: 10.h),
+                                      Row(
+                                        mainAxisSize: MainAxisSize.min,
+                                        children: [
+                                          Icon(
+                                            Icons.info_outlined,
+                                            color: AppColors.blue1,
+                                            size: 20.sp,
+                                          ),
+                                          SizedBox(width: 5.w),
+                                          Text("Find out more",
+                                              textAlign: TextAlign.center,
+                                              style: Theme.of(context)
+                                                  .textTheme
+                                                  .labelMedium!
+                                                  .copyWith(
+                                                fontSize: 18.sp,
+                                                color: AppColors.blue1,
+                                                fontFamily: "Lato",
+                                                fontWeight: FontWeight.w500,
+                                              )),
+                                        ],
+                                      ),
+                                      SizedBox(height: 40.h),
+                                      CustomButton(
+                                        fontWeight: FontWeight.w600,
+                                        borderColor: AppColors.blue1,
+                                        fontFamily: "Poppins",
+                                        fontSize: 18.sp,
+                                        borderRadius: 15.0,
+                                        width: 310.w,
+                                        height: 60.h,
+                                        onPressed: () {},
+                                        text: "Get it!",
+                                      ),
+                                    ],
+                                  ),
+                                );
+                              },
+                            );
+                          },
+                          child: SvgPicture.asset(
+                            AppAssets.dashboardImgFour,
+                            width: 65.w,
+                            height: 65.h,
+                            fit: BoxFit.contain,
+                          ),
                         ),
                       ],
                     ),
@@ -236,105 +390,6 @@ class MiningDashboardState extends State<MiningDashboard>
                           AppAssets.dashboardImgSix,
                         ),
                       ),
-                      // Positioned(
-                      //   top: 370.h,
-                      //   left: 0,
-                      //   right: 0,
-                      //   child: Column(
-                      //     mainAxisSize: MainAxisSize.min,
-                      //     crossAxisAlignment: CrossAxisAlignment.center,
-                      //     children: [
-                      //       Text(
-                      //         _formattedTime(_remainingTime),
-                      //         style: Theme.of(context)
-                      //             .textTheme
-                      //             .titleSmall!
-                      //             .copyWith(
-                      //                 fontSize: 21.sp,
-                      //                 fontWeight: FontWeight.w600,
-                      //                 color: Colors.black),
-                      //       ),
-                      //       SizedBox(height: 20.h),
-                      //       SizedBox(
-                      //         width: 300.w,
-                      //         height: 59.h,
-                      //         child: ElevatedButton(
-                      //             style: ButtonStyle(
-                      //                 shape: MaterialStatePropertyAll(
-                      //                     RoundedRectangleBorder(
-                      //                         borderRadius:
-                      //                             BorderRadius.circular(10))),
-                      //                 backgroundColor:
-                      //                     const MaterialStatePropertyAll(
-                      //                         AppColors.grey4)),
-                      //             onPressed: () {
-                      //               showModalBottomSheet(
-                      //                 context: context,
-                      //                 builder: (context) {
-                      //                   return SizedBox(
-                      //                     height: 200,
-                      //                     child: Center(
-                      //                       child: Column(
-                      //                         mainAxisAlignment:
-                      //                             MainAxisAlignment.center,
-                      //                         children: const <Widget>[
-                      //                           Text('GeeksforGeeks'),
-                      //                         ],
-                      //                       ),
-                      //                     ),
-                      //                   );
-                      //                 },
-                      //               );
-                      //             },
-                      //             child: Text(
-                      //               "Claim",
-                      //               style: Theme.of(context)
-                      //                   .textTheme
-                      //                   .titleSmall!
-                      //                   .copyWith(
-                      //                       fontSize: 20.sp,
-                      //                       fontWeight: FontWeight.w100,
-                      //                       color: Colors.white),
-                      //             )),
-                      //       )
-                      //       // CustomButton(
-                      //       //   fontWeight: FontWeight.w600,
-                      //       //   borderRadius: 15.0,
-                      //       //   fontSize: 18.sp,
-                      //       //   fontFamily: "Poppins",
-                      //       //   width: 320.w,
-                      //       //   height: 60.h,
-                      //       //   buttonColor: AppColors.grey4,
-                      //       //   borderColor: AppColors.grey4,
-                      //       //   textColor: AppColors.white1,
-                      //       //   onPressed: () {
-                      //       //     showModalBottomSheet(
-                      //       //       context: context,
-                      //       //       builder: (context) {
-                      //       //         return Padding(
-                      //       //           padding: EdgeInsets.all(20.h),
-                      //       //           child: Column(
-                      //       //             mainAxisSize: MainAxisSize.min,
-                      //       //             crossAxisAlignment: CrossAxisAlignment.start,
-                      //       //             children: [
-                      //       //               Text("Earning Rate", style: Theme.of(context).textTheme.titleSmall!.copyWith(fontSize: 18.sp)),
-                      //       //               SizedBox(height: 10.h),
-                      //       //               Text("Current Rate: 1.5 Rocks/Hour", style: Theme.of(context).textTheme.bodyText1),
-                      //       //               SizedBox(height: 10.h),
-                      //       //               Text("Next Upgrade: 2.0 Rocks/Hour", style: Theme.of(context).textTheme.bodyText1),
-                      //       //               SizedBox(height: 10.h),
-                      //       //               Text("Time Remaining for Next Upgrade: 3 Hours", style: Theme.of(context).textTheme.bodyText1),
-                      //       //             ],
-                      //       //           ),
-                      //       //         );
-                      //       //       },
-                      //       //     );
-                      //       //   },
-                      //       //   text: "Claim",
-                      //       // ),
-                      //     ],
-                      //   ),
-                      // ),
                     ],
                   ),
                 ],
@@ -400,156 +455,7 @@ class MiningDashboardState extends State<MiningDashboard>
                   borderColor: AppColors.grey4,
                   textColor: AppColors.white1,
                   onPressed: () {
-                    showModalBottomSheet(
-                      shape: RoundedRectangleBorder(
-                        borderRadius:
-                            BorderRadius.vertical(top: Radius.circular(0)),
-                      ),
-                      context: context,
-                      builder: (context) {
-                        return Container(
-                          padding: EdgeInsets.only(bottom: 10.h, top: 10.h, right: 10.w, left: 10.w),
-                          width: double.infinity,
-                          child: Column(
-                            mainAxisSize: MainAxisSize.min,
-                            crossAxisAlignment: CrossAxisAlignment.center,
-                            children: [
-                              Align(
-                                alignment: Alignment.topRight,
-                                child: GestureDetector(
-                                  onTap: () => Navigator.pop(context),
-                                  child: Icon(Icons.close),
-                                ),
-                              ),
-                              Container(
-                                alignment: Alignment.center,
-                                width: 100.w,
-                                height: 100.h,
-                                decoration: BoxDecoration(
-                                  color: Colors.yellow,
-                                  borderRadius: BorderRadius.circular(15.0),
-                                  image: DecorationImage(
-                                    image: AssetImage(AppAssets.botImg1),
-                                  ),
-                                ),
-                              ),
-                              SizedBox(height: 20.h),
-                              Text("Earning Rate",
-                                  style: Theme.of(context)
-                                      .textTheme
-                                      .labelMedium!
-                                      .copyWith(
-                                        fontSize: 25.sp,
-                                        color: AppColors.blue2,
-                                        fontFamily: "Poppins",
-                                        fontWeight: FontWeight.w700,
-                                      )),
-                              SizedBox(height: 15.h),
-                              Text(
-                                  "Increase the earning rate.\n+500 coins for each level.",
-                                  textAlign: TextAlign.center,
-                                  style: Theme.of(context)
-                                      .textTheme
-                                      .labelMedium!
-                                      .copyWith(
-                                        fontSize: 15.sp,
-                                        color: AppColors.blue2,
-                                        fontFamily: "Lato",
-                                        fontWeight: FontWeight.w400,
-                                      )),
-                              SizedBox(height: 40.h),
-                              Row(
-                                crossAxisAlignment: CrossAxisAlignment.center,
-                                mainAxisSize: MainAxisSize.min,
-                                children: [
-                                  SvgPicture.asset(
-                                    AppAssets.botImg2,
-                                    width: 25.w,
-                                    height: 25.h,
-                                    fit: BoxFit.contain,
-                                  ),
-                                  SizedBox(width: 5.w),
-                                  Text.rich(
-                                    TextSpan(
-                                      children: [
-                                        TextSpan(
-                                          text: "2,000",
-                                          style: Theme.of(context)
-                                              .textTheme
-                                              .titleSmall!
-                                              .copyWith(
-                                                  fontSize: 25.sp,
-                                                  fontWeight: FontWeight.w600,
-                                                  color: AppColors.blue1,
-                                                  fontFamily: "Poppins"),
-                                        ),
-                                        TextSpan(
-                                          text: " / ",
-                                          style: Theme.of(context)
-                                              .textTheme
-                                              .titleSmall!
-                                              .copyWith(
-                                                fontSize: 22.sp,
-                                                fontWeight: FontWeight.w600,
-                                                color: AppColors.grey5,
-                                              ),
-                                        ),
-                                        TextSpan(
-                                          text: 'level 1',
-                                          style: Theme.of(context)
-                                              .textTheme
-                                              .titleSmall!
-                                              .copyWith(
-                                                  fontSize: 17.sp,
-                                                  fontWeight: FontWeight.w600,
-                                                  color: AppColors.grey5,
-                                                  fontFamily: "Poppins"),
-                                        )
-                                      ],
-                                    ),
-                                  )
-                                ],
-                              ),
-                              SizedBox(height: 10.h),
-                              Row(
-                                mainAxisSize: MainAxisSize.min,
-                                children: [
-                                  Icon(
-                                    Icons.info_outlined,
-                                    color: AppColors.blue1,
-                                    size: 20.sp,
-                                  ),
-                                  SizedBox(width: 5.w),
-                                  Text("Find out more",
-                                      textAlign: TextAlign.center,
-                                      style: Theme.of(context)
-                                          .textTheme
-                                          .labelMedium!
-                                          .copyWith(
-                                            fontSize: 18.sp,
-                                            color: AppColors.blue1,
-                                            fontFamily: "Lato",
-                                            fontWeight: FontWeight.w500,
-                                          )),
-                                ],
-                              ),
-                              SizedBox(height: 40.h),
-                              CustomButton(
-                                fontWeight: FontWeight.w600,
-                                borderColor: AppColors.blue1,
-                                fontFamily: "Poppins",
-                                fontSize: 18.sp,
-                                borderRadius: 15.0,
-                                width: 310.w,
-                                height: 60.h,
-                                onPressed: () {},
-                                text: "Get it!",
-                              ),
-                            ],
-                          ),
-                        );
-                      },
-                    );
+
                   },
                   text: "Claim",
                 ),
