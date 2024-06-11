@@ -18,6 +18,7 @@ class CustomButton extends StatelessWidget {
     this.borderColor,
     this.svgAsset,
     this.fontFamily,
+    this.fontWeight,
   }); // Corrected super constructor call
 
   final VoidCallback onPressed;
@@ -32,6 +33,7 @@ class CustomButton extends StatelessWidget {
   final Color? borderColor;
   final String? svgAsset;
   final String? fontFamily;
+  final FontWeight? fontWeight;
 
   @override
   Widget build(BuildContext context) {
@@ -70,7 +72,7 @@ class CustomButton extends StatelessWidget {
                 style: Theme.of(context).textTheme.bodyText1!.copyWith(
                       fontSize: fontSize ?? 15.sp,
                       color: textColor ?? AppColors.white1,
-                      fontWeight: FontWeight.w500,
+                      fontWeight: fontWeight ?? FontWeight.w500,
                       fontFamily: fontFamily,
                     ),
               ),

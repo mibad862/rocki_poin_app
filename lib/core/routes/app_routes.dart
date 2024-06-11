@@ -17,7 +17,7 @@ class AppRoutes {
       AchievementScreen.routeName: (context) => const AchievementScreen(),
       TeamScreen.routeName: (context) => const TeamScreen(),
       ProfileScreen.routeName: (context) => const ProfileScreen(),
-      MiningDashboard.routName: (context) => const MiningDashboard(),
+      MiningDashboard.routeName: (context) => const MiningDashboard(),
     };
   }
 }
