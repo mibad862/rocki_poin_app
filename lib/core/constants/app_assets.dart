@@ -88,4 +88,5 @@ class AppAssets {
   //Bottom Modal Sheet
   static const String botImg1 = "assets/images/bottom_sheet_img1.svg";
   static const String botImg2 = "assets/images/bottom_sheet_img2.svg";
+  static const String botImg3 = "assets/images/bottom_sheet_img3.png";
 }

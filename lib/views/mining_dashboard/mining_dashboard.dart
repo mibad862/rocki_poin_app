@@ -212,14 +212,14 @@ class MiningDashboardState extends State<MiningDashboard>
                                         width: 100.w,
                                         height: 100.h,
                                         decoration: BoxDecoration(
-                                          color: Colors.grey,
+                                          color: Colors.grey.shade300,
                                           borderRadius: BorderRadius.circular(15.0),
                                           image: DecorationImage(
-                                            image: AssetImage(AppAssets.botImg1),
+                                            image: AssetImage(AppAssets.botImg3),
                                           ),
                                         ),
                                       ),
-                                      SizedBox(height: 20.h),
+                                      SizedBox(height: 19.h),
                                       Text("Earning Rate",
                                           style: Theme.of(context)
                                               .textTheme

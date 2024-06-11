@@ -1,5 +1,3 @@
-import 'dart:async';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:rocki_poin_app/core/constants/app_assets.dart';
@@ -81,7 +79,7 @@ void showBonusDialog(BuildContext context) {
       );
     },
   );
-  Timer(Duration(seconds: 3), () {
-    Navigator.of(context).pop();
-  });
+  // Timer(Duration(seconds: 3), () {
+  //   Navigator.of(context).pop();
+  // });
 }

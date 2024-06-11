@@ -80,7 +80,7 @@ class HomeScreen extends StatelessWidget {
                         ),
                       ],
                     ),
-                    SizedBox(height: 50.h),
+                    SizedBox(height: 48.h),
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.center,
                       mainAxisSize: MainAxisSize.min,
@@ -171,7 +171,7 @@ class HomeScreen extends StatelessWidget {
                             ),
                           ],
                         ),
-                        SizedBox(height: 10.h),
+                        SizedBox(height: 12.h),
                         SvgPicture.asset(
                           AppAssets.homImgSixteen,
                           height: 10.h,
