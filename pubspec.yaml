@@ -42,6 +42,8 @@ dependencies:
   step_progress_indicator: ^1.0.2
   provider:
   firebase_core:
+  share: ^2.0.4
+  url_launcher: ^6.0.20
 
 
 dev_dependencies:
