@@ -1,10 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:flutter_svg/svg.dart';
-import 'package:rocki_poin_app/views/profile_screen/profile_screen.dart';
-import 'package:rocki_poin_app/views/welcome_bonus/list_tile_widget.dart';
-
+import 'package:share/share.dart';
 import '../../core/constants/app_assets.dart';
 import '../../core/constants/app_colors.dart';
 
@@ -12,6 +9,17 @@ class TeamScreen extends StatelessWidget {
   const TeamScreen({super.key});
 
   static const routeName = '/team';
+
+  void _showShareOptions(BuildContext context) async {
+    const String referralCode =
+        '5A2268'; // Replace with the actual referral code logic
+    const String referralLink =
+        'https://www.facebook.com/referral?code=$referralCode';
+    const String text =
+        'Check out this app! Use my referral code: $referralLink';
+
+    await Share.share(text);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -31,9 +39,6 @@ class TeamScreen extends StatelessWidget {
                   AppAssets.teamscreenImgOne,
                   fit: BoxFit.contain,
                 ),
-                // SizedBox(
-                //   height: 10.h,
-                // ),
                 Positioned(
                   bottom: 40.h,
                   left: 20.w,
@@ -76,44 +81,73 @@ class TeamScreen extends StatelessWidget {
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        SizedBox(
-                          height: 10.h,
+                        SizedBox(height: 10.h),
+                        Container(
+                          width: double.infinity,
+                          height: 80.h,
+                          decoration: BoxDecoration(
+                            color: AppColors.blue1,
+                            borderRadius: BorderRadius.circular(16.0),
+                          ),
+                          child: ListTile(
+                            onTap: () => _showShareOptions(context),
+                            leading: SvgPicture.asset(
+                              AppAssets.homImgSix,
+                              height: 48.h,
+                              width: 48.w,
+                              fit: BoxFit.contain,
+                            ),
+                            title: Text(
+                              "Invite Friends",
+                              style: Theme.of(context)
+                                  .textTheme
+                                  .titleSmall!
+                                  .copyWith(
+                                    fontSize: 18.sp,
+                                    fontWeight: FontWeight.w600,
+                                    color: AppColors.white1,
+                                  ),
+                            ),
+                            subtitle: Text(
+                              "Earn extra rock from friends.",
+                              style: Theme.of(context)
+                                  .textTheme
+                                  .titleSmall!
+                                  .copyWith(
+                                    fontSize: 12.sp,
+                                    fontWeight: FontWeight.w400,
+                                    color: AppColors.white1,
+                                  ),
+                            ),
+                            trailing: const Icon(
+                              Icons.arrow_forward_ios_rounded,
+                              color: AppColors.white1,
+                            ),
+                          ),
                         ),
-                        const ListTileWidget(
-                          imgPath: AppAssets.homImgSix,
-                          titleText: "Invite Friends",
-                          subTitleText: "Earn extra rock from friends.",
-                          navigatorPath: "",
-                        ),
-                        SizedBox(
-                          height: 30.h,
-                        ),
+                        // GestureDetector(
+                        //   onTap: () => _showShareOptions(context),
+                        //   child: const ListTileWidget(
+                        //     imgPath: AppAssets.homImgSix,
+                        //     titleText: "Invite Friends",
+                        //     subTitleText: "Earn extra rock from friends.",
+                        //     navigatorPath: "",
+                        //   ),
+                        // ),
+                        SizedBox(height: 30.h),
                         SvgPicture.asset(
                           AppAssets.teamscreenImgTwo,
                           fit: BoxFit.contain,
                         ),
-                        SizedBox(
-                          height: 20.h,
-                        ),
-                        SizedBox(
-                          height: 20.h,
-                        ),
+                        SizedBox(height: 20.h),
                         TeamWidget(),
-                        SizedBox(
-                          height: 5.h,
-                        ),
+                        SizedBox(height: 5.h),
                         TeamWidget(),
-                        SizedBox(
-                          height: 5.h,
-                        ),
+                        SizedBox(height: 5.h),
                         TeamWidget(),
-                        SizedBox(
-                          height: 5.h,
-                        ),
+                        SizedBox(height: 5.h),
                         TeamWidget(),
-                        SizedBox(
-                          height: 5.h,
-                        ),
+                        SizedBox(height: 5.h),
                         TeamWidget()
                       ],
                     ),
@@ -129,14 +163,12 @@ class TeamScreen extends StatelessWidget {
 }
 
 class TeamWidget extends StatelessWidget {
-  const TeamWidget({
-    super.key,
-  });
+  const TeamWidget({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Material(
-      elevation: 03.0,
+      elevation: 3.0,
       borderRadius: BorderRadius.circular(10),
       child: Container(
         padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
@@ -163,9 +195,7 @@ class TeamWidget extends StatelessWidget {
                                 'assets/images/team_screen_online.svg'))
                       ],
                     ))),
-            SizedBox(
-              width: 10.w,
-            ),
+            SizedBox(width: 10.w),
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
@@ -177,24 +207,16 @@ class TeamWidget extends StatelessWidget {
                 Row(
                   children: [
                     SvgPicture.asset(AppAssets.teamscreenImgFour),
-                    const SizedBox(
-                      width: 3,
-                    ),
+                    const SizedBox(width: 3),
                     const Text(
                       "200",
                       style: TextStyle(color: Color(0XFF1B47C3)),
                     ),
-                    const SizedBox(
-                      width: 3,
-                    ),
+                    const SizedBox(width: 3),
                     const Text("Coins"),
-                    const SizedBox(
-                      width: 3,
-                    ),
+                    const SizedBox(width: 3),
                     const Text("|"),
-                    const SizedBox(
-                      width: 3,
-                    ),
+                    const SizedBox(width: 3),
                     const Text(
                       "Starter",
                       style: TextStyle(color: Color(0XFF8F8F8F)),
@@ -203,9 +225,7 @@ class TeamWidget extends StatelessWidget {
                 ),
               ],
             ),
-            SizedBox(
-              width: 80.w,
-            ),
+            SizedBox(width: 80.w),
             SvgPicture.asset(AppAssets.teamscreenImgFive)
           ],
         ),

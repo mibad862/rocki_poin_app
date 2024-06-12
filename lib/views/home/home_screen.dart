@@ -7,6 +7,7 @@ import 'package:rocki_poin_app/core/constants/app_colors.dart';
 import 'package:rocki_poin_app/core/utils/bonus_dialogue.dart';
 import 'package:rocki_poin_app/core/utils/padding_extensions.dart';
 import 'package:rocki_poin_app/views/achivements_screen/achivements_screen.dart';
+import 'package:rocki_poin_app/views/mining_dashboard/mining_dashboard.dart';
 import 'package:rocki_poin_app/views/welcome_bonus/list_tile_widget.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -79,106 +80,108 @@ class HomeScreen extends StatelessWidget {
                         ),
                       ],
                     ),
-                    SizedBox(height: 50.h),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    SizedBox(height: 48.h),
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      mainAxisSize: MainAxisSize.min,
                       children: [
-                        Column(
-                          crossAxisAlignment: CrossAxisAlignment.center,
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
-                            Text(
-                              "REFERRALS",
-                              style: Theme.of(context)
-                                  .textTheme
-                                  .titleSmall!
-                                  .copyWith(
-                                    fontSize: 13.sp,
-                                    fontWeight: FontWeight.w200,
-                                    color: AppColors.white2,
-                                  ),
+                            Column(
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              children: [
+                                Text(
+                                  "REFERRALS",
+                                  style: Theme.of(context)
+                                      .textTheme
+                                      .titleSmall!
+                                      .copyWith(
+                                        fontSize: 13.sp,
+                                        fontWeight: FontWeight.w200,
+                                        color: AppColors.white2,
+                                      ),
+                                ),
+                                Text(
+                                  "530",
+                                  style: Theme.of(context)
+                                      .textTheme
+                                      .titleSmall!
+                                      .copyWith(
+                                        fontSize: 25.sp,
+                                        fontWeight: FontWeight.w600,
+                                        color: AppColors.white1,
+                                      ),
+                                ),
+                              ],
                             ),
-                            Text(
-                              "530",
-                              style: Theme.of(context)
-                                  .textTheme
-                                  .titleSmall!
-                                  .copyWith(
-                                    fontSize: 25.sp,
-                                    fontWeight: FontWeight.w600,
-                                    color: AppColors.white1,
-                                  ),
+                            Column(
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              children: [
+                                Text(
+                                  "TOTAL MINIERS",
+                                  style: Theme.of(context)
+                                      .textTheme
+                                      .titleSmall!
+                                      .copyWith(
+                                        fontSize: 13.sp,
+                                        fontWeight: FontWeight.w200,
+                                        color: AppColors.white2,
+                                      ),
+                                ),
+                                Text(
+                                  "950.345",
+                                  style: Theme.of(context)
+                                      .textTheme
+                                      .titleSmall!
+                                      .copyWith(
+                                        fontSize: 25.sp,
+                                        fontWeight: FontWeight.w600,
+                                        color: AppColors.white1,
+                                      ),
+                                ),
+                              ],
+                            ),
+                            Column(
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              children: [
+                                Text(
+                                  "PLAYERS",
+                                  style: Theme.of(context)
+                                      .textTheme
+                                      .titleSmall!
+                                      .copyWith(
+                                        fontSize: 13.sp,
+                                        fontWeight: FontWeight.w200,
+                                        color: AppColors.white2,
+                                      ),
+                                ),
+                                Text(
+                                  "58,975",
+                                  style: Theme.of(context)
+                                      .textTheme
+                                      .titleSmall!
+                                      .copyWith(
+                                        fontSize: 25.sp,
+                                        fontWeight: FontWeight.w600,
+                                        color: AppColors.white1,
+                                      ),
+                                ),
+                              ],
                             ),
                           ],
                         ),
-                        Column(
-                          crossAxisAlignment: CrossAxisAlignment.center,
-                          children: [
-                            Text(
-                              "TOTAL MINIERS",
-                              style: Theme.of(context)
-                                  .textTheme
-                                  .titleSmall!
-                                  .copyWith(
-                                    fontSize: 13.sp,
-                                    fontWeight: FontWeight.w200,
-                                    color: AppColors.white2,
-                                  ),
-                            ),
-                            Text(
-                              "950.345",
-                              style: Theme.of(context)
-                                  .textTheme
-                                  .titleSmall!
-                                  .copyWith(
-                                    fontSize: 25.sp,
-                                    fontWeight: FontWeight.w600,
-                                    color: AppColors.white1,
-                                  ),
-                            ),
-                          ],
-                        ),
-                        Column(
-                          crossAxisAlignment: CrossAxisAlignment.center,
-                          children: [
-                            Text(
-                              "PLAYERS",
-                              style: Theme.of(context)
-                                  .textTheme
-                                  .titleSmall!
-                                  .copyWith(
-                                    fontSize: 13.sp,
-                                    fontWeight: FontWeight.w200,
-                                    color: AppColors.white2,
-                                  ),
-                            ),
-                            Text(
-                              "58,975",
-                              style: Theme.of(context)
-                                  .textTheme
-                                  .titleSmall!
-                                  .copyWith(
-                                    fontSize: 25.sp,
-                                    fontWeight: FontWeight.w600,
-                                    color: AppColors.white1,
-                                  ),
-                            ),
-                          ],
-                        ),
+                        SizedBox(height: 12.h),
+                        SvgPicture.asset(
+                          AppAssets.homImgSixteen,
+                          height: 10.h,
+                          fit: BoxFit.contain,
+                        )
                       ],
                     ),
                   ],
                 ),
               ),
-              Positioned(
-                  bottom: 103.h,
-                  right: 0,
-                  left: 0,
-                  child: SvgPicture.asset(
-                    AppAssets.homImgSixteen,
-                    color: Colors.white,
-                    height: 10.h,
-                    fit: BoxFit.contain,
-                  )),
               Positioned(
                 right: 0,
                 left: 0,
@@ -360,11 +363,11 @@ class HomeScreen extends StatelessWidget {
                 navigatorPath: AchievementScreen.routeName,
               ),
               SizedBox(height: 25.h),
-              const ListTileWidget(
+               const ListTileWidget(
                 imgPath: AppAssets.homImgSix,
                 titleText: "Invite Friends",
                 subTitleText: "Earn extra rock from friends.",
-                navigatorPath: AchievementScreen.routeName,
+                navigatorPath: MiningDashboard.routeName,
               ),
             ],
           ).paddingHorizontal(18.w),

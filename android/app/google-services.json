@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "885938522962",
+    "project_id": "rockipoint",
+    "storage_bucket": "rockipoint.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:885938522962:android:fcacdd51081b9caede088b",
+        "android_client_info": {
+          "package_name": "com.example.rocki_poin_app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA_GZ9XpXrNN_dLHHA3W6IMS2UPUfZHHa8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
