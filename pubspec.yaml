@@ -41,6 +41,10 @@ dependencies:
   device_preview:
   step_progress_indicator: ^1.0.2
   provider:
+  firebase_storage:
+  cloud_firestore:
+  image_picker:
+  validatorless:
 
 
 dev_dependencies:
