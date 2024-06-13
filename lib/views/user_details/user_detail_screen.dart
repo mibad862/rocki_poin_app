@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:provider/provider.dart';
 import 'package:rocki_poin_app/views/user_details/model/provider/user_provider.dart';
+import 'package:rocki_poin_app/views/welcome_bonus/welcome_bonus_screen.dart';
 
 class UserDetailsScreen extends StatefulWidget {
   const UserDetailsScreen({super.key});
@@ -47,6 +48,7 @@ class _UserDetailsScreenState extends State<UserDetailsScreen> {
       ScaffoldMessenger.of(context).showSnackBar(
         const SnackBar(content: Text('User data saved successfully!')),
       );
+      Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => const WelcomeBonusScreen()));
     } else {
       ScaffoldMessenger.of(context).showSnackBar(
         const SnackBar(
