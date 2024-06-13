@@ -4,6 +4,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
 import 'package:rocki_poin_app/core/routes/app_routes.dart';
 import 'package:rocki_poin_app/firebase_options.dart';
+import 'package:rocki_poin_app/views/user_details/model/provider/user_provider.dart';
 
 import 'core/theme/app_text_themes.dart';
 import 'views/mining_dashboard/provider/tap_counter.dart';
@@ -16,6 +17,7 @@ Future<void> main() async {
     MultiProvider(
       providers: [
         ChangeNotifierProvider(create: (_) => TapCounter()),
+        ChangeNotifierProvider(create: (_) => UserProvider()),
       ],
       child: const MyApp(),
     ),

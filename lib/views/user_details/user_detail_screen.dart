@@ -2,8 +2,8 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
-
-import '../../services/firebase_services.dart';
+import 'package:provider/provider.dart';
+import 'package:rocki_poin_app/views/user_details/model/provider/user_provider.dart';
 
 class UserDetailsScreen extends StatefulWidget {
   const UserDetailsScreen({super.key});
@@ -19,8 +19,6 @@ class _UserDetailsScreenState extends State<UserDetailsScreen> {
   final _usernameController = TextEditingController();
   final _emailController = TextEditingController();
   File? _image;
-  final FirebaseServices _firebaseServices =
-      FirebaseServices(); // Initialize FirebaseServices
 
   Future<void> _pickImage() async {
     final pickedFile =
@@ -32,17 +30,27 @@ class _UserDetailsScreenState extends State<UserDetailsScreen> {
     }
   }
 
-  void _saveUserData() {
-    if (_formKey.currentState!.validate()) {
+  Future<void> _saveUserData() async {
+    if (_formKey.currentState!.validate() && _image != null) {
       final name = _nameController.text;
       final username = _usernameController.text;
       final email = _emailController.text;
+      final userProvider = Provider.of<UserProvider>(context, listen: false);
 
-      _firebaseServices.saveUserData(
-        name: name,
-        username: username,
-        email: email,
-        context: context, imageUrl: '',
+      await userProvider.saveUserData(
+          name: name,
+          username: username,
+          email: email,
+          imageFile: _image!,
+          context: context);
+
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(content: Text('User data saved successfully!')),
+      );
+    } else {
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(
+            content: Text('Please fill all the fields and select an image')),
       );
     }
   }
@@ -108,15 +116,7 @@ class _UserDetailsScreenState extends State<UserDetailsScreen> {
               ),
               const SizedBox(height: 32),
               ElevatedButton(
-                onPressed: () {
-                  if (_formKey.currentState!.validate()) {
-                    // Form is valid, proceed with saving the user details
-                    _saveUserData();
-                    ScaffoldMessenger.of(context).showSnackBar(
-                      const SnackBar(content: Text('Processing Data')),
-                    );
-                  }
-                },
+                onPressed: _saveUserData,
                 child: const Text('Submit'),
               ),
             ],

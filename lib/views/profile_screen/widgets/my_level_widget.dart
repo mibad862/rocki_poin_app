@@ -25,8 +25,8 @@ class MyLevelWidget extends StatelessWidget {
           ),
         ),
         Positioned(
-          right: 50.w,
-          top: 13.h,
+          right: 44.w,
+          top: 15.h,
           child: Text(
             "28,450",
             style: Theme.of(context).textTheme.titleSmall!.copyWith(
