@@ -48,6 +48,7 @@ dependencies:
   validatorless:
   share: ^2.0.4
   url_launcher: ^6.0.20
+  shared_preferences:
 
 
 dev_dependencies:
