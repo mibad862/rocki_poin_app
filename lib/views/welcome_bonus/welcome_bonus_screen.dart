@@ -26,7 +26,7 @@ class WelcomeBonusScreen extends StatelessWidget {
             width: 310.w,
             height: 60.h,
             onPressed: () => Navigator.pushReplacement(
-                context, MaterialPageRoute(builder: (context) => MainScreen())),
+                context, MaterialPageRoute(builder: (context) => const MainScreen())),
             text: "OK",
           ),
         ],

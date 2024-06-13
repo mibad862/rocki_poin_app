@@ -1,10 +1,13 @@
 import 'dart:async';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:provider/provider.dart';
+import 'package:rocki_poin_app/views/user_details/model/provider/user_provider.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:rocki_poin_app/core/constants/app_assets.dart';
 import 'package:rocki_poin_app/core/constants/app_colors.dart';
 import 'package:rocki_poin_app/core/utils/padding_extensions.dart';
@@ -26,6 +29,7 @@ class MiningDashboardState extends State<MiningDashboard>
   late Animation<double> _animation;
   late Timer _timer;
   Duration _remainingTime = const Duration(hours: 8);
+  String rocks = "Loading...";
 
   @override
   void initState() {
@@ -77,6 +81,79 @@ class MiningDashboardState extends State<MiningDashboard>
     final minutes = twoDigits(duration.inMinutes.remainder(60));
     final seconds = twoDigits(duration.inSeconds.remainder(60));
     return "$hours:$minutes:$seconds";
+  }
+
+  Future<void> _fetchCoins() async {
+    try {
+      final prefs = await SharedPreferences.getInstance();
+      final email = prefs.getString('user_email') ?? '';
+
+      if (email.isEmpty) {
+        setState(() {
+          rocks = "No email found";
+        });
+        return;
+      }
+
+      DocumentReference userDoc =
+          FirebaseFirestore.instance.collection('user_details').doc(email);
+
+      DocumentSnapshot<Map<String, dynamic>> snapshot =
+          await userDoc.get() as DocumentSnapshot<Map<String, dynamic>>;
+
+      if (!snapshot.exists) {
+        setState(() {
+          rocks = "User data not found";
+        });
+        return;
+      }
+
+      int currentCoins = snapshot.data()!['coin'] ?? 0;
+      int currentLevel = snapshot.data()!['level'] ?? 1;
+
+      if (currentCoins > 2000) {
+        int updatedCoins = currentCoins - 2000;
+        int updatedLevel = currentLevel + 1;
+
+        await userDoc.update({
+          'coin': updatedCoins,
+          'level': updatedLevel,
+        });
+
+        _showAlertDialog('Upgraded Successfully');
+      }
+
+      print(currentCoins);
+      print(currentLevel);
+
+      if (currentCoins < 2000) {
+        _showAlertDialog('Insufficient Coins');
+      }
+    } catch (e) {
+      setState(() {
+        rocks = "Error fetching data";
+      });
+    }
+  }
+
+  void _showAlertDialog(String message) {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: Text("Alert"),
+          content: Text(message),
+          actions: <Widget>[
+            TextButton(
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+              child: Text("OK"),
+            ),
+          ],
+        );
+      },
+    );
   }
 
   @override
@@ -185,21 +262,26 @@ class MiningDashboardState extends State<MiningDashboard>
                         ),
                         const Spacer(),
                         GestureDetector(
-                          onTap: (){
+                          onTap: () {
                             showModalBottomSheet(
                               shape: RoundedRectangleBorder(
-                                borderRadius:
-                                BorderRadius.vertical(top: Radius.circular(0)),
+                                borderRadius: BorderRadius.vertical(
+                                    top: Radius.circular(0)),
                               ),
                               context: context,
                               builder: (context) {
                                 return Container(
                                   height: 800.h,
-                                  padding: EdgeInsets.only(bottom: 20.h, top: 10.h, right: 10.w, left: 10.w),
+                                  padding: EdgeInsets.only(
+                                      bottom: 20.h,
+                                      top: 10.h,
+                                      right: 10.w,
+                                      left: 10.w),
                                   width: double.infinity,
                                   child: Column(
                                     mainAxisSize: MainAxisSize.min,
-                                    crossAxisAlignment: CrossAxisAlignment.center,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.center,
                                     children: [
                                       Align(
                                         alignment: Alignment.topRight,
@@ -214,9 +296,11 @@ class MiningDashboardState extends State<MiningDashboard>
                                         height: 100.h,
                                         decoration: BoxDecoration(
                                           color: Colors.grey.shade300,
-                                          borderRadius: BorderRadius.circular(15.0),
+                                          borderRadius:
+                                              BorderRadius.circular(15.0),
                                           image: const DecorationImage(
-                                            image: AssetImage(AppAssets.botImg3),
+                                            image:
+                                                AssetImage(AppAssets.botImg3),
                                           ),
                                         ),
                                       ),
@@ -226,11 +310,11 @@ class MiningDashboardState extends State<MiningDashboard>
                                               .textTheme
                                               .labelMedium!
                                               .copyWith(
-                                            fontSize: 25.sp,
-                                            color: AppColors.blue2,
-                                            fontFamily: "Poppins",
-                                            fontWeight: FontWeight.w700,
-                                          )),
+                                                fontSize: 25.sp,
+                                                color: AppColors.blue2,
+                                                fontFamily: "Poppins",
+                                                fontWeight: FontWeight.w700,
+                                              )),
                                       SizedBox(height: 15.h),
                                       Text(
                                           "Increase the earning rate.\n+500 coins for each level.",
@@ -239,14 +323,15 @@ class MiningDashboardState extends State<MiningDashboard>
                                               .textTheme
                                               .labelMedium!
                                               .copyWith(
-                                            fontSize: 15.sp,
-                                            color: AppColors.blue2,
-                                            fontFamily: "Lato",
-                                            fontWeight: FontWeight.w400,
-                                          )),
-                                      SizedBox(height: 38.h),
+                                                fontSize: 15.sp,
+                                                color: AppColors.blue2,
+                                                fontFamily: "Lato",
+                                                fontWeight: FontWeight.w400,
+                                              )),
+                                      SizedBox(height: 25.h),
                                       Row(
-                                        crossAxisAlignment: CrossAxisAlignment.center,
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.center,
                                         mainAxisSize: MainAxisSize.min,
                                         children: [
                                           SvgPicture.asset(
@@ -256,45 +341,86 @@ class MiningDashboardState extends State<MiningDashboard>
                                             fit: BoxFit.contain,
                                           ),
                                           SizedBox(width: 5.w),
-                                          Text.rich(
-                                            TextSpan(
-                                              children: [
-                                                TextSpan(
-                                                  text: "2,000",
-                                                  style: Theme.of(context)
-                                                      .textTheme
-                                                      .titleSmall!
-                                                      .copyWith(
-                                                      fontSize: 25.sp,
-                                                      fontWeight: FontWeight.w600,
-                                                      color: AppColors.blue1,
-                                                      fontFamily: "Poppins"),
+                                          Text(
+                                            "2,000",
+                                            style: Theme.of(context)
+                                                .textTheme
+                                                .titleSmall!
+                                                .copyWith(
+                                                  fontSize: 25.sp,
+                                                  fontWeight: FontWeight.w600,
+                                                  color: AppColors.blue1,
+                                                  fontFamily: "Poppins",
                                                 ),
-                                                TextSpan(
-                                                  text: " / ",
-                                                  style: Theme.of(context)
-                                                      .textTheme
-                                                      .titleSmall!
-                                                      .copyWith(
-                                                    fontSize: 22.sp,
-                                                    fontWeight: FontWeight.w600,
-                                                    color: AppColors.grey5,
-                                                  ),
+                                          ),
+                                          Text(
+                                            " / ",
+                                            style: Theme.of(context)
+                                                .textTheme
+                                                .titleSmall!
+                                                .copyWith(
+                                                  fontSize: 25.sp,
+                                                  fontWeight: FontWeight.w600,
+                                                  color: AppColors.blue1,
+                                                  fontFamily: "Poppins",
                                                 ),
-                                                TextSpan(
-                                                  text: 'level 1',
-                                                  style: Theme.of(context)
-                                                      .textTheme
-                                                      .titleSmall!
-                                                      .copyWith(
-                                                      fontSize: 17.sp,
-                                                      fontWeight: FontWeight.w600,
-                                                      color: AppColors.grey5,
-                                                      fontFamily: "Poppins"),
-                                                )
-                                              ],
-                                            ),
-                                          )
+                                          ),
+                                          Consumer<UserProvider>(
+                                            builder: (context, userProvider, child) {
+                                              final user = userProvider.user;
+                                              return Text(
+                                                "level ${user?.level ?? '1'}",
+                                                style: Theme.of(context)
+                                                    .textTheme
+                                                    .titleSmall!
+                                                    .copyWith(
+                                                  fontSize: 17.sp,
+                                                  fontWeight: FontWeight.w600,
+                                                  color: AppColors.grey5,
+                                                  fontFamily: "Poppins",
+                                                ),
+                                              );
+                                            },
+                                          ),
+                                          // Text.rich(
+                                          //   TextSpan(
+                                          //     children: [
+                                          //       TextSpan(
+                                          //         text: "2,000",
+                                          //         style: Theme.of(context)
+                                          //             .textTheme
+                                          //             .titleSmall!
+                                          //             .copyWith(
+                                          //             fontSize: 25.sp,
+                                          //             fontWeight: FontWeight.w600,
+                                          //             color: AppColors.blue1,
+                                          //             fontFamily: "Poppins"),
+                                          //       ),
+                                          //       TextSpan(
+                                          //         text: " / ",
+                                          //         style: Theme.of(context)
+                                          //             .textTheme
+                                          //             .titleSmall!
+                                          //             .copyWith(
+                                          //           fontSize: 22.sp,
+                                          //           fontWeight: FontWeight.w600,
+                                          //           color: AppColors.grey5,
+                                          //         ),
+                                          //       ),
+                                          //       TextSpan(
+                                          //         text: "LEVEL ${user?.level ?? '1'}",
+                                          //         style: Theme.of(context)
+                                          //             .textTheme
+                                          //             .titleSmall!
+                                          //             .copyWith(
+                                          //             fontSize: 17.sp,
+                                          //             fontWeight: FontWeight.w600,
+                                          //             color: AppColors.grey5,
+                                          //             fontFamily: "Poppins"),
+                                          //       )
+                                          //     ],
+                                          //   ),
+                                          // )
                                         ],
                                       ),
                                       SizedBox(height: 10.h),
@@ -313,11 +439,11 @@ class MiningDashboardState extends State<MiningDashboard>
                                                   .textTheme
                                                   .labelMedium!
                                                   .copyWith(
-                                                fontSize: 18.sp,
-                                                color: AppColors.blue1,
-                                                fontFamily: "Lato",
-                                                fontWeight: FontWeight.w500,
-                                              )),
+                                                    fontSize: 18.sp,
+                                                    color: AppColors.blue1,
+                                                    fontFamily: "Lato",
+                                                    fontWeight: FontWeight.w500,
+                                                  )),
                                         ],
                                       ),
                                       SizedBox(height: 35.h),
@@ -329,9 +455,10 @@ class MiningDashboardState extends State<MiningDashboard>
                                         borderRadius: 15.0,
                                         width: 310.w,
                                         height: 60.h,
-                                        onPressed: () {},
+                                        onPressed: _fetchCoins,
                                         text: "Get it!",
                                       ),
+                                      SizedBox(height: 20.h),
                                     ],
                                   ),
                                 );
@@ -409,42 +536,6 @@ class MiningDashboardState extends State<MiningDashboard>
                       color: Colors.black),
                 ),
                 SizedBox(height: 20.h),
-                // SizedBox(
-                //   width: 300.w,
-                //   height: 59.h,
-                //   child: ElevatedButton(
-                //       style: ButtonStyle(
-                //           shape: MaterialStatePropertyAll(
-                //               RoundedRectangleBorder(
-                //                   borderRadius: BorderRadius.circular(10))),
-                //           backgroundColor:
-                //               const MaterialStatePropertyAll(AppColors.grey4)),
-                //       onPressed: () {
-                //         showModalBottomSheet(
-                //           context: context,
-                //           builder: (context) {
-                //             return SizedBox(
-                //               height: 200,
-                //               child: Center(
-                //                 child: Column(
-                //                   mainAxisAlignment: MainAxisAlignment.center,
-                //                   children: const <Widget>[
-                //                     Text('GeeksforGeeks'),
-                //                   ],
-                //                 ),
-                //               ),
-                //             );
-                //           },
-                //         );
-                //       },
-                //       child: Text(
-                //         "Claim",
-                //         style: Theme.of(context).textTheme.titleSmall!.copyWith(
-                //             fontSize: 20.sp,
-                //             fontWeight: FontWeight.w100,
-                //             color: Colors.white),
-                //       )),
-                // )
                 CustomButton(
                   fontWeight: FontWeight.w600,
                   borderRadius: 15.0,
@@ -456,7 +547,7 @@ class MiningDashboardState extends State<MiningDashboard>
                   borderColor: AppColors.grey4,
                   textColor: AppColors.white1,
                   onPressed: () {
-
+                    // Add your claim logic here
                   },
                   text: "Claim",
                 ),

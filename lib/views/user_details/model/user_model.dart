@@ -3,8 +3,8 @@ class User {
   final String username;
   final String email;
   final String imageUrl;
-  final String level;
-  final String coin;
+  final int level;
+  final int coin;
 
   User({
     required this.name,
