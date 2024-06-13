@@ -60,8 +60,6 @@ class UserService {
         // Save email in shared preferences
         SharedPreferences prefs = await SharedPreferences.getInstance();
         await prefs.setString('user_email', user.email);
-
-        Navigator.pushNamed(context, WelcomeBonusScreen.routeName);
       }
     } catch (e) {
       print('Failed to save user data: $e');
@@ -73,4 +71,6 @@ class UserService {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     return prefs.getString('user_email');
   }
+
+
 }
