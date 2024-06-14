@@ -3,6 +3,7 @@ import 'dart:io';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
+import 'package:rocki_poin_app/services/user_session.dart';
 import 'package:rocki_poin_app/views/welcome_bonus/welcome_bonus_screen.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -13,11 +14,14 @@ class UserService {
   final FirebaseStorage _storage = FirebaseStorage.instance;
 
   // For fetching user information
-  Future<User?> fetchUserData(String email) async {
+  Future<User?> fetchUserData() async {
     try {
-      final doc = await _firestore.collection('user_details').doc(email).get();
+      String? userId = await UserSession.getUserId();
+      if (userId == null) return null;
+
+      final doc = await _firestore.collection('user_details').doc(userId).get();
       if (doc.exists) {
-        return User.fromMap(doc.data()!, email);
+        return User.fromMap(doc.data()!, userId);
       }
     } catch (e) {
       print('Failed to fetch user data: $e');
@@ -26,9 +30,12 @@ class UserService {
   }
 
   // For uploading user image to Firebase Storage
-  Future<String?> uploadImage(File imageFile, String email) async {
+  Future<String?> uploadImage(File imageFile) async {
     try {
-      final storageRef = _storage.ref().child('user_images/$email');
+      String? userId = await UserSession.getUserId();
+      if (userId == null) return null;
+
+      final storageRef = _storage.ref().child('user_images/$userId');
       final uploadTask = await storageRef.putFile(imageFile);
       final downloadUrl = await storageRef.getDownloadURL();
       return downloadUrl;
@@ -42,8 +49,11 @@ class UserService {
   Future<void> saveUserData(
       User user, File imageFile, BuildContext context) async {
     try {
-      final imageUrl = await uploadImage(imageFile, user.email);
+      final imageUrl = await uploadImage(imageFile);
       if (imageUrl != null) {
+        String? userId = await UserSession.getUserId();
+        if (userId == null) return;
+
         user = User(
           name: user.name,
           username: user.username,
@@ -54,12 +64,12 @@ class UserService {
         );
         await _firestore
             .collection('user_details')
-            .doc(user.email)
+            .doc(userId)
             .set(user.toMap());
 
-        // Save email in shared preferences
+        // Save userId in shared preferences
         SharedPreferences prefs = await SharedPreferences.getInstance();
-        await prefs.setString('user_email', user.email);
+        await prefs.setString('user_id', userId);
 
         Navigator.pushNamed(context, WelcomeBonusScreen.routeName);
       }
@@ -69,8 +79,8 @@ class UserService {
   }
 
   // For retrieving user email from shared preferences
-  Future<String?> getUserEmailFromPrefs() async {
+  Future<String?> getUserIdFromPrefs() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
-    return prefs.getString('user_email');
+    return prefs.getString('user_id');
   }
 }

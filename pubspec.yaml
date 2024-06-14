@@ -49,6 +49,7 @@ dependencies:
   share: ^2.0.4
   url_launcher: ^6.0.20
   shared_preferences:
+  uuid:
 
 
 dev_dependencies:

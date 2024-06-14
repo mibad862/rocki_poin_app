@@ -3,7 +3,9 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:provider/provider.dart';
+import 'package:rocki_poin_app/services/user_session.dart';
 import 'package:rocki_poin_app/views/user_details/model/provider/user_provider.dart';
+import 'package:uuid/uuid.dart';
 
 class UserDetailsScreen extends StatefulWidget {
   const UserDetailsScreen({super.key});
@@ -19,6 +21,7 @@ class _UserDetailsScreenState extends State<UserDetailsScreen> {
   final _usernameController = TextEditingController();
   final _emailController = TextEditingController();
   File? _image;
+  String userId = '';
 
   Future<void> _pickImage() async {
     final pickedFile =
@@ -28,6 +31,16 @@ class _UserDetailsScreenState extends State<UserDetailsScreen> {
         _image = File(pickedFile.path);
       });
     }
+  }
+
+  void generateUserId() {
+    var uuid = Uuid();
+    userId = uuid.v4();
+    saveUserSession();
+  }
+
+  void saveUserSession() async {
+    await UserSession.saveUserId(userId);
   }
 
   Future<void> _saveUserData() async {
@@ -53,6 +66,12 @@ class _UserDetailsScreenState extends State<UserDetailsScreen> {
             content: Text('Please fill all the fields and select an image')),
       );
     }
+  }
+
+  @override
+  void initState() {
+    generateUserId();
+    super.initState();
   }
 
   @override
