@@ -3,6 +3,8 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:rocki_poin_app/core/constants/app_assets.dart';
 import 'package:rocki_poin_app/core/constants/app_colors.dart';
 import 'package:rocki_poin_app/views/user_details/user_detail_screen.dart';
+import 'package:rocki_poin_app/views/welcome_bonus/welcome_bonus_screen.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import '../core/constants/app_strings.dart';
 
@@ -19,10 +21,21 @@ class _SplashScreenState extends State<SplashScreen> {
   @override
   void initState() {
     super.initState();
-    Future.delayed(
-        const Duration(seconds: 4),
-        () => Navigator.pushReplacementNamed(
-            context, UserDetailsScreen.routeName));
+    _checkUserEmailExistence();
+  }
+
+  void _checkUserEmailExistence() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    String? userEmail = prefs.getString('user_email');
+
+    // Check if user_email exists
+    if (userEmail != null && userEmail.isNotEmpty) {
+      // If exists, navigate to the Welcome Bonus Screen
+      Navigator.pushReplacementNamed(context, WelcomeBonusScreen.routeName);
+    } else {
+      // If doesn't exist, navigate to the User Details Screen
+      Navigator.pushReplacementNamed(context, UserDetailsScreen.routeName);
+    }
   }
 
   @override

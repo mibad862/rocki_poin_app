@@ -69,9 +69,13 @@ class UserService {
 
         // Save userId in shared preferences
         SharedPreferences prefs = await SharedPreferences.getInstance();
+
         await prefs.setString('user_id', userId);
 
         Navigator.pushNamed(context, WelcomeBonusScreen.routeName);
+
+        await prefs.setString('user_email', user.email);
+
       }
     } catch (e) {
       print('Failed to save user data: $e');
@@ -83,4 +87,6 @@ class UserService {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     return prefs.getString('user_id');
   }
+
+
 }

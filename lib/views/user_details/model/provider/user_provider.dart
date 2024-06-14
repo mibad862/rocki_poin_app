@@ -27,8 +27,8 @@ class UserProvider with ChangeNotifier {
       username: username,
       email: email,
       imageUrl: '',
-      level: '1',
-      coin: '500',
+      level: 1,
+      coin: 12000,
     );
     await _userService.saveUserData(user, imageFile,context);
     _user = user;
