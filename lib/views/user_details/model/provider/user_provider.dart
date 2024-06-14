@@ -1,8 +1,9 @@
 import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:rocki_poin_app/views/user_details/model/user_model.dart';
-import '../../../../services/firebase_services.dart';
 
+import '../../../../services/firebase_services.dart';
 
 class UserProvider with ChangeNotifier {
   final UserService _userService = UserService();
@@ -11,7 +12,7 @@ class UserProvider with ChangeNotifier {
   User? get user => _user;
 
   Future<void> fetchUserData(String email) async {
-    _user = await _userService.fetchUserData();
+    _user = await _userService.fetchUserData(email);
     notifyListeners();
   }
 
@@ -28,9 +29,9 @@ class UserProvider with ChangeNotifier {
       email: email,
       imageUrl: '',
       level: 1,
-      coin: 12000,
+      coin: 8000,
     );
-    await _userService.saveUserData(user, imageFile,context);
+    await _userService.saveUserData(user, imageFile, context);
     _user = user;
     notifyListeners();
   }

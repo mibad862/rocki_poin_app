@@ -24,7 +24,7 @@ class HomeScreen extends StatelessWidget {
       final userService = UserService();
 
       // Fetch email from shared preferences
-      final userEmail = await userService.getUserIdFromPrefs();
+      final userEmail = await userService.getUserEmailFromPrefs();
 
       if (userEmail != null) {
         final userProvider = Provider.of<UserProvider>(context, listen: false);

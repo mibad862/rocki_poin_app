@@ -1,4 +1,6 @@
 import 'dart:async';
+
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -8,11 +10,12 @@ import 'package:rocki_poin_app/core/constants/app_colors.dart';
 import 'package:rocki_poin_app/core/utils/padding_extensions.dart';
 import 'package:rocki_poin_app/views/mining_dashboard/provider/tap_counter.dart';
 import 'package:rocki_poin_app/widgets/common_elevated_button.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import 'widgets/upgrade_count.dart';
 
 class MiningDashboard extends StatefulWidget {
-  const MiningDashboard({super.key});
+  const MiningDashboard({Key? key}) : super(key: key);
 
   static const routeName = "dashboard";
 
@@ -26,6 +29,7 @@ class MiningDashboardState extends State<MiningDashboard>
   late Animation<double> _animation;
   late Timer _timer;
   Duration _remainingTime = const Duration(hours: 8);
+  late DateTime _lastClaimTime;
 
   @override
   void initState() {
@@ -34,29 +38,48 @@ class MiningDashboardState extends State<MiningDashboard>
       duration: const Duration(milliseconds: 300),
       vsync: this,
     )..addStatusListener((status) {
-      if (status == AnimationStatus.completed) {
-        _controller.reverse();
-      }
-    });
+        if (status == AnimationStatus.completed) {
+          _controller.reverse();
+        }
+      });
 
     _animation = CurvedAnimation(
       parent: _controller,
       curve: Curves.bounceOut,
     );
 
+    _loadLastClaimTime(); // Load last claim time
     _startTimer();
   }
 
   void _startTimer() {
     _timer = Timer.periodic(Duration(seconds: 1), (timer) {
       setState(() {
-        if (_remainingTime.inSeconds > 0) {
-          _remainingTime = _remainingTime - Duration(seconds: 1);
+        // Calculate time since last claim
+        DateTime now = DateTime.now();
+        Duration timeSinceLastClaim = now.difference(_lastClaimTime);
+        Duration remainingTime;
+
+        if (timeSinceLastClaim < const Duration(hours: 8)) {
+          remainingTime = const Duration(hours: 8) - timeSinceLastClaim;
         } else {
-          _timer.cancel();
+          remainingTime = const Duration();
         }
+
+        _remainingTime = remainingTime;
       });
     });
+  }
+
+  void _loadLastClaimTime() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    int lastClaimTimestamp = prefs.getInt('last_claim_timestamp') ?? 0;
+    _lastClaimTime = DateTime.fromMillisecondsSinceEpoch(lastClaimTimestamp);
+  }
+
+  void _saveLastClaimTime() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    prefs.setInt('last_claim_timestamp', DateTime.now().millisecondsSinceEpoch);
   }
 
   @override
@@ -79,7 +102,79 @@ class MiningDashboardState extends State<MiningDashboard>
     return "$hours:$minutes:$seconds";
   }
 
+  void _claimCoins() async {
+    // Check if enough time has passed since last claim
+    DateTime now = DateTime.now();
+    Duration timeSinceLastClaim = now.difference(_lastClaimTime);
+    if (timeSinceLastClaim.inHours < 8) {
+      int hoursToWait = 8 - timeSinceLastClaim.inHours;
+      _showAlertDialog('Please wait $hoursToWait hours before claiming again.');
+      return;
+    }
 
+    int coinsToAdd = 0;
+
+    // Get user level from SharedPreferences or wherever it's stored
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    int userLevel = prefs.getInt('user_level') ?? 1;
+
+    // Determine coins to add based on user level
+    if (userLevel == 1) {
+      coinsToAdd = 1000;
+    } else if (userLevel > 1) {
+      coinsToAdd = 1500;
+    }
+
+    // Update coins in Firestore
+    String userEmail = prefs.getString('user_email') ?? '';
+    if (userEmail.isNotEmpty) {
+      DocumentReference<Map<String, dynamic>> userRef =
+          FirebaseFirestore.instance.collection('user_details').doc(userEmail);
+      try {
+        DocumentSnapshot<Map<String, dynamic>> snapshot =
+            await userRef.get() as DocumentSnapshot<Map<String, dynamic>>;
+        if (snapshot.exists) {
+          int currentCoins = snapshot.data()?['coin'] ?? 0;
+          int updatedCoins = currentCoins + coinsToAdd;
+
+          await userRef.update({
+            'coin': updatedCoins,
+          });
+
+          _saveLastClaimTime(); // Save current claim time
+
+          _showAlertDialog('Coins claimed successfully: +$coinsToAdd coins');
+        } else {
+          _showAlertDialog('User data not found');
+        }
+      } catch (error) {
+        print('Error claiming coins: $error');
+        _showAlertDialog('Failed to claim coins. Please try again.');
+      }
+    } else {
+      _showAlertDialog('User email not found. Please login again.');
+    }
+  }
+
+  void _showAlertDialog(String message) {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: const Text("Claim Result"),
+          content: Text(message),
+          actions: <Widget>[
+            TextButton(
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+              child: const Text("OK"),
+            ),
+          ],
+        );
+      },
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -114,9 +209,9 @@ class MiningDashboardState extends State<MiningDashboard>
                               .textTheme
                               .titleSmall!
                               .copyWith(
-                              fontSize: 18.sp,
-                              fontWeight: FontWeight.w600,
-                              color: AppColors.green1.withOpacity(0.6)),
+                                  fontSize: 18.sp,
+                                  fontWeight: FontWeight.w600,
+                                  color: AppColors.green1.withOpacity(0.6)),
                         );
                       },
                     ),
@@ -196,7 +291,7 @@ class MiningDashboardState extends State<MiningDashboard>
                   borderColor: AppColors.grey4,
                   textColor: AppColors.white1,
                   onPressed: () {
-                    // Add your claim logic here
+                    _claimCoins();
                   },
                   text: "Claim",
                 ),
@@ -207,5 +302,4 @@ class MiningDashboardState extends State<MiningDashboard>
       ),
     );
   }
-
 }
