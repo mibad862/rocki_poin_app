@@ -2,13 +2,14 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
-import 'package:rocki_poin_app/core/routes/app_routes.dart';
 import 'package:rocki_poin_app/firebase_options.dart';
-import 'package:rocki_poin_app/views/user_details/model/provider/user_provider.dart';
+import 'mobile/core/routes/app_routes.dart';
+import 'mobile/core/theme/app_text_themes.dart';
+import 'mobile/views/mining_dashboard/provider/tap_counter.dart';
+import 'mobile/views/splash_screen.dart';
+import 'mobile/views/user_details/model/provider/user_provider.dart';
 
-import 'core/theme/app_text_themes.dart';
-import 'views/mining_dashboard/provider/tap_counter.dart';
-import 'views/splash_screen.dart';
+
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
