@@ -1,1 +1,35 @@
-{"flutter":{"platforms":{"android":{"default":{"projectId":"rockipoint","appId":"1:885938522962:android:fcacdd51081b9caede088b","fileOutput":"android/app/google-services.json"}},"dart":{"lib/firebase_options.dart":{"projectId":"rockipoint","configurations":{"android":"1:885938522962:android:fcacdd51081b9caede088b","ios":"1:885938522962:ios:6344b0c57c1e2fb6de088b","macos":"1:885938522962:ios:6344b0c57c1e2fb6de088b","web":"1:885938522962:web:94944d637861d34ade088b"}}}}}}
+{
+  "flutter": {
+    "platforms": {
+      "android": {
+        "default": {
+          "projectId": "rockipoint",
+          "appId": "1:885938522962:android:fcacdd51081b9caede088b",
+          "fileOutput": "android/app/google-services.json"
+        }
+      },
+      "dart": {
+        "lib/firebase_options.dart": {
+          "projectId": "rockipoint",
+          "configurations": {
+            "android": "1:885938522962:android:fcacdd51081b9caede088b",
+            "ios": "1:885938522962:ios:6344b0c57c1e2fb6de088b",
+            "macos": "1:885938522962:ios:6344b0c57c1e2fb6de088b",
+            "web": "1:885938522962:web:94944d637861d34ade088b"
+          }
+        }
+      }
+    }
+  },
+  "hosting": {
+    "source": ".",
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**"
+    ],
+    "frameworksBackend": {
+      "region": "us-central1"
+    }
+  }
+}

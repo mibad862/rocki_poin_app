@@ -54,7 +54,7 @@ class HomeScreen extends StatelessWidget {
                     ),
                     child: Column(
                       children: [
-                        SizedBox(height: 10.h),
+                        // SizedBox(height: 10.h),
                         Row(
                           crossAxisAlignment: CrossAxisAlignment.center,
                           children: [
