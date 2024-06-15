@@ -50,6 +50,7 @@ dependencies:
   url_launcher: ^6.0.20
   shared_preferences:
   uuid:
+  telegram_web_app:
 
 
 dev_dependencies:
