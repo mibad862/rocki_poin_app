@@ -43,3 +43,6 @@ class MyApp extends StatelessWidget {
     );
   }
 }
+
+
+//flutter run -d web-server --web-hostname=192.168.73.123 --web-port=8000
