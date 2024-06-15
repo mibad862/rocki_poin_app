@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:logging/logging.dart';
 import 'package:provider/provider.dart';
 import 'package:rocki_poin_app/core/constants/app_assets.dart';
 import 'package:rocki_poin_app/core/constants/app_colors.dart';
@@ -10,13 +11,49 @@ import 'package:rocki_poin_app/views/achivements_screen/achivements_screen.dart'
 import 'package:rocki_poin_app/views/mining_dashboard/mining_dashboard.dart';
 import 'package:rocki_poin_app/views/user_details/model/provider/user_provider.dart';
 import 'package:rocki_poin_app/views/welcome_bonus/list_tile_widget.dart';
+import 'package:telegram_web_app/telegram_web_app.dart';
 
 import '../../services/firebase_services.dart';
 
-class HomeScreen extends StatelessWidget {
+final _logger = Logger('HomeScreen');
+
+class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
 
   static const routeName = "/home";
+
+  @override
+  State<HomeScreen> createState() => _HomeScreenState();
+}
+
+class _HomeScreenState extends State<HomeScreen> {
+  bool? isDefinedVersion;
+  String? telegramUsername;
+
+  final TelegramWebApp telegram = TelegramWebApp.instance;
+
+  void check() async {
+    await Future.delayed(const Duration(seconds: 2));
+    isDefinedVersion = await telegram.isVersionAtLeast('Bot API 6.1');
+    telegram.ready();
+
+    // Fetch the Telegram username
+    String username = telegram.initData.user?.firstname ?? 'User name';
+
+    _logger.info('Username: $username'); // Log using the logging package
+
+    // Update the state with the fetched username
+    setState(() {
+      telegramUsername = username;
+    });
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    TelegramWebApp.instance.ready();
+    check();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -84,7 +121,7 @@ class HomeScreen extends StatelessWidget {
                                       ),
                                 ),
                                 Text(
-                                  user?.name ?? 'User name',
+                                  telegramUsername ?? user?.name ?? 'User name',
                                   style: Theme.of(context)
                                       .textTheme
                                       .titleSmall!

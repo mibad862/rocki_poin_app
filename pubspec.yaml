@@ -51,6 +51,7 @@ dependencies:
   shared_preferences:
   uuid:
   telegram_web_app:
+  logging:
 
 
 dev_dependencies:
