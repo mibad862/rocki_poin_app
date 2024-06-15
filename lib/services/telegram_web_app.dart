@@ -1,5 +1,4 @@
-// telegram_web_app.dart
-import 'package:flutter/material.dart';
+
 
 class TelegramWebApp {
   static final TelegramWebApp _instance = TelegramWebApp._internal();
