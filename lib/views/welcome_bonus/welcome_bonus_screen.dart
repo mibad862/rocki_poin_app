@@ -28,39 +28,26 @@ class WelcomeBonusScreen extends StatelessWidget {
                   children: [
                     Image.asset(
                       AppAssets.welImgOne,
-                      height: 483.h,
-                      width: double.infinity,
+                      height: screenHeight * 0.572,
+                      width: screenWidth,
                       fit: BoxFit.contain,
                     ),
                     Positioned(
-                      top: 110.h,
+                      top: screenHeight * 0.140,
                       child: Column(
                         mainAxisSize: MainAxisSize.min,
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            crossAxisAlignment: CrossAxisAlignment.center,
-                            children: [
-                              Text(
-                                "Welcome bonus",
-                                style: Theme.of(context)
-                                    .textTheme
-                                    .titleSmall!
-                                    .copyWith(
-                                        fontSize: 32.sp,
-                                        fontWeight: FontWeight.w900),
-                              ),
-                              SizedBox(width: 45.w),
-                              // Image.asset(
-                              //   AppAssets.welImgTwo,
-                              //   height: 75.h,
-                              //   width: 75.w,
-                              //   fit: BoxFit.contain,
-                              // ),
-                            ],
+                          Text(
+                            "Welcome bonus",
+                            style: Theme.of(context)
+                                .textTheme
+                                .titleSmall!
+                                .copyWith(
+                                    fontSize: 32.sp,
+                                    fontWeight: FontWeight.w900),
                           ),
-                          SizedBox(height: 5.h),
+                          SizedBox(height: screenHeight * 0.010),
                           Text(
                             "Congratulations, you have received\nyour first 500 rock coins",
                             style: Theme.of(context)
@@ -71,31 +58,33 @@ class WelcomeBonusScreen extends StatelessWidget {
                                     fontWeight: FontWeight.w400),
                           ),
                         ],
-                      ).paddingHorizontal(20.w),
+                      ).paddingHorizontal(screenWidth * 0.030),
                     ),
                     Positioned(
-                      bottom: 0.h,
+                      bottom: screenHeight * 0.060,
                       left: 0,
                       right: 0,
                       child: Image.asset(
                         AppAssets.welImgThree,
-                        height: 200.h,
-                        width: 200.w,
+                        height: screenHeight * 0.120,
+                        width: screenWidth * 0.120,
+                        fit: BoxFit.contain,
                       ),
                     ),
                   ],
                 ),
-                SizedBox(height: 40.h),
+                SizedBox(height: screenHeight * 0.050),
                 // _buildContainer(context),
                 Container(
                   alignment: Alignment.center,
-                  height: 80.h,
-                  width: 310.w,
+                  height: screenHeight * 0.090,
+                  width: screenWidth * 0.390,
                   decoration: BoxDecoration(
                     color: AppColors.blue1,
                     borderRadius: BorderRadius.circular(20.0),
                   ),
                   child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.center,
                     mainAxisSize: MainAxisSize.min,
                     children: [
                       Text(
@@ -130,10 +119,10 @@ class WelcomeBonusScreen extends StatelessWidget {
                     ],
                   ),
                 ),
-                SizedBox(height: 100.h),
+                SizedBox(height: screenHeight * 0.130),
                 CustomButton(
                   fontSize: 18.sp,
-                  width: 310.w,
+                  width: screenWidth * 0.390,
                   height: 60.h,
                   onPressed: () => Navigator.pushReplacement(
                       context,
