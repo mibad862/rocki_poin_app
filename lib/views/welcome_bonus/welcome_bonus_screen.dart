@@ -28,7 +28,7 @@ class WelcomeBonusScreen extends StatelessWidget {
                   children: [
                     Image.asset(
                       AppAssets.welImgOne,
-                      height: screenHeight * 0.572,
+                      height: screenHeight * 0.635,
                       width: screenWidth,
                       fit: BoxFit.contain,
                     ),
