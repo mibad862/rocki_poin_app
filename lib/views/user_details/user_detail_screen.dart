@@ -52,16 +52,15 @@ class _UserDetailsScreenState extends State<UserDetailsScreen> {
       final email = _emailController.text;
       final userProvider = Provider.of<UserProvider>(context, listen: false);
 
-      await userProvider.saveUserData(
-          name: name,
-          username: username,
-          email: email,
-          imageFile: _image!,
-          context: context);
+      // await userProvider.saveUserData(
+      //     name: name,
+      //     username: username,
+      //     imageFile: _image!,
+      //     context: context);
 
-      ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(content: Text('User data saved successfully!')),
-      );
+      // ScaffoldMessenger.of(context).showSnackBar(
+      //   const SnackBar(content: Text('User data saved successfully!')),
+      // );
       Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => const WelcomeBonusScreen()));
     } else {
       ScaffoldMessenger.of(context).showSnackBar(

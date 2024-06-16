@@ -7,12 +7,10 @@ import 'package:rocki_poin_app/core/constants/app_assets.dart';
 import 'package:rocki_poin_app/core/constants/app_colors.dart';
 import 'package:rocki_poin_app/core/utils/bonus_dialogue.dart';
 import 'package:rocki_poin_app/core/utils/padding_extensions.dart';
-import 'package:rocki_poin_app/services/telegram_web_app.dart';
 import 'package:rocki_poin_app/views/achivements_screen/achivements_screen.dart';
 import 'package:rocki_poin_app/views/mining_dashboard/mining_dashboard.dart';
 import 'package:rocki_poin_app/views/user_details/model/provider/user_provider.dart';
 import 'package:rocki_poin_app/views/welcome_bonus/list_tile_widget.dart';
-import '../../services/firebase_services.dart';
 
 final _logger = Logger('HomeScreen');
 
@@ -26,47 +24,19 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  bool? isDefinedVersion;
-  String? telegramUsername;
-
-  final TelegramWebApp telegram = TelegramWebApp.instance;
-
-  void check() async {
-    await Future.delayed(const Duration(seconds: 2));
-    isDefinedVersion = await telegram.isVersionAtLeast('Bot API 6.1');
-    telegram.ready();
-
-    // Fetch the Telegram username
-    // String username = telegram.initData.user?.firstname ?? 'User name';
-    //
-    // _logger.info('Username: $username'); // Log using the logging package
-
-    // Update the state with the fetched username
-    setState(() {
-      // telegramUsername = username;
-    });
-  }
-
-  @override
-  void initState() {
-    super.initState();
-    TelegramWebApp.instance.ready();
-    check();
-  }
-
   @override
   Widget build(BuildContext context) {
     WidgetsBinding.instance!.addPostFrameCallback((_) async {
-      final userService = UserService();
+      //final userService = UserService();
 
       // Fetch email from shared preferences
-      final userEmail = await userService.getUserEmailFromPrefs();
+      //final userEmail = await userService.getUserEmailFromPrefs();
 
-      if (userEmail != null) {
-        final userProvider = Provider.of<UserProvider>(context, listen: false);
-        userProvider
-            .fetchUserData(userEmail); // Fetch user data using retrieved email
-      }
+      // if (userEmail != null) {
+      //   final userProvider = Provider.of<UserProvider>(context, listen: false);
+      //   userProvider
+      //       .fetchUserData(userEmail); // Fetch user data using retrieved email
+      // }
 
       showBonusDialog(context);
     });
@@ -75,8 +45,8 @@ class _HomeScreenState extends State<HomeScreen> {
     final screenWidth = MediaQuery.of(context).size.height;
 
     return LayoutBuilder(
-      builder: (context,constraints){
-        if(constraints.maxWidth < 600 ){
+      builder: (context, constraints) {
+        if (constraints.maxWidth < 600) {
           return Scaffold(
             body: Consumer<UserProvider>(
               builder: (context, userProvider, child) {
@@ -87,8 +57,8 @@ class _HomeScreenState extends State<HomeScreen> {
                       clipBehavior: Clip.none,
                       children: [
                         Container(
-                          padding:
-                          EdgeInsets.only(left: 15.w, right: 18.w, top: 15.h),
+                          padding: EdgeInsets.only(
+                              left: 15.w, right: 18.w, top: 15.h),
                           width: double.infinity,
                           height: 300.h,
                           decoration: const BoxDecoration(
@@ -104,16 +74,15 @@ class _HomeScreenState extends State<HomeScreen> {
                                     height: 50.h,
                                     width: 60.w,
                                     child: CircleAvatar(
-                                      backgroundImage: NetworkImage(
-                                        user?.imageUrl ??
-                                            'https://w7.pngwing.com/pngs/195/539/png-transparent-account-user-person-profile-people-outline-style-icon-thumbnail.png',
-                                      ),
+                                      backgroundImage:
+                                          NetworkImage(user!.imageUrl),
                                       radius: 40.w,
                                     ),
                                   ),
                                   SizedBox(width: 8.w),
                                   Column(
-                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
                                     children: [
                                       Text(
                                         "Good evening,",
@@ -121,24 +90,27 @@ class _HomeScreenState extends State<HomeScreen> {
                                             .textTheme
                                             .titleSmall!
                                             .copyWith(
-                                          fontSize: 15.sp,
-                                          fontWeight: FontWeight.w300,
-                                        ),
+                                              fontSize: 15.sp,
+                                              fontWeight: FontWeight.w300,
+                                            ),
                                       ),
+                                      //username here
                                       Text(
-                                        user?.name ?? 'User name',
+                                        user?.firstName ?? 'User name',
                                         style: Theme.of(context)
                                             .textTheme
                                             .titleSmall!
                                             .copyWith(
-                                          fontSize: 15.sp,
-                                          fontWeight: FontWeight.w500,
-                                          color: AppColors.white1,
-                                        ),
+                                              fontSize: 15.sp,
+                                              fontWeight: FontWeight.w500,
+                                              color: AppColors.white1,
+                                            ),
                                       ),
                                     ],
                                   ),
                                   const Spacer(),
+                                  //user Img here
+
                                   SvgPicture.asset(
                                     'assets/images/homImgnewTwo.svg',
                                     height: 40.h,
@@ -152,10 +124,12 @@ class _HomeScreenState extends State<HomeScreen> {
                                 mainAxisSize: MainAxisSize.min,
                                 children: [
                                   Row(
-                                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceBetween,
                                     children: [
                                       Column(
-                                        crossAxisAlignment: CrossAxisAlignment.center,
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.center,
                                         children: [
                                           Text(
                                             "REFERRALS",
@@ -163,10 +137,10 @@ class _HomeScreenState extends State<HomeScreen> {
                                                 .textTheme
                                                 .titleSmall!
                                                 .copyWith(
-                                              fontSize: 13.sp,
-                                              fontWeight: FontWeight.w200,
-                                              color: AppColors.white2,
-                                            ),
+                                                  fontSize: 13.sp,
+                                                  fontWeight: FontWeight.w200,
+                                                  color: AppColors.white2,
+                                                ),
                                           ),
                                           Text(
                                             "530",
@@ -174,15 +148,16 @@ class _HomeScreenState extends State<HomeScreen> {
                                                 .textTheme
                                                 .titleSmall!
                                                 .copyWith(
-                                              fontSize: 25.sp,
-                                              fontWeight: FontWeight.w600,
-                                              color: AppColors.white1,
-                                            ),
+                                                  fontSize: 25.sp,
+                                                  fontWeight: FontWeight.w600,
+                                                  color: AppColors.white1,
+                                                ),
                                           ),
                                         ],
                                       ),
                                       Column(
-                                        crossAxisAlignment: CrossAxisAlignment.center,
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.center,
                                         children: [
                                           Text(
                                             "TOTAL MINIERS",
@@ -190,10 +165,10 @@ class _HomeScreenState extends State<HomeScreen> {
                                                 .textTheme
                                                 .titleSmall!
                                                 .copyWith(
-                                              fontSize: 13.sp,
-                                              fontWeight: FontWeight.w200,
-                                              color: AppColors.white2,
-                                            ),
+                                                  fontSize: 13.sp,
+                                                  fontWeight: FontWeight.w200,
+                                                  color: AppColors.white2,
+                                                ),
                                           ),
                                           Text(
                                             "950.345",
@@ -201,15 +176,16 @@ class _HomeScreenState extends State<HomeScreen> {
                                                 .textTheme
                                                 .titleSmall!
                                                 .copyWith(
-                                              fontSize: 25.sp,
-                                              fontWeight: FontWeight.w600,
-                                              color: AppColors.white1,
-                                            ),
+                                                  fontSize: 25.sp,
+                                                  fontWeight: FontWeight.w600,
+                                                  color: AppColors.white1,
+                                                ),
                                           ),
                                         ],
                                       ),
                                       Column(
-                                        crossAxisAlignment: CrossAxisAlignment.center,
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.center,
                                         children: [
                                           Text(
                                             "PLAYERS",
@@ -217,10 +193,10 @@ class _HomeScreenState extends State<HomeScreen> {
                                                 .textTheme
                                                 .titleSmall!
                                                 .copyWith(
-                                              fontSize: 13.sp,
-                                              fontWeight: FontWeight.w200,
-                                              color: AppColors.white2,
-                                            ),
+                                                  fontSize: 13.sp,
+                                                  fontWeight: FontWeight.w200,
+                                                  color: AppColors.white2,
+                                                ),
                                           ),
                                           Text(
                                             "58,975",
@@ -228,10 +204,10 @@ class _HomeScreenState extends State<HomeScreen> {
                                                 .textTheme
                                                 .titleSmall!
                                                 .copyWith(
-                                              fontSize: 25.sp,
-                                              fontWeight: FontWeight.w600,
-                                              color: AppColors.white1,
-                                            ),
+                                                  fontSize: 25.sp,
+                                                  fontWeight: FontWeight.w600,
+                                                  color: AppColors.white1,
+                                                ),
                                           ),
                                         ],
                                       ),
@@ -289,7 +265,8 @@ class _HomeScreenState extends State<HomeScreen> {
                               mainAxisSize: MainAxisSize.min,
                               children: [
                                 Row(
-                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
                                   children: [
                                     Row(
                                       children: [
@@ -306,25 +283,25 @@ class _HomeScreenState extends State<HomeScreen> {
                                               .textTheme
                                               .titleSmall!
                                               .copyWith(
-                                            fontSize: 14.sp,
-                                            fontWeight: FontWeight.w600,
-                                            color: AppColors.white1,
-                                          ),
+                                                fontSize: 14.sp,
+                                                fontWeight: FontWeight.w600,
+                                                color: AppColors.white1,
+                                              ),
                                         )
                                       ],
                                     ),
                                     Row(
                                       children: [
                                         Text(
-                                          "LEVEL ${user?.level ?? '1'}",
+                                          "LEVEL ${'1'}",
                                           style: Theme.of(context)
                                               .textTheme
                                               .titleSmall!
                                               .copyWith(
-                                            fontSize: 14.sp,
-                                            fontWeight: FontWeight.w600,
-                                            color: AppColors.white1,
-                                          ),
+                                                fontSize: 14.sp,
+                                                fontWeight: FontWeight.w600,
+                                                color: AppColors.white1,
+                                              ),
                                         ),
                                         SizedBox(width: 15.w),
                                       ],
@@ -342,28 +319,30 @@ class _HomeScreenState extends State<HomeScreen> {
                                     ),
                                     SizedBox(width: 10.w),
                                     Text(
-                                      "${user?.coin ?? '0'} M",
+                                      "${'0'}",
                                       style: Theme.of(context)
                                           .textTheme
                                           .titleSmall!
                                           .copyWith(
-                                        fontSize: 28.sp,
-                                        fontWeight: FontWeight.w600,
-                                        color: AppColors.white1,
-                                      ),
+                                            fontSize: 28.sp,
+                                            fontWeight: FontWeight.w600,
+                                            color: AppColors.white1,
+                                          ),
                                     ),
                                   ],
                                 ),
                                 SizedBox(height: 10.h),
                                 Container(
-                                  padding: EdgeInsets.symmetric(horizontal: 10.w),
+                                  padding:
+                                      EdgeInsets.symmetric(horizontal: 10.w),
                                   height: 40.h,
                                   decoration: BoxDecoration(
                                     color: AppColors.blue1,
                                     borderRadius: BorderRadius.circular(20.0),
                                   ),
                                   child: Row(
-                                    crossAxisAlignment: CrossAxisAlignment.center,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.center,
                                     mainAxisSize: MainAxisSize.min,
                                     children: [
                                       Text(
@@ -372,10 +351,10 @@ class _HomeScreenState extends State<HomeScreen> {
                                             .textTheme
                                             .titleSmall!
                                             .copyWith(
-                                          fontSize: 15.sp,
-                                          fontWeight: FontWeight.w500,
-                                          color: AppColors.white1,
-                                        ),
+                                              fontSize: 15.sp,
+                                              fontWeight: FontWeight.w500,
+                                              color: AppColors.white1,
+                                            ),
                                       ),
                                       SizedBox(width: 8.w),
                                       Text(
@@ -384,10 +363,10 @@ class _HomeScreenState extends State<HomeScreen> {
                                             .textTheme
                                             .titleSmall!
                                             .copyWith(
-                                          fontSize: 15.sp,
-                                          fontWeight: FontWeight.w600,
-                                          color: AppColors.green1,
-                                        ),
+                                              fontSize: 15.sp,
+                                              fontWeight: FontWeight.w600,
+                                              color: AppColors.green1,
+                                            ),
                                       ),
                                       SizedBox(width: 8.w),
                                       Text(
@@ -396,10 +375,10 @@ class _HomeScreenState extends State<HomeScreen> {
                                             .textTheme
                                             .titleSmall!
                                             .copyWith(
-                                          fontSize: 15.sp,
-                                          fontWeight: FontWeight.w500,
-                                          color: AppColors.white1,
-                                        ),
+                                              fontSize: 15.sp,
+                                              fontWeight: FontWeight.w500,
+                                              color: AppColors.white1,
+                                            ),
                                       ),
                                     ],
                                   ),
@@ -434,8 +413,7 @@ class _HomeScreenState extends State<HomeScreen> {
               },
             ),
           );
-        }
-        else{
+        } else {
           return Scaffold(
             body: Consumer<UserProvider>(
               builder: (context, userProvider, child) {
@@ -446,8 +424,10 @@ class _HomeScreenState extends State<HomeScreen> {
                       clipBehavior: Clip.none,
                       children: [
                         Container(
-                          padding:
-                          EdgeInsets.only(left: screenWidth * 0.015, right: screenWidth * 0.015, top: screenHeight * 0.010),
+                          padding: EdgeInsets.only(
+                              left: screenWidth * 0.015,
+                              right: screenWidth * 0.015,
+                              top: screenHeight * 0.010),
                           width: double.infinity,
                           height: 300.h,
                           decoration: const BoxDecoration(
@@ -470,28 +450,29 @@ class _HomeScreenState extends State<HomeScreen> {
                                   SizedBox(width: screenWidth * 0.010),
                                   Column(
                                     mainAxisSize: MainAxisSize.min,
-                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
                                     children: [
                                       Text(
-                                        "Good eveningggggg,",
+                                        "Good evening,",
                                         style: Theme.of(context)
                                             .textTheme
                                             .titleSmall!
                                             .copyWith(
-                                          fontSize: screenWidth * 0.022,
-                                          fontWeight: FontWeight.w300,
-                                        ),
+                                              fontSize: screenWidth * 0.022,
+                                              fontWeight: FontWeight.w300,
+                                            ),
                                       ),
                                       Text(
-                                        user?.name ?? 'User name',
+                                        user?.firstName ?? 'User name',
                                         style: Theme.of(context)
                                             .textTheme
                                             .titleSmall!
                                             .copyWith(
-                                          fontSize: screenWidth * 0.022,
-                                          fontWeight: FontWeight.w500,
-                                          color: AppColors.white1,
-                                        ),
+                                              fontSize: screenWidth * 0.022,
+                                              fontWeight: FontWeight.w500,
+                                              color: AppColors.white1,
+                                            ),
                                       ),
                                     ],
                                   ),
@@ -507,11 +488,13 @@ class _HomeScreenState extends State<HomeScreen> {
                               SizedBox(height: screenHeight * 0.070),
                               Row(
                                 crossAxisAlignment: CrossAxisAlignment.center,
-                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
                                 children: [
                                   Column(
                                     mainAxisSize: MainAxisSize.min,
-                                    crossAxisAlignment: CrossAxisAlignment.center,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.center,
                                     children: [
                                       Text(
                                         "REFERRALS",
@@ -519,10 +502,10 @@ class _HomeScreenState extends State<HomeScreen> {
                                             .textTheme
                                             .titleSmall!
                                             .copyWith(
-                                          fontSize: screenWidth * 0.024,
-                                          fontWeight: FontWeight.w200,
-                                          color: AppColors.white2,
-                                        ),
+                                              fontSize: screenWidth * 0.024,
+                                              fontWeight: FontWeight.w200,
+                                              color: AppColors.white2,
+                                            ),
                                       ),
                                       Text(
                                         "530",
@@ -530,16 +513,17 @@ class _HomeScreenState extends State<HomeScreen> {
                                             .textTheme
                                             .titleSmall!
                                             .copyWith(
-                                          fontSize: screenWidth * 0.042,
-                                          fontWeight: FontWeight.w600,
-                                          color: AppColors.white1,
-                                        ),
+                                              fontSize: screenWidth * 0.042,
+                                              fontWeight: FontWeight.w600,
+                                              color: AppColors.white1,
+                                            ),
                                       ),
                                     ],
                                   ),
                                   Column(
                                     mainAxisSize: MainAxisSize.min,
-                                    crossAxisAlignment: CrossAxisAlignment.center,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.center,
                                     children: [
                                       Text(
                                         "TOTAL MINIERS",
@@ -547,10 +531,10 @@ class _HomeScreenState extends State<HomeScreen> {
                                             .textTheme
                                             .titleSmall!
                                             .copyWith(
-                                          fontSize: screenWidth * 0.024,
-                                          fontWeight: FontWeight.w200,
-                                          color: AppColors.white2,
-                                        ),
+                                              fontSize: screenWidth * 0.024,
+                                              fontWeight: FontWeight.w200,
+                                              color: AppColors.white2,
+                                            ),
                                       ),
                                       Text(
                                         "950.345",
@@ -558,16 +542,17 @@ class _HomeScreenState extends State<HomeScreen> {
                                             .textTheme
                                             .titleSmall!
                                             .copyWith(
-                                          fontSize: screenWidth * 0.042,
-                                          fontWeight: FontWeight.w600,
-                                          color: AppColors.white1,
-                                        ),
+                                              fontSize: screenWidth * 0.042,
+                                              fontWeight: FontWeight.w600,
+                                              color: AppColors.white1,
+                                            ),
                                       ),
                                     ],
                                   ),
                                   Column(
                                     mainAxisSize: MainAxisSize.min,
-                                    crossAxisAlignment: CrossAxisAlignment.center,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.center,
                                     children: [
                                       Text(
                                         "PLAYERS",
@@ -575,10 +560,10 @@ class _HomeScreenState extends State<HomeScreen> {
                                             .textTheme
                                             .titleSmall!
                                             .copyWith(
-                                          fontSize: screenWidth * 0.024,
-                                          fontWeight: FontWeight.w200,
-                                          color: AppColors.white2,
-                                        ),
+                                              fontSize: screenWidth * 0.024,
+                                              fontWeight: FontWeight.w200,
+                                              color: AppColors.white2,
+                                            ),
                                       ),
                                       Text(
                                         "58,975",
@@ -586,10 +571,10 @@ class _HomeScreenState extends State<HomeScreen> {
                                             .textTheme
                                             .titleSmall!
                                             .copyWith(
-                                          fontSize: screenWidth * 0.042,
-                                          fontWeight: FontWeight.w600,
-                                          color: AppColors.white1,
-                                        ),
+                                              fontSize: screenWidth * 0.042,
+                                              fontWeight: FontWeight.w600,
+                                              color: AppColors.white1,
+                                            ),
                                       ),
                                     ],
                                   ),
@@ -627,10 +612,14 @@ class _HomeScreenState extends State<HomeScreen> {
                         Positioned(
                           left: 0,
                           right: 0,
-                          bottom: - screenHeight * 0.150,
+                          bottom: -screenHeight * 0.150,
                           child: Container(
-                            margin: EdgeInsets.symmetric(horizontal: screenWidth * 0.045),
-                            padding: EdgeInsets.only(bottom: screenHeight * 0.025, right: screenWidth * 0.015, left: screenWidth * 0.015),
+                            margin: EdgeInsets.symmetric(
+                                horizontal: screenWidth * 0.045),
+                            padding: EdgeInsets.only(
+                                bottom: screenHeight * 0.025,
+                                right: screenWidth * 0.015,
+                                left: screenWidth * 0.015),
                             alignment: Alignment.bottomCenter,
                             height: screenHeight * 0.2,
                             decoration: BoxDecoration(
@@ -646,7 +635,8 @@ class _HomeScreenState extends State<HomeScreen> {
                               mainAxisSize: MainAxisSize.min,
                               children: [
                                 Row(
-                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
                                   children: [
                                     Row(
                                       mainAxisSize: MainAxisSize.min,
@@ -664,25 +654,25 @@ class _HomeScreenState extends State<HomeScreen> {
                                               .textTheme
                                               .titleSmall!
                                               .copyWith(
-                                            fontFamily: "Lato",
-                                            fontSize: screenWidth * 0.022,
-                                            fontWeight: FontWeight.w600,
-                                            color: AppColors.white1,
-                                          ),
+                                                fontFamily: "Lato",
+                                                fontSize: screenWidth * 0.022,
+                                                fontWeight: FontWeight.w600,
+                                                color: AppColors.white1,
+                                              ),
                                         )
                                       ],
                                     ),
                                     Text(
-                                      "LEVEL ${user?.level ?? '1'}",
+                                      "LEVEL ${'1'}",
                                       style: Theme.of(context)
                                           .textTheme
                                           .titleSmall!
                                           .copyWith(
-                                        fontFamily: "Lato",
-                                        fontSize: screenWidth * 0.022,
-                                        fontWeight: FontWeight.w800,
-                                        color: AppColors.white1,
-                                      ),
+                                            fontFamily: "Lato",
+                                            fontSize: screenWidth * 0.022,
+                                            fontWeight: FontWeight.w800,
+                                            color: AppColors.white1,
+                                          ),
                                     ),
                                   ],
                                 ),
@@ -698,29 +688,31 @@ class _HomeScreenState extends State<HomeScreen> {
                                     ),
                                     SizedBox(width: screenWidth * 0.005),
                                     Text(
-                                      "${user?.coin ?? '0'} M",
+                                      "${'0'}",
                                       style: Theme.of(context)
                                           .textTheme
                                           .titleSmall!
                                           .copyWith(
-                                        fontFamily: "Lato",
-                                        fontSize: screenWidth * 0.050,
-                                        fontWeight: FontWeight.w600,
-                                        color: AppColors.white1,
-                                      ),
+                                            fontFamily: "Lato",
+                                            fontSize: screenWidth * 0.050,
+                                            fontWeight: FontWeight.w600,
+                                            color: AppColors.white1,
+                                          ),
                                     ),
                                   ],
                                 ),
                                 SizedBox(height: screenHeight * 0.015),
                                 Container(
-                                  padding: EdgeInsets.symmetric(horizontal: screenWidth * 0.025),
+                                  padding: EdgeInsets.symmetric(
+                                      horizontal: screenWidth * 0.025),
                                   height: 40.h,
                                   decoration: BoxDecoration(
                                     color: AppColors.blue1,
                                     borderRadius: BorderRadius.circular(25.0),
                                   ),
                                   child: Row(
-                                    crossAxisAlignment: CrossAxisAlignment.center,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.center,
                                     mainAxisSize: MainAxisSize.min,
                                     children: [
                                       Text(
@@ -729,11 +721,11 @@ class _HomeScreenState extends State<HomeScreen> {
                                             .textTheme
                                             .titleSmall!
                                             .copyWith(
-                                          fontFamily: "Lato",
-                                          fontSize: screenWidth * 0.024,
-                                          fontWeight: FontWeight.w500,
-                                          color: AppColors.white1,
-                                        ),
+                                              fontFamily: "Lato",
+                                              fontSize: screenWidth * 0.024,
+                                              fontWeight: FontWeight.w500,
+                                              color: AppColors.white1,
+                                            ),
                                       ),
                                       SizedBox(width: screenWidth * 0.010),
                                       Text(
@@ -742,10 +734,10 @@ class _HomeScreenState extends State<HomeScreen> {
                                             .textTheme
                                             .titleSmall!
                                             .copyWith(
-                                          fontSize: screenWidth * 0.028,
-                                          fontWeight: FontWeight.w600,
-                                          color: AppColors.green1,
-                                        ),
+                                              fontSize: screenWidth * 0.028,
+                                              fontWeight: FontWeight.w600,
+                                              color: AppColors.green1,
+                                            ),
                                       ),
                                       SizedBox(width: screenWidth * 0.010),
                                       Text(
@@ -754,10 +746,10 @@ class _HomeScreenState extends State<HomeScreen> {
                                             .textTheme
                                             .titleSmall!
                                             .copyWith(
-                                          fontSize: screenWidth * 0.028,
-                                          fontWeight: FontWeight.w500,
-                                          color: AppColors.white1,
-                                        ),
+                                              fontSize: screenWidth * 0.028,
+                                              fontWeight: FontWeight.w500,
+                                              color: AppColors.white1,
+                                            ),
                                       ),
                                     ],
                                   ),
