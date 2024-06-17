@@ -1,12 +1,14 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
 import 'package:rocki_poin_app/core/constants/app_assets.dart';
 import 'package:rocki_poin_app/core/constants/app_colors.dart';
+import 'package:rocki_poin_app/services/firebase_services.dart';
+import 'package:rocki_poin_app/views/main_screen.dart';
 import 'package:rocki_poin_app/views/user_details/model/provider/user_provider.dart';
 import 'package:rocki_poin_app/views/user_details/model/user_model.dart';
 import 'package:rocki_poin_app/views/welcome_bonus/welcome_bonus_screen.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:telegram_web_app/telegram_web_app.dart';
 
 import '../core/constants/app_strings.dart';
@@ -25,7 +27,7 @@ class _SplashScreenState extends State<SplashScreen> {
   String? telegramUsername;
 
   final TelegramWebApp telegram = TelegramWebApp.instance;
-  final FirebaseFirestore _firestore = FirebaseFirestore.instance;
+  final FirebaseService _firebaseService = FirebaseService();
 
   void check() async {
     await Future.delayed(const Duration(seconds: 2));
@@ -37,22 +39,29 @@ class _SplashScreenState extends State<SplashScreen> {
     String userImageUrl = telegram.initDataUnsafe!.user?.photo_url ??
         'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRRKgUUpHpc-JwcJiRLScAepL-T3oeaxR8T5A&s';
 
-    // Save the user details to Firestore
-    await _firestore.collection('users').doc(userId).set({
-      'id': userId,
-      'firstName': username,
-      'imageUrl': telegram.initDataUnsafe!.user?.photo_url,
-    });
-
-    // _logger.info('Username: $username'); // Log using the logging package
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    await prefs.setString('userId', userId);
 
     Provider.of<UserProvider>(context, listen: false).setUser(
       UserModel(id: userId, firstName: username, imageUrl: userImageUrl),
     );
-    // Update the state with the fetched username
-    setState(() {
-      telegramUsername = username;
-    });
+
+    // Fetch rocks data
+    await Provider.of<UserProvider>(context, listen: false)
+        .fetchRocksData(userId);
+
+    // Check if user exists and navigate accordingly
+    if (await _firebaseService.userExists(userId)) {
+      Navigator.pushReplacement(
+          context,
+          MaterialPageRoute(
+            builder: (context) => MainScreen(),
+          ));
+    } else {
+      // Create new user document with initial values
+      await _firebaseService.createNewUser(userId, username, userImageUrl);
+      Navigator.pushReplacementNamed(context, WelcomeBonusScreen.routeName);
+    }
   }
 
   @override
@@ -60,10 +69,6 @@ class _SplashScreenState extends State<SplashScreen> {
     super.initState();
     TelegramWebApp.instance.ready();
     check();
-    Future.delayed(
-        const Duration(seconds: 4),
-        () => Navigator.pushReplacementNamed(
-            context, WelcomeBonusScreen.routeName));
   }
 
   @override

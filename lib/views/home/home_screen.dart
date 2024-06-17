@@ -51,6 +51,8 @@ class _HomeScreenState extends State<HomeScreen> {
             body: Consumer<UserProvider>(
               builder: (context, userProvider, child) {
                 final user = userProvider.user;
+                final balance = userProvider.balance ?? 0;
+                final level = userProvider.level ?? 1;
                 return ListView(
                   children: [
                     Stack(
@@ -66,7 +68,6 @@ class _HomeScreenState extends State<HomeScreen> {
                           ),
                           child: Column(
                             children: [
-                              // SizedBox(height: 10.h),
                               Row(
                                 crossAxisAlignment: CrossAxisAlignment.center,
                                 children: [
@@ -74,8 +75,9 @@ class _HomeScreenState extends State<HomeScreen> {
                                     height: 50.h,
                                     width: 60.w,
                                     child: CircleAvatar(
-                                      backgroundImage:
-                                          NetworkImage(user!.imageUrl),
+                                      backgroundImage: NetworkImage(user
+                                              ?.imageUrl ??
+                                          'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRRKgUUpHpc-JwcJiRLScAepL-T3oeaxR8T5A&s'),
                                       radius: 40.w,
                                     ),
                                   ),
@@ -94,7 +96,6 @@ class _HomeScreenState extends State<HomeScreen> {
                                               fontWeight: FontWeight.w300,
                                             ),
                                       ),
-                                      //username here
                                       Text(
                                         user?.firstName ?? 'User name',
                                         style: Theme.of(context)
@@ -109,8 +110,6 @@ class _HomeScreenState extends State<HomeScreen> {
                                     ],
                                   ),
                                   const Spacer(),
-                                  //user Img here
-
                                   SvgPicture.asset(
                                     'assets/images/homImgnewTwo.svg',
                                     height: 40.h,
@@ -293,7 +292,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                     Row(
                                       children: [
                                         Text(
-                                          "LEVEL ${'1'}",
+                                          "LEVEL $level",
                                           style: Theme.of(context)
                                               .textTheme
                                               .titleSmall!
@@ -319,7 +318,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                     ),
                                     SizedBox(width: 10.w),
                                     Text(
-                                      "${'0'}",
+                                      "$balance",
                                       style: Theme.of(context)
                                           .textTheme
                                           .titleSmall!
@@ -418,6 +417,8 @@ class _HomeScreenState extends State<HomeScreen> {
             body: Consumer<UserProvider>(
               builder: (context, userProvider, child) {
                 final user = userProvider.user;
+                final balance = userProvider.balance ?? 0;
+                final level = userProvider.level ?? 1;
                 return ListView(
                   children: [
                     Stack(
@@ -663,7 +664,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                       ],
                                     ),
                                     Text(
-                                      "LEVEL ${'1'}",
+                                      "LEVEL $level",
                                       style: Theme.of(context)
                                           .textTheme
                                           .titleSmall!
@@ -688,7 +689,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                     ),
                                     SizedBox(width: screenWidth * 0.005),
                                     Text(
-                                      "${'0'}",
+                                      "$balance",
                                       style: Theme.of(context)
                                           .textTheme
                                           .titleSmall!

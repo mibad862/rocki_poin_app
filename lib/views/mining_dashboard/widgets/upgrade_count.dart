@@ -16,18 +16,18 @@ class UpgradeCount extends StatefulWidget {
 }
 
 class _UpgradeCountState extends State<UpgradeCount> {
-  String userEmail = '';
+  String userID = '';
 
   @override
   void initState() {
     super.initState();
-    _fetchUserEmail();
+    _fetchUserId();
   }
 
-  Future<void> _fetchUserEmail() async {
+  Future<void> _fetchUserId() async {
     final prefs = await SharedPreferences.getInstance();
     setState(() {
-      userEmail = prefs.getString('user_email') ?? '';
+      userID = prefs.getString('userId') ?? '';
     });
   }
 
@@ -75,7 +75,6 @@ class _UpgradeCountState extends State<UpgradeCount> {
             TextButton(
               onPressed: () {
                 Navigator.of(context).pop();
-                Navigator.of(context).pop();
               },
               child: const Text("OK"),
             ),
@@ -87,12 +86,12 @@ class _UpgradeCountState extends State<UpgradeCount> {
 
   @override
   Widget build(BuildContext context) {
-    return userEmail.isEmpty
+    return userID.isEmpty
         ? const Center(child: CircularProgressIndicator())
         : StreamBuilder<DocumentSnapshot<Map<String, dynamic>>>(
             stream: FirebaseFirestore.instance
-                .collection('user_details')
-                .doc(userEmail)
+                .collection('rocks')
+                .doc(userID)
                 .snapshots(),
             builder: (context, snapshot) {
               if (snapshot.connectionState == ConnectionState.waiting) {
@@ -180,12 +179,12 @@ class _UpgradeCountState extends State<UpgradeCount> {
                         showModalBottomSheet(
                           shape: const RoundedRectangleBorder(
                             borderRadius:
-                                BorderRadius.vertical(top: Radius.circular(0)),
+                                BorderRadius.vertical(top: Radius.circular(20)),
                           ),
                           context: context,
                           builder: (context) {
                             return Container(
-                              height: 800.h,
+                              height: 400.h,
                               padding: EdgeInsets.only(
                                   bottom: 20.h,
                                   top: 10.h,

@@ -126,10 +126,10 @@ class MiningDashboardState extends State<MiningDashboard>
     }
 
     // Update coins in Firestore
-    String userEmail = prefs.getString('user_email') ?? '';
-    if (userEmail.isNotEmpty) {
+    String userId = prefs.getString('userId') ?? '';
+    if (userId.isNotEmpty) {
       DocumentReference<Map<String, dynamic>> userRef =
-          FirebaseFirestore.instance.collection('user_details').doc(userEmail);
+          FirebaseFirestore.instance.collection('rocks').doc(userId);
       try {
         DocumentSnapshot<Map<String, dynamic>> snapshot =
             await userRef.get() as DocumentSnapshot<Map<String, dynamic>>;

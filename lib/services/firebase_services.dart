@@ -1,76 +1,63 @@
-// import 'dart:io';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
-// import 'package:cloud_firestore/cloud_firestore.dart';
-// import 'package:firebase_storage/firebase_storage.dart';
-// import 'package:flutter/material.dart';
-// import 'package:rocki_poin_app/views/welcome_bonus/welcome_bonus_screen.dart';
-// import 'package:shared_preferences/shared_preferences.dart';
+class FirebaseService {
+  final FirebaseFirestore _firestore = FirebaseFirestore.instance;
 
-// import '../views/user_details/model/user_model.dart';
+  Future<void> saveUserDetails(
+      String userId, String username, String userImageUrl) async {
+    // Save the user details to Firestore
+    await _firestore.collection('users').doc(userId).set({
+      'id': userId,
+      'firstName': username,
+      'imageUrl': userImageUrl,
+    });
 
-// class UserService {
-//   final FirebaseFirestore _firestore = FirebaseFirestore.instance;
-//   final FirebaseStorage _storage = FirebaseStorage.instance;
+    // Save the user ID to shared preferences
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    await prefs.setString('userId', userId);
+  }
 
-//   // For fetching user information
-//   Future<User?> fetchUserData(String email) async {
-//     try {
-//       final doc = await _firestore.collection('user_details').doc(email).get();
-//       if (doc.exists) {
-//         return User.fromMap(doc.data()!, email);
-//       }
-//     } catch (e) {
-//       print('Failed to fetch user data: $e');
-//     }
-//     return null;
-//   }
+  Future<String?> getUserId() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    return prefs.getString('userId');
+  }
 
-//   // For uploading user image to Firebase Storage
-//   Future<String?> uploadImage(File imageFile, String email) async {
-//     try {
-//       final storageRef = _storage.ref().child('user_images/$email');
-//       final uploadTask = await storageRef.putFile(imageFile);
-//       final downloadUrl = await storageRef.getDownloadURL();
-//       return downloadUrl;
-//     } catch (e) {
-//       print('Failed to upload image: $e');
-//       return null;
-//     }
-//   }
+  Future<bool> userExists(String userId) async {
+    final userDoc = await _firestore.collection('users').doc(userId).get();
+    return userDoc.exists;
+  }
 
-//   // For saving user data
-//   Future<void> saveUserData(
-//       User user, File imageFile, BuildContext context) async {
-//     try {
-//       final imageUrl = await uploadImage(imageFile, user.email);
-//       if (imageUrl != null) {
-//         user = User(
-//           name: user.name,
-//           username: user.username,
-//           email: user.email,
-//           imageUrl: imageUrl,
-//           level: user.level,
-//           coin: user.coin,
-//         );
-//         await _firestore
-//             .collection('user_details')
-//             .doc(user.email)
-//             .set(user.toMap());
+  Future<void> createNewUser(
+      String userId, String username, String userImageUrl) async {
+    await saveUserDetails(userId, username, userImageUrl);
 
-//         // Save email in shared preferences
-//         SharedPreferences prefs = await SharedPreferences.getInstance();
-//         await prefs.setString('user_email', user.email);
+    await _firestore.collection('rocks').doc(userId).set({
+      'balance': 400,
+      'level': 1,
+      'referral': 0,
+      'claimed_bonus': true,
+    });
+  }
 
-//         Navigator.pushNamed(context, WelcomeBonusScreen.routeName);
-//       }
-//     } catch (e) {
-//       print('Failed to save user data: $e');
-//     }
-//   }
+  Future<void> updateUserCoins(String userId, int coins) async {
+    final userDoc = _firestore.collection('rocks').doc(userId);
+    await _firestore.runTransaction((transaction) async {
+      final snapshot = await transaction.get(userDoc);
+      if (snapshot.exists) {
+        final currentCoins = snapshot.data()?['balance'] ?? 0;
+        transaction.update(userDoc, {'balance': currentCoins + coins});
+      }
+    });
+  }
 
-//   // For retrieving user email from shared preferences
-//   Future<String?> getUserEmailFromPrefs() async {
-//     SharedPreferences prefs = await SharedPreferences.getInstance();
-//     return prefs.getString('user_email');
-//   }
-// }
+  Future<void> updateUserLevel(String userId, int level) async {
+    final userDoc = _firestore.collection('rocks').doc(userId);
+    await userDoc.update({'level': level});
+  }
+
+  Future<void> updateUserReferrals(String userId, int referrals) async {
+    final userDoc = _firestore.collection('rocks').doc(userId);
+    await userDoc.update({'referral': referrals});
+  }
+}
